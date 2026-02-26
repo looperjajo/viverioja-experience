@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ViveRioja Experience, S.L.</title>
+
+<style>
+*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+
+body{
+    background: linear-gradient(135deg,#f5f1eb,#ffffff);
+    color:#333;
+    scroll-behavior:smooth;
+    overflow-x:hidden;
+}
+
+/* NAVBAR */
+nav{
+    position:fixed;
+    width:100%;
+    top:0;
+    padding:15px 60px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    backdrop-filter: blur(20px);
+    background: rgba(255,255,255,0.35);
+    border-bottom:1px solid rgba(255,255,255,0.2);
+    transition:0.4s;
+    z-index:1000;
+}
+
+nav.scrolled{
+    background: rgba(159,64,64,0.85);
+}
+
+nav.scrolled a, nav.scrolled h2{
+    color:white;
+}
+
+nav h2{color:#9f4040;font-weight:600;}
+nav ul{list-style:none;display:flex;gap:30px;}
+nav a{text-decoration:none;color:#333;font-weight:500;transition:0.3s;}
+nav a:hover{color:#9f4040;}
+
+/* HERO PARALLAX */
+.hero{
+    height:100vh;
+    background:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb') center/cover fixed;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    color:white;
+    position:relative;
+}
+
+.hero::before{
+    content:"";
+    position:absolute;
+    width:100%;
+    height:100%;
+    background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(159,64,64,0.4));
+}
+
+.hero-content{
+    position:relative;
+    padding:50px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.3);
+}
+
+.hero h1{font-size:3rem;margin-bottom:20px;}
+
+/* BOTÓN CRISTAL PREMIUM */
+.glass-btn{
+    padding:14px 35px;
+    border-radius:50px;
+    border:1px solid rgba(255,255,255,0.4);
+    background:rgba(255,255,255,0.15);
+    backdrop-filter:blur(12px);
+    color:white;
+    font-weight:600;
+    cursor:pointer;
+    transition:0.4s;
+    position:relative;
+    overflow:hidden;
+}
+
+.glass-btn::after{
+    content:"";
+    position:absolute;
+    width:200%;
+    height:200%;
+    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
+    transform:rotate(45deg);
+    top:-100%;
+    left:-100%;
+    transition:0.7s;
+}
+
+.glass-btn:hover::after{
+    top:100%;
+    left:100%;
+}
+
+.glass-btn:hover{
+    background:#9f4040;
+    transform:scale(1.07);
+}
+
+/* SECCIONES */
+section{padding:120px 10%;}
+.section-title{text-align:center;margin-bottom:60px;color:#9f4040;font-size:2.2rem;}
+
+/* TARJETAS */
+.cards{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
+
+.card{
+    width:300px;
+    padding:35px;
+    border-radius:25px;
+    background:rgba(255,255,255,0.2);
+    backdrop-filter:blur(15px);
+    border:1px solid rgba(255,255,255,0.3);
+    transition:0.4s;
+}
+
+.card:hover{
+    transform:translateY(-12px);
+    box-shadow:0 20px 40px rgba(159,64,64,0.3);
+}
+
+.card h3{color:#9f4040;margin-bottom:15px;}
+
+/* CONTADOR */
+.counter{
+    text-align:center;
+    font-size:2.5rem;
+    color:#9f4040;
+    font-weight:700;
+}
+
+/* FORMULARIO */
+form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:20px;}
+
+input,select{
+    padding:14px;
+    border-radius:12px;
+    border:1px solid #ccc;
+    transition:0.3s;
+}
+
+input:focus,select:focus{
+    outline:none;
+    border-color:#9f4040;
+    box-shadow:0 0 10px rgba(159,64,64,0.3);
+}
+
+/* MENSAJE CONFIRMACIÓN */
+.success{
+    display:none;
+    text-align:center;
+    margin-top:20px;
+    color:#9f4040;
+    font-weight:600;
+}
+
+/* FOOTER */
+footer{
+    background:#9f4040;
+    color:white;
+    text-align:center;
+    padding:25px;
+}
+
+/* ANIMACIONES SCROLL */
+.fade{opacity:0;transform:translateY(50px);transition:1s;}
+.fade.show{opacity:1;transform:translateY(0);}
+
+/* RESPONSIVE */
+@media(max-width:768px){
+    .cards{flex-direction:column;align-items:center;}
+}
+</style>
+</head>
+
+<body>
+
+<nav id="navbar">
+<h2>ViveRioja Experience</h2>
+<ul>
+<li><a href="#inicio">Inicio</a></li>
+<li><a href="#nosotros">Sobre Nosotros</a></li>
+<li><a href="#experiencias">Experiencias</a></li>
+<li><a href="#reservas">Reservas</a></li>
+<li><a href="#contacto">Contacto</a></li>
+</ul>
+</nav>
+
+<section class="hero" id="inicio">
+<div class="hero-content">
+<h1>Vive La Rioja como nunca antes</h1>
+<button class="glass-btn" onclick="scrollToSection('reservas')">Reservar experiencia</button>
+</div>
+</section>
+
+<section id="nosotros" class="fade">
+<h2 class="section-title">Sobre Nosotros</h2>
+<p style="text-align:center;max-width:750px;margin:auto;">
+ViveRioja Experience, S.L. ofrece experiencias de turismo rural, cultural y gastronómico en La Rioja, promoviendo el patrimonio local y la excelencia en el servicio.
+</p>
+</section>
+
+<section class="fade">
+<h2 class="section-title">Más de</h2>
+<div class="counter" id="contador">0</div>
+<p style="text-align:center;">Clientes satisfechos</p>
+</section>
+
+<section id="experiencias" class="fade">
+<h2 class="section-title">Experiencias</h2>
+<div class="cards">
+<div class="card">
+<h3>Ruta del Vino</h3>
+<p>Visitas a bodegas emblemáticas con cata profesional.</p>
+</div>
+<div class="card">
+<h3>Turismo Rural</h3>
+<p>Descubre pueblos con encanto y entornos naturales.</p>
+</div>
+<div class="card">
+<h3>Experiencia Gastronómica</h3>
+<p>Degustación de cocina tradicional riojana.</p>
+</div>
+</div>
+</section>
+
+<section id="reservas" class="fade">
+<h2 class="section-title">Reservas</h2>
+<form onsubmit="return enviarFormulario()">
+<input type="text" required placeholder="Nombre completo">
+<input type="email" required placeholder="Correo electrónico">
+<input type="date" required>
+<select required>
+<option value="">Seleccione experiencia</option>
+<option>Ruta del Vino</option>
+<option>Turismo Rural</option>
+<option>Experiencia Gastronómica</option>
+</select>
+<button class="glass-btn" type="submit">Enviar reserva</button>
+</form>
+<div class="success" id="mensaje">Reserva enviada correctamente.</div>
+</section>
+
+<section id="contacto" class="fade">
+<h2 class="section-title">Contacto</h2>
+<p style="text-align:center;">
+info@viveriojaexperience.com<br>
++34 600 000 000<br>
+La Rioja, España
+</p>
+</section>
+
+<footer>
+ViveRioja Experience, S.L. | Turismo rural en La Rioja
+</footer>
+
+<script>
+function scrollToSection(id){
+document.getElementById(id).scrollIntoView({behavior:"smooth"});
+}
+
+function enviarFormulario(){
+document.getElementById("mensaje").style.display="block";
+return false;
+}
+
+/* NAV SCROLL */
+window.addEventListener("scroll",function(){
+document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
+});
+
+/* CONTADOR ANIMADO */
+let contador=document.getElementById("contador");
+let valor=0;
+let intervalo=setInterval(()=>{
+valor+=5;
+contador.textContent=valor;
+if(valor>=500){
+clearInterval(intervalo);
+}
+},20);
+
+/* ANIMACIONES SCROLL */
+const faders=document.querySelectorAll('.fade');
+const appearOptions={threshold:0.3};
+const appearOnScroll=new IntersectionObserver(function(entries,observer){
+entries.forEach(entry=>{
+if(!entry.isIntersecting){return;}
+entry.target.classList.add('show');
+observer.unobserve(entry.target);
+});
+},appearOptions);
+
+faders.forEach(fader=>{appearOnScroll.observe(fader);});
+</script>
+
+</body>
+</html>
