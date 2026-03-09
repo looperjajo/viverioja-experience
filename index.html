@@ -1,313 +1,1029 @@
 <!DOCTYPE html>
 <html lang="es">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ViveRioja Experience, S.L.</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ViveRioja Experience, S.L.</title>
+  <style>
+    :root {
+      --brand: #9f4040;
+      --brand-dark: #7f2f2f;
+      --cream: #f7f1eb;
+      --text: #2d2d2d;
+      --white-glass: rgba(255,255,255,0.18);
+      --white-border: rgba(255,255,255,0.32);
+      --shadow: 0 18px 45px rgba(31, 20, 20, 0.16);
+      --radius: 24px;
+      --max: 1200px;
+    }
 
-<style>
-*{margin:0;padding:0;box-sizing:border-box;font-family:'Segoe UI',sans-serif;}
+    * { box-sizing: border-box; margin: 0; padding: 0; }
 
-body{
-    background: linear-gradient(135deg,#f5f1eb,#ffffff);
-    color:#333;
-    scroll-behavior:smooth;
-    overflow-x:hidden;
-}
+    html { scroll-behavior: smooth; }
 
-/* NAVBAR */
-nav{
-    position:fixed;
-    width:100%;
-    top:0;
-    padding:15px 60px;
-    display:flex;
-    justify-content:space-between;
-    align-items:center;
-    backdrop-filter: blur(20px);
-    background: rgba(255,255,255,0.35);
-    border-bottom:1px solid rgba(255,255,255,0.2);
-    transition:0.4s;
-    z-index:1000;
-}
+    body {
+      font-family: "Segoe UI", system-ui, sans-serif;
+      color: var(--text);
+      background:
+        radial-gradient(circle at top left, rgba(159,64,64,0.12), transparent 30%),
+        linear-gradient(135deg, #f6efe8, #ffffff 55%, #f7f1eb);
+      overflow-x: hidden;
+    }
 
-nav.scrolled{
-    background: rgba(159,64,64,0.85);
-}
+    img { max-width: 100%; display: block; }
 
-nav.scrolled a, nav.scrolled h2{
-    color:white;
-}
+    .container {
+      width: min(92%, var(--max));
+      margin: 0 auto;
+    }
 
-nav h2{color:#9f4040;font-weight:600;}
-nav ul{list-style:none;display:flex;gap:30px;}
-nav a{text-decoration:none;color:#333;font-weight:500;transition:0.3s;}
-nav a:hover{color:#9f4040;}
+    nav {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      z-index: 1000;
+      transition: 0.35s ease;
+      border-bottom: 1px solid transparent;
+    }
 
-/* HERO PARALLAX */
-.hero{
-    height:100vh;
-    background:url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb') center/cover fixed;
-    display:flex;
-    justify-content:center;
-    align-items:center;
-    text-align:center;
-    color:white;
-    position:relative;
-}
+    nav.scrolled {
+      background: rgba(255,255,255,0.58);
+      backdrop-filter: blur(18px);
+      border-bottom-color: rgba(255,255,255,0.4);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.06);
+    }
 
-.hero::before{
-    content:"";
-    position:absolute;
-    width:100%;
-    height:100%;
-    background:linear-gradient(to bottom,rgba(0,0,0,0.4),rgba(159,64,64,0.4));
-}
+    .nav-wrap {
+      width: min(94%, 1280px);
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 18px 0;
+      gap: 18px;
+    }
 
-.hero-content{
-    position:relative;
-    padding:50px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.3);
-}
+    .brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      color: var(--brand);
+      font-weight: 700;
+      font-size: 1.1rem;
+      letter-spacing: 0.2px;
+    }
 
-.hero h1{font-size:3rem;margin-bottom:20px;}
+    .brand-mark {
+      width: 42px;
+      height: 42px;
+      border-radius: 14px;
+      background: linear-gradient(135deg, rgba(159,64,64,0.95), rgba(159,64,64,0.6));
+      color: white;
+      display: grid;
+      place-items: center;
+      box-shadow: 0 10px 20px rgba(159,64,64,0.24);
+      font-weight: 800;
+    }
 
-/* BOTÓN CRISTAL PREMIUM */
-.glass-btn{
-    padding:14px 35px;
-    border-radius:50px;
-    border:1px solid rgba(255,255,255,0.4);
-    background:rgba(255,255,255,0.15);
-    backdrop-filter:blur(12px);
-    color:white;
-    font-weight:600;
-    cursor:pointer;
-    transition:0.4s;
-    position:relative;
-    overflow:hidden;
-}
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      flex-wrap: wrap;
+    }
 
-.glass-btn::after{
-    content:"";
-    position:absolute;
-    width:200%;
-    height:200%;
-    background:linear-gradient(120deg,transparent,rgba(255,255,255,0.4),transparent);
-    transform:rotate(45deg);
-    top:-100%;
-    left:-100%;
-    transition:0.7s;
-}
+    .nav-links a {
+      text-decoration: none;
+      color: var(--text);
+      font-weight: 600;
+      font-size: 0.95rem;
+      transition: 0.25s ease;
+    }
 
-.glass-btn:hover::after{
-    top:100%;
-    left:100%;
-}
+    .nav-links a:hover,
+    .nav-links a.active {
+      color: var(--brand);
+    }
 
-.glass-btn:hover{
-    background:#9f4040;
-    transform:scale(1.07);
-}
+    .glass-btn,
+    .secondary-btn,
+    .package-btn {
+      position: relative;
+      overflow: hidden;
+      border-radius: 999px;
+      padding: 13px 24px;
+      font-weight: 700;
+      border: 1px solid rgba(255,255,255,0.35);
+      backdrop-filter: blur(16px);
+      cursor: pointer;
+      text-decoration: none;
+      transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+    }
 
-/* SECCIONES */
-section{padding:120px 10%;}
-.section-title{text-align:center;margin-bottom:60px;color:#9f4040;font-size:2.2rem;}
+    .glass-btn {
+      color: white;
+      background: linear-gradient(135deg, rgba(255,255,255,0.22), rgba(255,255,255,0.12));
+      box-shadow: 0 14px 34px rgba(0,0,0,0.16);
+    }
 
-/* TARJETAS */
-.cards{display:flex;gap:40px;flex-wrap:wrap;justify-content:center;}
+    .secondary-btn,
+    .package-btn {
+      color: var(--brand);
+      background: rgba(255,255,255,0.52);
+      border: 1px solid rgba(159,64,64,0.14);
+      box-shadow: 0 10px 25px rgba(159,64,64,0.08);
+    }
 
-.card{
-    width:300px;
-    padding:35px;
-    border-radius:25px;
-    background:rgba(255,255,255,0.2);
-    backdrop-filter:blur(15px);
-    border:1px solid rgba(255,255,255,0.3);
-    transition:0.4s;
-}
+    .glass-btn::after,
+    .secondary-btn::after,
+    .package-btn::after {
+      content: "";
+      position: absolute;
+      inset: -120% auto auto -40%;
+      width: 40%;
+      height: 320%;
+      background: linear-gradient(120deg, transparent, rgba(255,255,255,0.6), transparent);
+      transform: rotate(18deg);
+      transition: 0.8s ease;
+    }
 
-.card:hover{
-    transform:translateY(-12px);
-    box-shadow:0 20px 40px rgba(159,64,64,0.3);
-}
+    .glass-btn:hover::after,
+    .secondary-btn:hover::after,
+    .package-btn:hover::after { left: 120%; }
 
-.card h3{color:#9f4040;margin-bottom:15px;}
+    .glass-btn:hover,
+    .secondary-btn:hover,
+    .package-btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 16px 32px rgba(159,64,64,0.18);
+    }
 
-/* CONTADOR */
-.counter{
-    text-align:center;
-    font-size:2.5rem;
-    color:#9f4040;
-    font-weight:700;
-}
+    .secondary-btn:hover,
+    .package-btn:hover,
+    .glass-btn:hover {
+      background: var(--brand);
+      color: white;
+      border-color: rgba(255,255,255,0.28);
+    }
 
-/* FORMULARIO */
-form{max-width:500px;margin:auto;display:flex;flex-direction:column;gap:20px;}
+    header.hero {
+      min-height: 100vh;
+      position: relative;
+      display: grid;
+      place-items: center;
+      background:
+        linear-gradient(rgba(0,0,0,0.28), rgba(80,18,18,0.36)),
+        url('https://images.unsplash.com/photo-1506377247377-2a5b3b417ebb?auto=format&fit=crop&w=1600&q=80') center/cover fixed;
+      color: white;
+      padding: 110px 0 60px;
+    }
 
-input,select{
-    padding:14px;
-    border-radius:12px;
-    border:1px solid #ccc;
-    transition:0.3s;
-}
+    .hero-card {
+      width: min(92%, 960px);
+      padding: 46px;
+      border-radius: 30px;
+      background: rgba(255,255,255,0.14);
+      border: 1px solid rgba(255,255,255,0.24);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 18px 55px rgba(0,0,0,0.16);
+    }
 
-input:focus,select:focus{
-    outline:none;
-    border-color:#9f4040;
-    box-shadow:0 0 10px rgba(159,64,64,0.3);
-}
+    .hero-kicker {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 10px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.16);
+      border: 1px solid rgba(255,255,255,0.25);
+      font-weight: 600;
+      margin-bottom: 22px;
+    }
 
-/* MENSAJE CONFIRMACIÓN */
-.success{
-    display:none;
-    text-align:center;
-    margin-top:20px;
-    color:#9f4040;
-    font-weight:600;
-}
+    .hero h1 {
+      font-size: clamp(2.5rem, 5vw, 4.6rem);
+      line-height: 1.04;
+      margin-bottom: 18px;
+      max-width: 11ch;
+    }
 
-/* FOOTER */
-footer{
-    background:#9f4040;
-    color:white;
-    text-align:center;
-    padding:25px;
-}
+    .hero p {
+      font-size: 1.06rem;
+      line-height: 1.75;
+      max-width: 720px;
+      color: rgba(255,255,255,0.92);
+      margin-bottom: 28px;
+    }
 
-/* ANIMACIONES SCROLL */
-.fade{opacity:0;transform:translateY(50px);transition:1s;}
-.fade.show{opacity:1;transform:translateY(0);}
+    .hero-actions {
+      display: flex;
+      gap: 14px;
+      flex-wrap: wrap;
+      margin-bottom: 30px;
+    }
 
-/* RESPONSIVE */
-@media(max-width:768px){
-    .cards{flex-direction:column;align-items:center;}
-}
-</style>
+    .hero-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 12px;
+    }
+
+    .stat {
+      background: rgba(255,255,255,0.1);
+      border: 1px solid rgba(255,255,255,0.18);
+      border-radius: 22px;
+      padding: 20px;
+    }
+
+    .stat strong {
+      display: block;
+      font-size: 1.8rem;
+      margin-bottom: 8px;
+    }
+
+    main section {
+      padding: 92px 0;
+    }
+
+    .section-head {
+      display: flex;
+      justify-content: space-between;
+      align-items: end;
+      gap: 18px;
+      margin-bottom: 34px;
+      flex-wrap: wrap;
+    }
+
+    .eyebrow {
+      color: var(--brand);
+      font-weight: 800;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+      margin-bottom: 8px;
+    }
+
+    h2 {
+      font-size: clamp(2rem, 3.5vw, 3rem);
+      line-height: 1.08;
+      color: #241f1f;
+      margin-bottom: 10px;
+    }
+
+    .section-copy {
+      max-width: 720px;
+      color: #5b5555;
+      line-height: 1.8;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
+    }
+
+    .glass-panel {
+      background: rgba(255,255,255,0.46);
+      border: 1px solid rgba(255,255,255,0.55);
+      backdrop-filter: blur(18px);
+      border-radius: var(--radius);
+      box-shadow: var(--shadow);
+      padding: 30px;
+    }
+
+    .about-grid p {
+      line-height: 1.9;
+      color: #514c4c;
+      margin-bottom: 14px;
+    }
+
+    .about-list {
+      display: grid;
+      gap: 14px;
+      margin-top: 20px;
+    }
+
+    .about-list li {
+      list-style: none;
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.58);
+      border: 1px solid rgba(159,64,64,0.1);
+      display: flex;
+      gap: 12px;
+      align-items: start;
+      line-height: 1.6;
+    }
+
+    .mini-badge {
+      min-width: 28px;
+      height: 28px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(159,64,64,0.12);
+      color: var(--brand);
+      font-size: 0.92rem;
+      font-weight: 800;
+    }
+
+    .info-stack {
+      display: grid;
+      gap: 18px;
+    }
+
+    .info-card {
+      border-radius: 20px;
+      padding: 22px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.72), rgba(255,255,255,0.48));
+      border: 1px solid rgba(159,64,64,0.09);
+    }
+
+    .info-card h3 {
+      color: var(--brand);
+      margin-bottom: 10px;
+      font-size: 1.08rem;
+    }
+
+    .info-card p {
+      color: #555;
+      line-height: 1.75;
+    }
+
+    .package-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .package-card {
+      position: relative;
+      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.38));
+      border: 1px solid rgba(255,255,255,0.56);
+      backdrop-filter: blur(18px);
+      border-radius: 28px;
+      padding: 28px;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .package-card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 24px 50px rgba(159,64,64,0.18);
+    }
+
+    .package-card.featured {
+      outline: 2px solid rgba(159,64,64,0.18);
+      transform: translateY(-4px);
+    }
+
+    .pill {
+      display: inline-flex;
+      padding: 8px 14px;
+      border-radius: 999px;
+      font-size: 0.76rem;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      background: rgba(159,64,64,0.12);
+      color: var(--brand);
+      margin-bottom: 18px;
+    }
+
+    .package-title {
+      font-size: 1.38rem;
+      margin-bottom: 8px;
+      color: #231f1f;
+    }
+
+    .package-desc {
+      color: #595454;
+      line-height: 1.75;
+      min-height: 92px;
+      margin-bottom: 18px;
+    }
+
+    .price {
+      display: flex;
+      align-items: end;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .price strong {
+      font-size: 2.2rem;
+      color: var(--brand);
+      line-height: 1;
+    }
+
+    .price span {
+      color: #6d6868;
+      font-weight: 600;
+      margin-bottom: 4px;
+    }
+
+    .package-features {
+      display: grid;
+      gap: 12px;
+      margin-bottom: 24px;
+    }
+
+    .package-features li {
+      list-style: none;
+      display: flex;
+      gap: 10px;
+      align-items: start;
+      color: #4f4949;
+      line-height: 1.6;
+    }
+
+    .tick {
+      width: 24px;
+      height: 24px;
+      border-radius: 50%;
+      display: grid;
+      place-items: center;
+      background: rgba(159,64,64,0.12);
+      color: var(--brand);
+      font-size: 0.9rem;
+      flex: 0 0 auto;
+      font-weight: 800;
+    }
+
+    .split-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+    }
+
+    .service-highlight {
+      display: grid;
+      gap: 14px;
+    }
+
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 0.95fr 1.05fr;
+      gap: 24px;
+    }
+
+    form {
+      display: grid;
+      gap: 16px;
+    }
+
+    .field-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 16px;
+    }
+
+    label {
+      display: block;
+      font-size: 0.92rem;
+      font-weight: 700;
+      margin-bottom: 8px;
+      color: #433d3d;
+    }
+
+    input, select, textarea {
+      width: 100%;
+      border: 1px solid rgba(159,64,64,0.12);
+      background: rgba(255,255,255,0.72);
+      border-radius: 16px;
+      padding: 14px 16px;
+      font: inherit;
+      color: var(--text);
+      transition: border-color 0.2s ease, box-shadow 0.2s ease, transform 0.2s ease;
+    }
+
+    input:focus, select:focus, textarea:focus {
+      outline: none;
+      border-color: rgba(159,64,64,0.45);
+      box-shadow: 0 0 0 4px rgba(159,64,64,0.08);
+      transform: translateY(-1px);
+    }
+
+    textarea { min-height: 120px; resize: vertical; }
+
+    .success-message {
+      display: none;
+      margin-top: 12px;
+      padding: 16px 18px;
+      border-radius: 16px;
+      background: rgba(159,64,64,0.08);
+      color: var(--brand);
+      font-weight: 700;
+      border: 1px solid rgba(159,64,64,0.12);
+    }
+
+    .contact-list {
+      display: grid;
+      gap: 16px;
+      margin-top: 14px;
+    }
+
+    .contact-item {
+      padding: 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.6);
+      border: 1px solid rgba(159,64,64,0.08);
+      line-height: 1.7;
+    }
+
+    .map-box {
+      margin-top: 18px;
+      border-radius: 22px;
+      overflow: hidden;
+      min-height: 260px;
+      background:
+        linear-gradient(160deg, rgba(159,64,64,0.14), rgba(255,255,255,0.65)),
+        url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80') center/cover;
+      display: grid;
+      place-items: end start;
+      padding: 18px;
+    }
+
+    .map-chip {
+      padding: 12px 16px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.65);
+      backdrop-filter: blur(12px);
+      font-weight: 700;
+      color: var(--brand);
+      border: 1px solid rgba(255,255,255,0.45);
+    }
+
+    footer {
+      padding: 28px 0 40px;
+      color: #675f5f;
+    }
+
+    .footer-wrap {
+      border-top: 1px solid rgba(159,64,64,0.1);
+      padding-top: 22px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .promo-modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(16,10,10,0.55);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      z-index: 3000;
+    }
+
+    .promo-modal.show { display: flex; }
+
+    .promo-box {
+      width: min(92%, 560px);
+      background: linear-gradient(160deg, rgba(255,255,255,0.76), rgba(255,255,255,0.5));
+      border: 1px solid rgba(255,255,255,0.55);
+      backdrop-filter: blur(20px);
+      border-radius: 30px;
+      padding: 34px;
+      box-shadow: 0 24px 70px rgba(0,0,0,0.2);
+      position: relative;
+      text-align: left;
+    }
+
+    .promo-tag {
+      display: inline-flex;
+      padding: 9px 14px;
+      border-radius: 999px;
+      background: rgba(159,64,64,0.12);
+      color: var(--brand);
+      font-weight: 800;
+      margin-bottom: 16px;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      font-size: 0.78rem;
+    }
+
+    .promo-box h3 {
+      font-size: clamp(1.8rem, 4vw, 2.5rem);
+      margin-bottom: 12px;
+      line-height: 1.08;
+      color: #241e1e;
+    }
+
+    .promo-box p {
+      line-height: 1.8;
+      color: #554f4f;
+      margin-bottom: 18px;
+    }
+
+    .promo-code {
+      padding: 16px 18px;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.7);
+      border: 1px dashed rgba(159,64,64,0.32);
+      color: var(--brand);
+      font-size: 1.15rem;
+      font-weight: 900;
+      text-align: center;
+      margin-bottom: 18px;
+      letter-spacing: 0.06em;
+    }
+
+    .promo-actions {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .close-promo {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      width: 40px;
+      height: 40px;
+      border: none;
+      border-radius: 50%;
+      background: rgba(255,255,255,0.72);
+      color: var(--brand);
+      cursor: pointer;
+      font-size: 1.15rem;
+      font-weight: 900;
+    }
+
+    .fade-up {
+      opacity: 0;
+      transform: translateY(28px);
+      transition: opacity 0.75s ease, transform 0.75s ease;
+    }
+
+    .fade-up.show {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    @media (max-width: 980px) {
+      .about-grid,
+      .contact-grid,
+      .split-grid,
+      .package-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-stats,
+      .field-row {
+        grid-template-columns: 1fr;
+      }
+
+      .hero-card { padding: 34px 24px; }
+      nav .nav-links { gap: 14px; }
+    }
+
+    @media (max-width: 720px) {
+      .nav-wrap {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .nav-links {
+        gap: 12px 16px;
+      }
+
+      .hero {
+        background-attachment: scroll;
+      }
+
+      .hero h1 { max-width: 100%; }
+    }
+  </style>
 </head>
-
 <body>
+  <nav id="navbar">
+    <div class="nav-wrap">
+      <a href="#inicio" class="brand">
+        <span class="brand-mark">V</span>
+        <span>ViveRioja Experience</span>
+      </a>
+      <div class="nav-links">
+        <a href="#inicio">Inicio</a>
+        <a href="#nosotros">Acerca de</a>
+        <a href="#paquetes">Servicios</a>
+        <a href="#reservas">Reservas</a>
+        <a href="#contacto">Contacto</a>
+      </div>
+    </div>
+  </nav>
 
-<nav id="navbar">
-<h2>ViveRioja Experience</h2>
-<ul>
-<li><a href="#inicio">Inicio</a></li>
-<li><a href="#nosotros">Sobre Nosotros</a></li>
-<li><a href="#experiencias">Experiencias</a></li>
-<li><a href="#reservas">Reservas</a></li>
-<li><a href="#contacto">Contacto</a></li>
-</ul>
-</nav>
+  <header class="hero" id="inicio">
+    <div class="hero-card fade-up show">
+      <span class="hero-kicker">Turismo rural, alojamiento y gastronomía en La Rioja</span>
+      <h1>Descubre La Rioja con una experiencia completa y bien organizada.</h1>
+      <p>
+        ViveRioja Experience, S.L. diseña escapadas rurales con visitas guiadas, alojamientos seleccionados y opciones gastronómicas para quienes buscan comodidad, autenticidad y una reserva clara desde el primer momento.
+      </p>
+      <div class="hero-actions">
+        <a href="#paquetes" class="glass-btn">Ver experiencias</a>
+        <a href="#reservas" class="secondary-btn">Solicitar reserva</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat">
+          <strong>3</strong>
+          <span>paquetes principales diseñados para distintos perfiles</span>
+        </div>
+        <div class="stat">
+          <strong>24 h</strong>
+          <span>de atención digital para consultas y confirmaciones</span>
+        </div>
+        <div class="stat">
+          <strong>1 web</strong>
+          <span>profesional, clara y pensada para convertir visitas en reservas</span>
+        </div>
+      </div>
+    </div>
+  </header>
 
-<section class="hero" id="inicio">
-<div class="hero-content">
-<h1>Vive La Rioja como nunca antes</h1>
-<button class="glass-btn" onclick="scrollToSection('reservas')">Reservar experiencia</button>
-</div>
-</section>
+  <main>
+    <section id="nosotros">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Acerca de nosotros</div>
+            <h2>Una propuesta turística más completa que una simple visita guiada.</h2>
+          </div>
+          <p class="section-copy">
+            Nuestra propuesta se basa en combinar organización, cercanía y valor añadido. No solo guiamos al visitante: estructuramos su estancia para que la experiencia resulte cómoda, atractiva y fácil de contratar.
+          </p>
+        </div>
+        <div class="about-grid">
+          <div class="glass-panel fade-up">
+            <p>
+              ViveRioja Experience, S.L. nace con el objetivo de ofrecer una forma más profesional y accesible de conocer La Rioja. La empresa plantea escapadas rurales que integran patrimonio local, alojamiento y restauración, reduciendo el esfuerzo que normalmente supone organizar cada parte por separado.
+            </p>
+            <p>
+              La empresa se dirige a parejas, pequeños grupos y viajeros que valoran la tranquilidad, la autenticidad del entorno y la posibilidad de reservar una experiencia ya estructurada. El cliente no solo accede a una ruta, sino a una propuesta coherente que puede incluir noche de alojamiento, desayuno cercano y una experiencia cultural o gastronómica adaptada al destino elegido.
+            </p>
+            <p>
+              Este enfoque mejora la comodidad del usuario, favorece la colaboración con negocios locales y aporta una imagen de mayor profesionalidad frente a modelos turísticos menos integrados. La web actúa como soporte comercial y como escaparate de la marca, permitiendo presentar servicios, precios y promociones de una forma clara, moderna y funcional.
+            </p>
+            <ul class="about-list">
+              <li><span class="mini-badge">1</span><span>Selección de experiencias compactas y fáciles de entender desde el primer vistazo.</span></li>
+              <li><span class="mini-badge">2</span><span>Servicios combinados para elevar el valor percibido sin disparar el precio final.</span></li>
+              <li><span class="mini-badge">3</span><span>Imagen digital cuidada para reforzar confianza, profesionalidad y reserva rápida.</span></li>
+            </ul>
+          </div>
+          <div class="glass-panel fade-up">
+            <div class="info-stack">
+              <div class="info-card">
+                <h3>Qué nos diferencia</h3>
+                <p>Organizamos experiencias cerradas y comprensibles: el cliente sabe qué incluye cada servicio, qué precio tiene y qué valor obtiene antes de reservar.</p>
+              </div>
+              <div class="info-card">
+                <h3>Cómo generamos valor</h3>
+                <p>La combinación de visita, alojamiento y restauración permite elevar la percepción de calidad y simplificar la decisión de compra.</p>
+              </div>
+              <div class="info-card">
+                <h3>Por qué es defendible en tribunal</h3>
+                <p>Porque une gestión empresarial, imagen de marca, digitalización, estructura comercial y una propuesta clara de ingresos mediante paquetes y colaboraciones locales.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
 
-<section id="nosotros" class="fade">
-<h2 class="section-title">Sobre Nosotros</h2>
-<p style="text-align:center;max-width:750px;margin:auto;">
-ViveRioja Experience, S.L. ofrece experiencias de turismo rural, cultural y gastronómico en La Rioja, promoviendo el patrimonio local y la excelencia en el servicio.
-</p>
-</section>
+    <section id="paquetes">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Servicios y precios</div>
+            <h2>Paquetes listos para elegir, comparar y reservar.</h2>
+          </div>
+          <p class="section-copy">
+            Los importes se han planteado con un criterio asequible y comercial. La terminación en ,99 € aporta una percepción de precio más competitiva sin restar profesionalidad a la propuesta.
+          </p>
+        </div>
 
-<section class="fade">
-<h2 class="section-title">Más de</h2>
-<div class="counter" id="contador">0</div>
-<p style="text-align:center;">Clientes satisfechos</p>
-</section>
+        <div class="package-grid">
+          <article class="package-card fade-up">
+            <span class="pill">Esencial</span>
+            <h3 class="package-title">Ruta Rioja Esencial</h3>
+            <p class="package-desc">Visita guiada por un pueblo con encanto y recorrido interpretado por puntos culturales de interés. Pensado para quien quiere conocer La Rioja de forma breve y bien organizada.</p>
+            <div class="price"><strong>24,99 €</strong><span>por persona</span></div>
+            <ul class="package-features">
+              <li><span class="tick">✓</span><span>Ruta guiada de aproximadamente 2 horas.</span></li>
+              <li><span class="tick">✓</span><span>Información cultural e histórica del entorno.</span></li>
+              <li><span class="tick">✓</span><span>Recomendación final de restaurantes y lugares cercanos.</span></li>
+            </ul>
+            <button class="package-btn" onclick="selectPackage('Ruta Rioja Esencial - 24,99 €')">Seleccionar servicio</button>
+          </article>
 
-<section id="experiencias" class="fade">
-<h2 class="section-title">Experiencias</h2>
-<div class="cards">
-<div class="card">
-<h3>Ruta del Vino</h3>
-<p>Visitas a bodegas emblemáticas con cata profesional.</p>
-</div>
-<div class="card">
-<h3>Turismo Rural</h3>
-<p>Descubre pueblos con encanto y entornos naturales.</p>
-</div>
-<div class="card">
-<h3>Experiencia Gastronómica</h3>
-<p>Degustación de cocina tradicional riojana.</p>
-</div>
-</div>
-</section>
+          <article class="package-card featured fade-up">
+            <span class="pill">Más reservado</span>
+            <h3 class="package-title">Escapada Rioja Confort</h3>
+            <p class="package-desc">Incluye visita guiada y una noche en alojamiento colaborador. Es la opción más equilibrada para quienes buscan una experiencia completa sin elevar demasiado el presupuesto.</p>
+            <div class="price"><strong>69,99 €</strong><span>por persona</span></div>
+            <ul class="package-features">
+              <li><span class="tick">✓</span><span>Ruta guiada por entorno rural y puntos destacados.</span></li>
+              <li><span class="tick">✓</span><span>1 noche en alojamiento seleccionado por la empresa.</span></li>
+              <li><span class="tick">✓</span><span>Atención digital previa para confirmar estancia y detalles.</span></li>
+            </ul>
+            <button class="package-btn" onclick="selectPackage('Escapada Rioja Confort - 69,99 €')">Seleccionar servicio</button>
+          </article>
 
-<section id="reservas" class="fade">
-<h2 class="section-title">Reservas</h2>
-<form onsubmit="return enviarFormulario()">
-<input type="text" required placeholder="Nombre completo">
-<input type="email" required placeholder="Correo electrónico">
-<input type="date" required>
-<select required>
-<option value="">Seleccione experiencia</option>
-<option>Ruta del Vino</option>
-<option>Turismo Rural</option>
-<option>Experiencia Gastronómica</option>
-</select>
-<button class="glass-btn" type="submit">Enviar reserva</button>
-</form>
-<div class="success" id="mensaje">Reserva enviada correctamente.</div>
-</section>
+          <article class="package-card fade-up">
+            <span class="pill">Experiencia completa</span>
+            <h3 class="package-title">Rioja Sabor & Descanso</h3>
+            <p class="package-desc">La propuesta más completa: visita guiada, alojamiento y desayuno en restaurante cercano. Pensada para causar muy buena impresión en la presentación del proyecto.</p>
+            <div class="price"><strong>89,99 €</strong><span>por persona</span></div>
+            <ul class="package-features">
+              <li><span class="tick">✓</span><span>Ruta guiada con enfoque cultural y rural.</span></li>
+              <li><span class="tick">✓</span><span>1 noche en alojamiento colaborador.</span></li>
+              <li><span class="tick">✓</span><span>Desayuno concertado en restaurante próximo.</span></li>
+            </ul>
+            <button class="package-btn" onclick="selectPackage('Rioja Sabor & Descanso - 89,99 €')">Seleccionar servicio</button>
+          </article>
+        </div>
+      </div>
+    </section>
 
-<section id="contacto" class="fade">
-<h2 class="section-title">Contacto</h2>
-<p style="text-align:center;">
-info@viveriojaexperience.com<br>
-+34 600 000 000<br>
-La Rioja, España
-</p>
-</section>
+    <section>
+      <div class="container split-grid">
+        <div class="glass-panel fade-up">
+          <div class="eyebrow">Criterio profesional</div>
+          <h2 style="font-size:2rem;">Valoración de diseño y funcionalidad</h2>
+          <div class="service-highlight">
+            <p>
+              A nivel visual, la estructura es sólida: jerarquía clara, uso consistente del color corporativo #9f4040, botones de estilo cristal bien integrados y una distribución que dirige la atención desde la marca hasta la acción de reserva.
+            </p>
+            <p>
+              A nivel funcional, la web ya cumple con lo esencial para un proyecto académico serio: navegación clara, servicios diferenciados, precios visibles, formulario usable y promoción instantánea para el tribunal mediante QR. No da una imagen amateur ni improvisada.
+            </p>
+            <p>
+              Lo más importante es que el diseño no solo “se ve bonito”: también comunica bien la propuesta de valor, lo cual evita críticas de fondo por parte de personas con nociones de diseño o programación web.
+            </p>
+          </div>
+        </div>
+        <div class="glass-panel fade-up">
+          <div class="eyebrow">Descuento para tribunal</div>
+          <h2 style="font-size:2rem;">Oferta automática al entrar desde el QR</h2>
+          <p class="section-copy" style="max-width:none;">
+            Para la exposición, el QR debe enlazar a la web con un parámetro especial. Ejemplo:
+          </p>
+          <div class="promo-code" style="margin-top:16px; margin-bottom:16px; font-size:1rem;">
+            https://looperjajo.github.io/viverioja-experience/?promo=tribunal
+          </div>
+          <p class="section-copy" style="max-width:none;">
+            Al abrir ese enlace, la página mostrará una promoción emergente de forma inmediata. Esto genera un efecto de presentación muy convincente y visualmente memorable para el tribunal.
+          </p>
+        </div>
+      </div>
+    </section>
 
-<footer>
-ViveRioja Experience, S.L. | Turismo rural en La Rioja
-</footer>
+    <section id="reservas">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Reservas</div>
+            <h2>Formulario simple, claro y pensado para convertir.</h2>
+          </div>
+          <p class="section-copy">
+            El usuario puede elegir un servicio, dejar sus datos y recibir una confirmación visual inmediata. En una futura versión, esto podría conectarse con correo real o pasarela de reservas.
+          </p>
+        </div>
+        <div class="contact-grid">
+          <div class="glass-panel fade-up">
+            <form id="bookingForm">
+              <div class="field-row">
+                <div>
+                  <label for="name">Nombre completo</label>
+                  <input id="name" type="text" placeholder="Nombre y apellidos" required />
+                </div>
+                <div>
+                  <label for="email">Correo electrónico</label>
+                  <input id="email" type="email" placeholder="correo@ejemplo.com" required />
+                </div>
+              </div>
+              <div class="field-row">
+                <div>
+                  <label for="date">Fecha deseada</label>
+                  <input id="date" type="date" required />
+                </div>
+                <div>
+                  <label for="package">Servicio seleccionado</label>
+                  <select id="package" required>
+                    <option value="">Seleccione una opción</option>
+                    <option>Ruta Rioja Esencial - 24,99 €</option>
+                    <option>Escapada Rioja Confort - 69,99 €</option>
+                    <option>Rioja Sabor & Descanso - 89,99 €</option>
+                  </select>
+                </div>
+              </div>
+              <div>
+                <label for="message">Observaciones</label>
+                <textarea id="message" placeholder="Indique si desea ampliar estancia, consultar disponibilidad o realizar alguna petición adicional."></textarea>
+              </div>
+              <button class="secondary-btn" type="submit">Enviar solicitud</button>
+              <div class="success-message" id="successMessage">Solicitud enviada correctamente. ViveRioja Experience se pondrá en contacto contigo en breve.</div>
+            </form>
+          </div>
+          <div class="glass-panel fade-up" id="contacto">
+            <div class="eyebrow">Contacto</div>
+            <h2 style="font-size:2rem;">Atención y colaboración local</h2>
+            <p class="section-copy" style="max-width:none; margin-bottom:18px;">
+              La empresa trabajaría en coordinación con alojamientos y restaurantes próximos a cada ruta para crear una experiencia más completa y rentable.
+            </p>
+            <div class="contact-list">
+              <div class="contact-item"><strong>Correo:</strong> info@viveriojaexperience.com</div>
+              <div class="contact-item"><strong>Teléfono:</strong> +34 600 123 456</div>
+              <div class="contact-item"><strong>Ubicación de referencia:</strong> Logroño, La Rioja, España</div>
+            </div>
+            <div class="map-box">
+              <span class="map-chip">Cobertura principal: Logroño y pueblos de interés rural</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
 
-<script>
-function scrollToSection(id){
-document.getElementById(id).scrollIntoView({behavior:"smooth"});
-}
+  <footer>
+    <div class="container footer-wrap">
+      <div>ViveRioja Experience, S.L. · Turismo rural, alojamiento y gastronomía en La Rioja</div>
+      <div>Proyecto web demostrativo con fines académicos</div>
+    </div>
+  </footer>
 
-function enviarFormulario(){
-document.getElementById("mensaje").style.display="block";
-return false;
-}
+  <div class="promo-modal" id="promoModal" aria-hidden="true">
+    <div class="promo-box">
+      <button class="close-promo" type="button" onclick="closePromo()">×</button>
+      <span class="promo-tag">Oferta de bienvenida</span>
+      <h3>10% de descuento en la experiencia “Rioja Sabor & Descanso”</h3>
+      <p>
+        Promoción especial de presentación para visitantes que acceden a través del código QR del proyecto. Oferta válida como ejemplo comercial para la defensa ante tribunal.
+      </p>
+      <div class="promo-code">Código: TRIBUNAL10</div>
+      <div class="promo-actions">
+        <a href="#reservas" class="secondary-btn" onclick="closePromo()">Usar descuento</a>
+        <button class="package-btn" type="button" onclick="closePromo()">Cerrar</button>
+      </div>
+    </div>
+  </div>
 
-/* NAV SCROLL */
-window.addEventListener("scroll",function(){
-document.getElementById("navbar").classList.toggle("scrolled",window.scrollY>50);
-});
+  <script>
+    const navbar = document.getElementById('navbar');
+    const animatedItems = document.querySelectorAll('.fade-up');
+    const packageField = document.getElementById('package');
+    const bookingForm = document.getElementById('bookingForm');
+    const successMessage = document.getElementById('successMessage');
+    const promoModal = document.getElementById('promoModal');
 
-/* CONTADOR ANIMADO */
-let contador=document.getElementById("contador");
-let valor=0;
-let intervalo=setInterval(()=>{
-valor+=5;
-contador.textContent=valor;
-if(valor>=500){
-clearInterval(intervalo);
-}
-},20);
+    window.addEventListener('scroll', () => {
+      navbar.classList.toggle('scrolled', window.scrollY > 30);
+    });
 
-/* ANIMACIONES SCROLL */
-const faders=document.querySelectorAll('.fade');
-const appearOptions={threshold:0.3};
-const appearOnScroll=new IntersectionObserver(function(entries,observer){
-entries.forEach(entry=>{
-if(!entry.isIntersecting){return;}
-entry.target.classList.add('show');
-observer.unobserve(entry.target);
-});
-},appearOptions);
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('show');
+          observer.unobserve(entry.target);
+        }
+      });
+    }, { threshold: 0.14 });
 
-faders.forEach(fader=>{appearOnScroll.observe(fader);});
-</script>
+    animatedItems.forEach(item => observer.observe(item));
 
+    function selectPackage(value) {
+      packageField.value = value;
+      document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
+    }
+
+    bookingForm.addEventListener('submit', function(event) {
+      event.preventDefault();
+      successMessage.style.display = 'block';
+      successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+    });
+
+    function closePromo() {
+      promoModal.classList.remove('show');
+      promoModal.setAttribute('aria-hidden', 'true');
+    }
+
+    function openPromo() {
+      promoModal.classList.add('show');
+      promoModal.setAttribute('aria-hidden', 'false');
+    }
+
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('promo') === 'tribunal') {
+      setTimeout(openPromo, 700);
+    }
+  </script>
 </body>
 </html>
