@@ -4,12 +4,14 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>ViveRioja Experience, S.L.</title>
+
   <style>
     :root {
       --brand: #9f4040;
       --brand-dark: #7f2f2f;
       --cream: #f7f1eb;
       --text: #2d2d2d;
+      --muted: #5f5757;
       --white-glass: rgba(255,255,255,0.18);
       --white-border: rgba(255,255,255,0.32);
       --shadow: 0 18px 45px rgba(31, 20, 20, 0.16);
@@ -17,9 +19,15 @@
       --max: 1200px;
     }
 
-    * { box-sizing: border-box; margin: 0; padding: 0; }
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
 
-    html { scroll-behavior: smooth; }
+    html {
+      scroll-behavior: smooth;
+    }
 
     body {
       font-family: "Segoe UI", system-ui, sans-serif;
@@ -30,7 +38,10 @@
       overflow-x: hidden;
     }
 
-    img { max-width: 100%; display: block; }
+    img {
+      max-width: 100%;
+      display: block;
+    }
 
     .container {
       width: min(92%, var(--max));
@@ -48,9 +59,9 @@
     }
 
     nav.scrolled {
-      background: rgba(255,255,255,0.58);
+      background: rgba(255,255,255,0.6);
       backdrop-filter: blur(18px);
-      border-bottom-color: rgba(255,255,255,0.4);
+      border-bottom-color: rgba(255,255,255,0.35);
       box-shadow: 0 8px 28px rgba(0,0,0,0.06);
     }
 
@@ -72,7 +83,6 @@
       color: var(--brand);
       font-weight: 700;
       font-size: 1.1rem;
-      letter-spacing: 0.2px;
     }
 
     .brand-mark {
@@ -102,14 +112,14 @@
       transition: 0.25s ease;
     }
 
-    .nav-links a:hover,
-    .nav-links a.active {
+    .nav-links a:hover {
       color: var(--brand);
     }
 
     .glass-btn,
     .secondary-btn,
-    .package-btn {
+    .package-btn,
+    .mini-btn {
       position: relative;
       overflow: hidden;
       border-radius: 999px;
@@ -120,6 +130,9 @@
       cursor: pointer;
       text-decoration: none;
       transition: transform 0.28s ease, background 0.28s ease, border-color 0.28s ease, box-shadow 0.28s ease;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
     }
 
     .glass-btn {
@@ -129,16 +142,23 @@
     }
 
     .secondary-btn,
-    .package-btn {
+    .package-btn,
+    .mini-btn {
       color: var(--brand);
-      background: rgba(255,255,255,0.52);
+      background: rgba(255,255,255,0.58);
       border: 1px solid rgba(159,64,64,0.14);
       box-shadow: 0 10px 25px rgba(159,64,64,0.08);
     }
 
+    .mini-btn {
+      padding: 11px 18px;
+      font-size: 0.92rem;
+    }
+
     .glass-btn::after,
     .secondary-btn::after,
-    .package-btn::after {
+    .package-btn::after,
+    .mini-btn::after {
       content: "";
       position: absolute;
       inset: -120% auto auto -40%;
@@ -151,18 +171,17 @@
 
     .glass-btn:hover::after,
     .secondary-btn:hover::after,
-    .package-btn:hover::after { left: 120%; }
+    .package-btn:hover::after,
+    .mini-btn:hover::after {
+      left: 120%;
+    }
 
     .glass-btn:hover,
     .secondary-btn:hover,
-    .package-btn:hover {
+    .package-btn:hover,
+    .mini-btn:hover {
       transform: translateY(-2px);
       box-shadow: 0 16px 32px rgba(159,64,64,0.18);
-    }
-
-    .secondary-btn:hover,
-    .package-btn:hover,
-    .glass-btn:hover {
       background: var(--brand);
       color: white;
       border-color: rgba(255,255,255,0.28);
@@ -206,7 +225,7 @@
       font-size: clamp(2.5rem, 5vw, 4.6rem);
       line-height: 1.04;
       margin-bottom: 18px;
-      max-width: 11ch;
+      max-width: 12ch;
     }
 
     .hero p {
@@ -274,16 +293,9 @@
     }
 
     .section-copy {
-      max-width: 720px;
-      color: #5b5555;
+      max-width: 760px;
+      color: var(--muted);
       line-height: 1.8;
-    }
-
-    .about-grid {
-      display: grid;
-      grid-template-columns: 1.1fr 0.9fr;
-      gap: 28px;
-      align-items: stretch;
     }
 
     .glass-panel {
@@ -293,6 +305,13 @@
       border-radius: var(--radius);
       box-shadow: var(--shadow);
       padding: 30px;
+    }
+
+    .about-grid {
+      display: grid;
+      grid-template-columns: 1.1fr 0.9fr;
+      gap: 28px;
+      align-items: stretch;
     }
 
     .about-grid p {
@@ -362,13 +381,14 @@
 
     .package-card {
       position: relative;
+      z-index: 2;
       background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.38));
       border: 1px solid rgba(255,255,255,0.56);
       backdrop-filter: blur(18px);
       border-radius: 28px;
       padding: 28px;
       box-shadow: var(--shadow);
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      transition: transform 0.3s ease, box-shadow 0.3s ease, opacity 0.3s ease, filter 0.3s ease;
     }
 
     .package-card:hover {
@@ -379,6 +399,20 @@
     .package-card.featured {
       outline: 2px solid rgba(159,64,64,0.18);
       transform: translateY(-4px);
+    }
+
+    .package-grid:hover .package-card {
+      opacity: 0.45;
+      transform: scale(0.98);
+      filter: brightness(0.75);
+    }
+
+    .package-grid:hover .package-card:hover {
+      opacity: 1;
+      transform: scale(1.04) translateY(-10px);
+      filter: brightness(1);
+      z-index: 10;
+      outline: 2px solid rgba(159,64,64,0.22);
     }
 
     .pill {
@@ -392,6 +426,26 @@
       background: rgba(159,64,64,0.12);
       color: var(--brand);
       margin-bottom: 18px;
+    }
+
+    .package-icon {
+      width: 62px;
+      height: 62px;
+      border-radius: 20px;
+      display: grid;
+      place-items: center;
+      margin-bottom: 18px;
+      color: #9f4040;
+      background: linear-gradient(145deg, rgba(255,255,255,0.72), rgba(159,64,64,0.10));
+      border: 1px solid rgba(159,64,64,0.12);
+      box-shadow: 0 14px 30px rgba(159,64,64,0.10);
+      transition: transform 0.28s ease, box-shadow 0.28s ease, background 0.28s ease;
+    }
+
+    .package-card:hover .package-icon {
+      transform: translateY(-2px) scale(1.06);
+      box-shadow: 0 18px 34px rgba(159,64,64,0.18);
+      background: linear-gradient(145deg, rgba(255,255,255,0.82), rgba(159,64,64,0.16));
     }
 
     .package-title {
@@ -408,16 +462,21 @@
     }
 
     .price {
-      display: flex;
+      display: flex !important;
       align-items: end;
       gap: 8px;
       margin-bottom: 18px;
+      position: relative;
+      z-index: 5;
     }
 
     .price strong {
       font-size: 2.2rem;
-      color: var(--brand);
+      color: #9f4040 !important;
       line-height: 1;
+      display: inline-block !important;
+      opacity: 1 !important;
+      visibility: visible !important;
     }
 
     .price span {
@@ -452,6 +511,71 @@
       font-size: 0.9rem;
       flex: 0 0 auto;
       font-weight: 800;
+    }
+
+    .destinations-grid,
+    .partners-grid,
+    .themes-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 24px;
+    }
+
+    .destination-card,
+    .partner-card,
+    .theme-card {
+      background: linear-gradient(180deg, rgba(255,255,255,0.62), rgba(255,255,255,0.42));
+      border: 1px solid rgba(255,255,255,0.56);
+      backdrop-filter: blur(18px);
+      border-radius: 26px;
+      overflow: hidden;
+      box-shadow: var(--shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .destination-card:hover,
+    .partner-card:hover,
+    .theme-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 22px 40px rgba(159,64,64,0.16);
+    }
+
+    .destination-img {
+      height: 210px;
+      object-fit: cover;
+      width: 100%;
+    }
+
+    .card-body {
+      padding: 22px;
+    }
+
+    .card-body h3 {
+      color: #231f1f;
+      margin-bottom: 10px;
+      font-size: 1.2rem;
+    }
+
+    .card-body p {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 16px;
+    }
+
+    .meta-row {
+      display: flex;
+      gap: 10px;
+      flex-wrap: wrap;
+      margin-bottom: 16px;
+    }
+
+    .meta-chip {
+      padding: 7px 12px;
+      border-radius: 999px;
+      background: rgba(159,64,64,0.10);
+      color: var(--brand);
+      font-size: 0.82rem;
+      font-weight: 700;
     }
 
     .split-grid {
@@ -508,7 +632,10 @@
       transform: translateY(-1px);
     }
 
-    textarea { min-height: 120px; resize: vertical; }
+    textarea {
+      min-height: 120px;
+      resize: vertical;
+    }
 
     .success-message {
       display: none;
@@ -535,27 +662,13 @@
       line-height: 1.7;
     }
 
-    .map-box {
-      margin-top: 18px;
+    .map-frame {
+      width: 100%;
+      height: 360px;
+      border: 0;
       border-radius: 22px;
-      overflow: hidden;
-      min-height: 260px;
-      background:
-        linear-gradient(160deg, rgba(159,64,64,0.14), rgba(255,255,255,0.65)),
-        url('https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80') center/cover;
-      display: grid;
-      place-items: end start;
-      padding: 18px;
-    }
-
-    .map-chip {
-      padding: 12px 16px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.65);
-      backdrop-filter: blur(12px);
-      font-weight: 700;
-      color: var(--brand);
-      border: 1px solid rgba(255,255,255,0.45);
+      margin-top: 18px;
+      box-shadow: var(--shadow);
     }
 
     footer {
@@ -584,7 +697,9 @@
       z-index: 3000;
     }
 
-    .promo-modal.show { display: flex; }
+    .promo-modal.show {
+      display: flex;
+    }
 
     .promo-box {
       width: min(92%, 560px);
@@ -669,11 +784,33 @@
       transform: translateY(0);
     }
 
+    #priceOverlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.65);
+      backdrop-filter: blur(3px);
+      z-index: 1;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.35s ease;
+    }
+
+    #priceOverlay.active {
+      opacity: 1;
+      pointer-events: auto;
+    }
+
     @media (max-width: 980px) {
       .about-grid,
       .contact-grid,
       .split-grid,
-      .package-grid {
+      .package-grid,
+      .destinations-grid,
+      .partners-grid,
+      .themes-grid {
         grid-template-columns: 1fr;
       }
 
@@ -682,8 +819,13 @@
         grid-template-columns: 1fr;
       }
 
-      .hero-card { padding: 34px 24px; }
-      nav .nav-links { gap: 14px; }
+      .hero-card {
+        padding: 34px 24px;
+      }
+
+      nav .nav-links {
+        gap: 14px;
+      }
     }
 
     @media (max-width: 720px) {
@@ -700,11 +842,14 @@
         background-attachment: scroll;
       }
 
-      .hero h1 { max-width: 100%; }
+      .hero h1 {
+        max-width: 100%;
+      }
     }
   </style>
 </head>
 <body>
+
   <nav id="navbar">
     <div class="nav-wrap">
       <a href="#inicio" class="brand">
@@ -715,6 +860,8 @@
         <a href="#inicio">Inicio</a>
         <a href="#nosotros">Acerca de</a>
         <a href="#paquetes">Servicios</a>
+        <a href="#destinos">Destinos</a>
+        <a href="#arqueologia">Arqueología</a>
         <a href="#reservas">Reservas</a>
         <a href="#contacto">Contacto</a>
       </div>
@@ -726,7 +873,7 @@
       <span class="hero-kicker">Turismo rural, alojamiento y gastronomía en La Rioja</span>
       <h1>Descubre La Rioja con una experiencia completa y bien organizada.</h1>
       <p>
-        ViveRioja Experience, S.L. diseña escapadas rurales con visitas guiadas, alojamientos seleccionados y opciones gastronómicas para quienes buscan comodidad, autenticidad y una reserva clara desde el primer momento.
+        ViveRioja Experience, S.L. diseña escapadas rurales con visitas guiadas, alojamientos seleccionados, propuestas gastronómicas y rutas temáticas para quienes buscan una reserva clara, atractiva y con valor añadido.
       </p>
       <div class="hero-actions">
         <a href="#paquetes" class="glass-btn">Ver experiencias</a>
@@ -735,21 +882,22 @@
       <div class="hero-stats">
         <div class="stat">
           <strong>3</strong>
-          <span>paquetes principales diseñados para distintos perfiles</span>
+          <span>paquetes principales listos para reservar</span>
         </div>
         <div class="stat">
-          <strong>24 h</strong>
-          <span>de atención digital para consultas y confirmaciones</span>
+          <strong>6</strong>
+          <span>destinos de referencia dentro de La Rioja</span>
         </div>
         <div class="stat">
           <strong>1 web</strong>
-          <span>profesional, clara y pensada para convertir visitas en reservas</span>
+          <span>clara, funcional y pensada para apoyar el proyecto empresarial</span>
         </div>
       </div>
     </div>
   </header>
 
   <main>
+
     <section id="nosotros">
       <div class="container">
         <div class="section-head fade-up">
@@ -761,6 +909,7 @@
             Nuestra propuesta se basa en combinar organización, cercanía y valor añadido. No solo guiamos al visitante: estructuramos su estancia para que la experiencia resulte cómoda, atractiva y fácil de contratar.
           </p>
         </div>
+
         <div class="about-grid">
           <div class="glass-panel fade-up">
             <p>
@@ -772,12 +921,14 @@
             <p>
               Este enfoque mejora la comodidad del usuario, favorece la colaboración con negocios locales y aporta una imagen de mayor profesionalidad frente a modelos turísticos menos integrados. La web actúa como soporte comercial y como escaparate de la marca, permitiendo presentar servicios, precios y promociones de una forma clara, moderna y funcional.
             </p>
+
             <ul class="about-list">
               <li><span class="mini-badge">1</span><span>Selección de experiencias compactas y fáciles de entender desde el primer vistazo.</span></li>
               <li><span class="mini-badge">2</span><span>Servicios combinados para elevar el valor percibido sin disparar el precio final.</span></li>
               <li><span class="mini-badge">3</span><span>Imagen digital cuidada para reforzar confianza, profesionalidad y reserva rápida.</span></li>
             </ul>
           </div>
+
           <div class="glass-panel fade-up">
             <div class="info-stack">
               <div class="info-card">
@@ -789,8 +940,8 @@
                 <p>La combinación de visita, alojamiento y restauración permite elevar la percepción de calidad y simplificar la decisión de compra.</p>
               </div>
               <div class="info-card">
-                <h3>Por qué es defendible en tribunal</h3>
-                <p>Porque une gestión empresarial, imagen de marca, digitalización, estructura comercial y una propuesta clara de ingresos mediante paquetes y colaboraciones locales.</p>
+                <h3>Oportunidad detectada</h3>
+                <p>Algunos recursos culturales y arqueológicos de La Rioja presentan margen de aprovechamiento turístico, lo que abre una oportunidad para diseñar rutas temáticas atractivas y rentables.</p>
               </div>
             </div>
           </div>
@@ -813,42 +964,277 @@
         <div class="package-grid">
           <article class="package-card fade-up">
             <span class="pill">Esencial</span>
+
+            <div class="package-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M8 3h8v4a4 4 0 0 1-8 0V3Z"></path>
+                <path d="M12 11v7"></path>
+                <path d="M9 21h6"></path>
+              </svg>
+            </div>
+
             <h3 class="package-title">Ruta Rioja Esencial</h3>
-            <p class="package-desc">Visita guiada por un pueblo con encanto y recorrido interpretado por puntos culturales de interés. Pensado para quien quiere conocer La Rioja de forma breve y bien organizada.</p>
-            <div class="price"><strong>24,99 €</strong><span>por persona</span></div>
+            <p class="package-desc">
+              Visita guiada por un pueblo con encanto y recorrido interpretado por puntos culturales de interés.
+            </p>
+            <div class="price">
+              <strong>24,99 €</strong>
+              <span>por persona</span>
+            </div>
             <ul class="package-features">
               <li><span class="tick">✓</span><span>Ruta guiada de aproximadamente 2 horas.</span></li>
               <li><span class="tick">✓</span><span>Información cultural e histórica del entorno.</span></li>
               <li><span class="tick">✓</span><span>Recomendación final de restaurantes y lugares cercanos.</span></li>
             </ul>
-            <button class="package-btn" onclick="selectPackage('Ruta Rioja Esencial - 24,99 €')">Seleccionar servicio</button>
+            <button class="package-btn" onclick="selectPackage('Ruta Rioja Esencial - 24,99 €'); activatePriceFocus();">
+              Seleccionar servicio
+            </button>
           </article>
 
           <article class="package-card featured fade-up">
-            <span class="pill">Más reservado</span>
+            <span class="pill">Más elegido</span>
+
+            <div class="package-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M3 10.5 12 4l9 6.5"></path>
+                <path d="M5 9.5V20h14V9.5"></path>
+                <path d="M10 20v-5h4v5"></path>
+              </svg>
+            </div>
+
             <h3 class="package-title">Escapada Rioja Confort</h3>
-            <p class="package-desc">Incluye visita guiada y una noche en alojamiento colaborador. Es la opción más equilibrada para quienes buscan una experiencia completa sin elevar demasiado el presupuesto.</p>
-            <div class="price"><strong>69,99 €</strong><span>por persona</span></div>
+            <p class="package-desc">
+              Incluye visita guiada y una noche en alojamiento colaborador seleccionado por la empresa.
+            </p>
+            <div class="price">
+              <strong>69,99 €</strong>
+              <span>por persona</span>
+            </div>
             <ul class="package-features">
               <li><span class="tick">✓</span><span>Ruta guiada por entorno rural y puntos destacados.</span></li>
-              <li><span class="tick">✓</span><span>1 noche en alojamiento seleccionado por la empresa.</span></li>
-              <li><span class="tick">✓</span><span>Atención digital previa para confirmar estancia y detalles.</span></li>
+              <li><span class="tick">✓</span><span>1 noche en alojamiento colaborador.</span></li>
+              <li><span class="tick">✓</span><span>Confirmación digital de la estancia.</span></li>
             </ul>
-            <button class="package-btn" onclick="selectPackage('Escapada Rioja Confort - 69,99 €')">Seleccionar servicio</button>
+            <button class="package-btn" onclick="selectPackage('Escapada Rioja Confort - 69,99 €'); activatePriceFocus();">
+              Seleccionar servicio
+            </button>
           </article>
 
           <article class="package-card fade-up">
             <span class="pill">Experiencia completa</span>
+
+            <div class="package-icon" aria-hidden="true">
+              <svg viewBox="0 0 24 24" fill="none" width="28" height="28" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                <path d="M4 8h11v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V8Z"></path>
+                <path d="M15 10h2a3 3 0 1 1 0 6h-2"></path>
+                <path d="M7 4v2"></path>
+                <path d="M10 4v2"></path>
+                <path d="M13 4v2"></path>
+              </svg>
+            </div>
+
             <h3 class="package-title">Rioja Sabor & Descanso</h3>
-            <p class="package-desc">La propuesta más completa: visita guiada, alojamiento y desayuno en restaurante cercano. Pensada para causar muy buena impresión en la presentación del proyecto.</p>
-            <div class="price"><strong>89,99 €</strong><span>por persona</span></div>
+            <p class="package-desc">
+              La propuesta más completa: visita guiada, alojamiento y desayuno concertado en restaurante cercano.
+            </p>
+            <div class="price">
+              <strong>89,99 €</strong>
+              <span>por persona</span>
+            </div>
             <ul class="package-features">
               <li><span class="tick">✓</span><span>Ruta guiada con enfoque cultural y rural.</span></li>
               <li><span class="tick">✓</span><span>1 noche en alojamiento colaborador.</span></li>
-              <li><span class="tick">✓</span><span>Desayuno concertado en restaurante próximo.</span></li>
+              <li><span class="tick">✓</span><span>Desayuno en restaurante próximo.</span></li>
             </ul>
-            <button class="package-btn" onclick="selectPackage('Rioja Sabor & Descanso - 89,99 €')">Seleccionar servicio</button>
+            <button class="package-btn" onclick="selectPackage('Rioja Sabor & Descanso - 89,99 €'); activatePriceFocus();">
+              Seleccionar servicio
+            </button>
           </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="destinos">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Destinos destacados</div>
+            <h2>Algunos pueblos con potencial dentro de la propuesta turística.</h2>
+          </div>
+          <p class="section-copy">
+            Estos destinos ayudan a visualizar cómo ViveRioja Experience puede estructurar rutas reales conectadas con patrimonio, gastronomía, alojamiento y ocio local.
+          </p>
+        </div>
+
+        <div class="destinations-grid">
+          <article class="destination-card fade-up">
+            <img class="destination-img" src="https://images.unsplash.com/photo-1500534314209-a25ddb2bd429?auto=format&fit=crop&w=1200&q=80" alt="Ezcaray">
+            <div class="card-body">
+              <h3>Ezcaray</h3>
+              <div class="meta-row">
+                <span class="meta-chip">Montaña</span>
+                <span class="meta-chip">Gastronomía</span>
+              </div>
+              <p>Pueblo de referencia para escapadas rurales, con buena combinación de naturaleza, restauración y alojamiento.</p>
+              <button class="mini-btn" onclick="selectPackage('Escapada Rioja Confort - 69,99 €'); document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Vincular experiencia</button>
+            </div>
+          </article>
+
+          <article class="destination-card fade-up">
+            <img class="destination-img" src="https://images.unsplash.com/photo-1467269204594-9661b134dd2b?auto=format&fit=crop&w=1200&q=80" alt="Briones">
+            <div class="card-body">
+              <h3>Briones</h3>
+              <div class="meta-row">
+                <span class="meta-chip">Historia</span>
+                <span class="meta-chip">Vino</span>
+              </div>
+              <p>Localidad con gran valor patrimonial y muy adecuada para propuestas combinadas de cultura y enoturismo.</p>
+              <button class="mini-btn" onclick="selectPackage('Ruta Rioja Esencial - 24,99 €'); document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Vincular experiencia</button>
+            </div>
+          </article>
+
+          <article class="destination-card fade-up">
+            <img class="destination-img" src="https://images.unsplash.com/photo-1516483638261-f4dbaf036963?auto=format&fit=crop&w=1200&q=80" alt="Haro">
+            <div class="card-body">
+              <h3>Haro</h3>
+              <div class="meta-row">
+                <span class="meta-chip">Enoturismo</span>
+                <span class="meta-chip">Escapada</span>
+              </div>
+              <p>Destino estratégico para experiencias más completas por su reconocimiento y capacidad de colaboración con hostelería.</p>
+              <button class="mini-btn" onclick="selectPackage('Rioja Sabor & Descanso - 89,99 €'); document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Vincular experiencia</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="arqueologia">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Rutas culturales y arqueológicas</div>
+            <h2>Una oportunidad de negocio basada en patrimonio infrautilizado.</h2>
+          </div>
+          <p class="section-copy">
+            Parte del valor del proyecto consiste en detectar recursos culturales con potencial turístico y transformarlos en experiencias organizadas que generen actividad económica para el entorno.
+          </p>
+        </div>
+
+        <div class="themes-grid">
+          <article class="theme-card fade-up">
+            <div class="card-body">
+              <h3>Contrebia Leucade</h3>
+              <div class="meta-row">
+                <span class="meta-chip">Arqueología</span>
+                <span class="meta-chip">Ruta cultural</span>
+              </div>
+              <p>Propuesta de visita interpretada al yacimiento y recorrido por el entorno, conectada con restauración local.</p>
+              <div class="price"><strong>39,99 €</strong><span>por persona</span></div>
+              <button class="mini-btn" onclick="selectPackage('Ruta arqueológica Contrebia - 39,99 €'); document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Solicitar esta ruta</button>
+            </div>
+          </article>
+
+          <article class="theme-card fade-up">
+            <div class="card-body">
+              <h3>Monte Cantabria</h3>
+              <div class="meta-row">
+                <span class="meta-chip">Historia</span>
+                <span class="meta-chip">Entorno urbano-rural</span>
+              </div>
+              <p>Experiencia cultural enfocada a interpretación histórica, valor patrimonial y conexión con la identidad del territorio.</p>
+              <div class="price"><strong>34,99 €</strong><span>por persona</span></div>
+              <button class="mini-btn" onclick="selectPackage('Ruta histórica Monte Cantabria - 34,99 €'); document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Solicitar esta ruta</button>
+            </div>
+          </article>
+
+          <article class="theme-card fade-up">
+            <div class="card-body">
+              <h3>Arqueología + gastronomía local</h3>
+              <div class="meta-row">
+                <span class="meta-chip">Pack cultural</span>
+                <span class="meta-chip">Restaurante</span>
+              </div>
+              <p>Modelo de experiencia mixta pensado para demostrar cómo el patrimonio puede convertirse en producto turístico viable.</p>
+              <div class="price"><strong>49,99 €</strong><span>por persona</span></div>
+              <button class="mini-btn" onclick="selectPackage('Pack arqueología + gastronomía - 49,99 €'); document.getElementById('reservas').scrollIntoView({behavior:'smooth'});">Solicitar esta ruta</button>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="colaboradores">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Colaboradores de hostelería y ocio</div>
+            <h2>Ejemplos de red local de restaurantes y alojamientos.</h2>
+          </div>
+          <p class="section-copy">
+            La empresa no necesita disponer de instalaciones propias: puede operar mediante acuerdos con negocios del entorno para construir una oferta turística más completa y rentable.
+          </p>
+        </div>
+
+        <div class="partners-grid">
+          <article class="partner-card fade-up">
+            <div class="card-body">
+              <h3>Restaurantes colaboradores</h3>
+              <p>Menús concertados o desayunos incluidos como parte de paquetes turísticos con precio cerrado.</p>
+              <ul class="package-features">
+                <li><span class="tick">✓</span><span>Restaurante en Ezcaray</span></li>
+                <li><span class="tick">✓</span><span>Restaurante cercano a Haro</span></li>
+                <li><span class="tick">✓</span><span>Desayuno pactado en zona turística</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="partner-card fade-up">
+            <div class="card-body">
+              <h3>Alojamientos colaboradores</h3>
+              <p>Casas rurales, hoteles pequeños y apartamentos turísticos vinculados a rutas concretas o escapadas de fin de semana.</p>
+              <ul class="package-features">
+                <li><span class="tick">✓</span><span>Casa rural de entorno rural</span></li>
+                <li><span class="tick">✓</span><span>Hotel asociado a escapada temática</span></li>
+                <li><span class="tick">✓</span><span>Alojamiento con confirmación digital</span></li>
+              </ul>
+            </div>
+          </article>
+
+          <article class="partner-card fade-up">
+            <div class="card-body">
+              <h3>Modelo funcional</h3>
+              <p>El valor no está solo en vender una visita, sino en coordinar varios servicios y presentarlos como experiencia cerrada y fácil de reservar.</p>
+              <ul class="package-features">
+                <li><span class="tick">✓</span><span>Intermediación turística</span></li>
+                <li><span class="tick">✓</span><span>Comisiones o acuerdos por cliente derivado</span></li>
+                <li><span class="tick">✓</span><span>Mayor valor percibido del paquete</span></li>
+              </ul>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="mapa">
+      <div class="container">
+        <div class="section-head fade-up">
+          <div>
+            <div class="eyebrow">Mapa de localización</div>
+            <h2>Visualización territorial del proyecto.</h2>
+          </div>
+          <p class="section-copy">
+            Este mapa sirve como apoyo visual para explicar en la defensa las zonas de actuación, los pueblos trabajados y la lógica territorial del modelo de negocio.
+          </p>
+        </div>
+
+        <div class="glass-panel fade-up">
+          <iframe
+            class="map-frame"
+            src="https://www.google.com/maps?q=La%20Rioja%20Spain&output=embed"
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade">
+          </iframe>
         </div>
       </div>
     </section>
@@ -863,23 +1249,32 @@
               A nivel visual, la estructura es sólida: jerarquía clara, uso consistente del color corporativo #9f4040, botones de estilo cristal bien integrados y una distribución que dirige la atención desde la marca hasta la acción de reserva.
             </p>
             <p>
-              A nivel funcional, la web ya cumple con lo esencial para un proyecto académico serio: navegación clara, servicios diferenciados, precios visibles, formulario usable y promoción instantánea para el tribunal mediante QR. No da una imagen amateur ni improvisada.
+              A nivel funcional, la web ya cumple con lo esencial para un proyecto académico serio: navegación clara, servicios diferenciados, precios visibles, formulario usable, mapa integrado y promoción instantánea para el tribunal mediante QR.
             </p>
             <p>
               Lo más importante es que el diseño no solo “se ve bonito”: también comunica bien la propuesta de valor, lo cual evita críticas de fondo por parte de personas con nociones de diseño o programación web.
             </p>
           </div>
         </div>
+
         <div class="glass-panel fade-up">
           <div class="eyebrow">Descuento para tribunal</div>
           <h2 style="font-size:2rem;">Oferta automática al entrar desde el QR</h2>
           <p class="section-copy" style="max-width:none;">
-            Para la exposición, el QR debe enlazar a la web con un parámetro especial. Ejemplo:
+            Para la exposición, el QR debe enlazar a la web con un parámetro especial.
           </p>
-          <div class="promo-code" style="margin-top:16px; margin-bottom:16px; font-size:1rem;">
-            https://looperjajo.github.io/viverioja-experience/?promo=tribunal
-          </div>
-          <p class="section-copy" style="max-width:none;">
+
+          <a class="promo-code" style="margin-top:16px; margin-bottom:16px; font-size:1rem; display:block; text-decoration:none;"
+             href="https://looperjajo.github.io/viverioja-experience/?promo=tribunal"
+             target="_blank">
+            Activar promoción del tribunal
+          </a>
+
+          <p style="margin-top:8px; font-size:0.9rem; color:#6b6464;">
+            Enlace promocional utilizado en el código QR de la presentación del proyecto.
+          </p>
+
+          <p class="section-copy" style="max-width:none; margin-top:18px;">
             Al abrir ese enlace, la página mostrará una promoción emergente de forma inmediata. Esto genera un efecto de presentación muy convincente y visualmente memorable para el tribunal.
           </p>
         </div>
@@ -897,6 +1292,7 @@
             El usuario puede elegir un servicio, dejar sus datos y recibir una confirmación visual inmediata. En una futura versión, esto podría conectarse con correo real o pasarela de reservas.
           </p>
         </div>
+
         <div class="contact-grid">
           <div class="glass-panel fade-up">
             <form id="bookingForm">
@@ -910,6 +1306,7 @@
                   <input id="email" type="email" placeholder="correo@ejemplo.com" required />
                 </div>
               </div>
+
               <div class="field-row">
                 <div>
                   <label for="date">Fecha deseada</label>
@@ -922,35 +1319,47 @@
                     <option>Ruta Rioja Esencial - 24,99 €</option>
                     <option>Escapada Rioja Confort - 69,99 €</option>
                     <option>Rioja Sabor & Descanso - 89,99 €</option>
+                    <option>Ruta arqueológica Contrebia - 39,99 €</option>
+                    <option>Ruta histórica Monte Cantabria - 34,99 €</option>
+                    <option>Pack arqueología + gastronomía - 49,99 €</option>
                   </select>
                 </div>
               </div>
+
               <div>
                 <label for="message">Observaciones</label>
                 <textarea id="message" placeholder="Indique si desea ampliar estancia, consultar disponibilidad o realizar alguna petición adicional."></textarea>
               </div>
+
               <button class="secondary-btn" type="submit">Enviar solicitud</button>
               <div class="success-message" id="successMessage">Solicitud enviada correctamente. ViveRioja Experience se pondrá en contacto contigo en breve.</div>
             </form>
           </div>
+
           <div class="glass-panel fade-up" id="contacto">
             <div class="eyebrow">Contacto</div>
             <h2 style="font-size:2rem;">Atención y colaboración local</h2>
             <p class="section-copy" style="max-width:none; margin-bottom:18px;">
-              La empresa trabajaría en coordinación con alojamientos y restaurantes próximos a cada ruta para crear una experiencia más completa y rentable.
+              La empresa trabajaría en coordinación con alojamientos, restaurantes y otros negocios turísticos próximos a cada ruta para crear una experiencia más completa y rentable.
             </p>
+
             <div class="contact-list">
               <div class="contact-item"><strong>Correo:</strong> info@viveriojaexperience.com</div>
               <div class="contact-item"><strong>Teléfono:</strong> +34 600 123 456</div>
               <div class="contact-item"><strong>Ubicación de referencia:</strong> Logroño, La Rioja, España</div>
             </div>
-            <div class="map-box">
-              <span class="map-chip">Cobertura principal: Logroño y pueblos de interés rural</span>
-            </div>
+
+            <iframe
+              class="map-frame"
+              src="https://www.google.com/maps?q=Logro%C3%B1o%20La%20Rioja&output=embed"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade">
+            </iframe>
           </div>
         </div>
       </div>
     </section>
+
   </main>
 
   <footer>
@@ -976,6 +1385,8 @@
     </div>
   </div>
 
+  <div id="priceOverlay"></div>
+
   <script>
     const navbar = document.getElementById('navbar');
     const animatedItems = document.querySelectorAll('.fade-up');
@@ -983,6 +1394,7 @@
     const bookingForm = document.getElementById('bookingForm');
     const successMessage = document.getElementById('successMessage');
     const promoModal = document.getElementById('promoModal');
+    const overlay = document.getElementById('priceOverlay');
 
     window.addEventListener('scroll', () => {
       navbar.classList.toggle('scrolled', window.scrollY > 30);
@@ -1004,9 +1416,20 @@
       document.getElementById('reservas').scrollIntoView({ behavior: 'smooth' });
     }
 
+    function activatePriceFocus() {
+      overlay.classList.add('active');
+    }
+
+    function deactivatePriceFocus() {
+      overlay.classList.remove('active');
+    }
+
+    overlay.addEventListener('click', deactivatePriceFocus);
+
     bookingForm.addEventListener('submit', function(event) {
       event.preventDefault();
       successMessage.style.display = 'block';
+      deactivatePriceFocus();
       successMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
     });
 
