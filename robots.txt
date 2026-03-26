@@ -1,0 +1,9 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://looperjajo.github.io/viverioja-experience/sitemap.xml
+
+# Bloquear archivos de sistema
+Disallow: /guardar.bat
+Disallow: /.git/

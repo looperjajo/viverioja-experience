@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Reserva tu Experiencia | ViveRioja Experience — Enoturismo en La Rioja</title>
+  <meta name="description" content="Reserva tu experiencia de enoturismo en La Rioja con ViveRioja Experience. Elige entre Estándar, Personalizada o Premium. Calculadora de precios en tiempo real.">
+  <meta name="keywords" content="reservar enoturismo La Rioja, reservas online bodega, experiencia vino La Rioja, reservar visita bodega">
+  <meta name="author" content="ViveRioja Experience S.L.">
+  <meta name="robots" content="index, follow">
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="website">
+  <meta property="og:locale" content="es_ES">
+  <meta property="og:site_name" content="ViveRioja Experience">
+  <meta property="og:title" content="Reserva tu Experiencia | ViveRioja Experience">
+  <meta property="og:description" content="Reserva tu experiencia de enoturismo en La Rioja. Estándar desde 90€, Personalizada o Premium exclusivo.">
+  <meta property="og:image" content="https://looperjajo.github.io/viverioja-experience/img/cata-vino.jpg">
+  <meta property="og:url" content="https://looperjajo.github.io/viverioja-experience/reservas.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Reserva tu Experiencia | ViveRioja Experience">
+  <meta name="twitter:description" content="Reserva online tu experiencia de enoturismo en La Rioja. Respuesta en 24 horas.">
+  <meta name="twitter:image" content="https://looperjajo.github.io/viverioja-experience/img/cata-vino.jpg">
+
+  <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/reservas.html">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
+  <link rel="stylesheet" href="./styles.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "BreadcrumbList",
+        "itemListElement": [
+          {"@type": "ListItem", "position": 1, "name": "Inicio", "item": "https://looperjajo.github.io/viverioja-experience/"},
+          {"@type": "ListItem", "position": 2, "name": "Reservas", "item": "https://looperjajo.github.io/viverioja-experience/reservas.html"}
+        ]
+      },
+      {
+        "@type": "TouristTrip",
+        "name": "Experiencias ViveRioja — La Rioja",
+        "description": "Experiencias de enoturismo en La Rioja: visitas a bodegas, catas de vino y gastronomía riojana.",
+        "provider": {
+          "@type": "Organization",
+          "name": "ViveRioja Experience S.L.",
+          "url": "https://looperjajo.github.io/viverioja-experience/"
+        },
+        "offers": [
+          {"@type": "Offer", "name": "Experiencia Estándar", "price": "90", "priceCurrency": "EUR"},
+          {"@type": "Offer", "name": "Experiencia Premium", "price": "250", "priceCurrency": "EUR"}
+        ]
+      }
+    ]
+  }
+  </script>
+
+  <style>
+    .reservas-layout {
+      display: grid;
+      grid-template-columns: 1.4fr 1fr;
+      gap: 2.5rem;
+      align-items: start;
+    }
+    @media (max-width: 900px) {
+      .reservas-layout { grid-template-columns: 1fr; }
+    }
+    .panel-info {
+      background: #fdf6f0;
+      border-radius: 20px;
+      padding: 2rem;
+      border: 1px solid #f5e8e8;
+      position: sticky;
+      top: 90px;
+    }
+    .steps-grid {
+      display: grid;
+      grid-template-columns: repeat(3,1fr);
+      gap: 1.5rem;
+      text-align: center;
+    }
+    .step { padding: 1.5rem 1rem; }
+    .step__num {
+      width: 52px; height: 52px;
+      background: #9f4040;
+      border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-family: 'Playfair Display',serif;
+      font-size: 1.4rem; font-weight: 700;
+      color: white;
+      margin: 0 auto 1rem;
+    }
+    .step__title { font-family: 'Playfair Display',serif; font-size: 1rem; font-weight: 700; margin-bottom: .4rem; }
+    .faq-item { border-bottom: 1px solid #f3f4f6; padding: 1.2rem 0; }
+    .faq-question { font-weight: 600; color: #1a1a1a; margin-bottom: .5rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
+    .faq-answer { font-size: .9rem; color: #6b7280; line-height: 1.7; }
+    .trust-badges { display: flex; gap: .8rem; flex-wrap: wrap; margin-top: 1rem; }
+    .trust-badge { display: flex; align-items: center; gap: .4rem; font-size: .78rem; font-weight: 600; color: #374151; }
+    @media (max-width: 600px) {
+      .steps-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar" role="navigation" aria-label="Navegación principal">
+    <div class="navbar__inner">
+      <a href="./index.html" class="navbar__logo" aria-label="ViveRioja Experience - Inicio">
+        <div class="navbar__logo-mark">🍷</div>
+        <span class="navbar__logo-text">ViveRioja Experience</span>
+      </a>
+      <ul class="navbar__nav" role="list">
+        <li><a href="./index.html" class="navbar__link">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta active">Reservar</a></li>
+      </ul>
+      <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <nav class="navbar__mobile" aria-label="Menú móvil">
+      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+    </nav>
+  </nav>
+
+  <!-- HERO INTERIOR -->
+  <header class="hero hero--inner" role="banner">
+    <div class="hero__bg" style="background-image:url('./img/cata-vino.jpg');"></div>
+    <div class="hero__overlay"></div>
+    <div class="hero__content">
+      <nav class="breadcrumb" aria-label="Ruta de navegación">
+        <a href="./index.html">Inicio</a>
+        <span class="breadcrumb__sep">›</span>
+        <span>Reservas</span>
+      </nav>
+      <span class="hero__tag">Reservas Online</span>
+      <h1 class="hero__title">Reserva tu Experiencia en La Rioja</h1>
+      <p class="hero__subtitle">Elige tu paquete, indícanos tus preferencias y nos encargamos de todo lo demás. Respuesta garantizada en menos de 24 horas.</p>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- FORMULARIO + PANEL INFO -->
+    <section class="section">
+      <div class="container">
+        <div class="reservas-layout">
+
+          <!-- FORMULARIO -->
+          <div>
+            <span class="section__tag">Solicitud de reserva</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Cuéntanos qué buscas</h2>
+            <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
+
+            <form id="reservas-form" data-validate action="https://formspree.io/f/example" method="POST" novalidate>
+              <input type="hidden" name="_subject" value="Nueva reserva ViveRioja Experience">
+
+              <div class="form-group">
+                <label class="form-label" for="experiencia">Tipo de experiencia *</label>
+                <select id="experiencia" name="experiencia" class="form-control" required aria-required="true">
+                  <option value="">— Selecciona tu experiencia —</option>
+                  <option value="estandar">🍷 Experiencia Estándar — desde 90€/persona</option>
+                  <option value="personalizada">🎨 Experiencia Personalizada — presupuesto a medida</option>
+                  <option value="premium">⭐ Experiencia Premium — desde 250€/persona (exclusivo)</option>
+                </select>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="nombre">Nombre *</label>
+                  <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" required aria-required="true">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="apellidos">Apellidos *</label>
+                  <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" required aria-required="true">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="email">Email *</label>
+                  <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required aria-required="true">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="telefono">Teléfono *</label>
+                  <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="+34 600 000 000" required aria-required="true">
+                </div>
+              </div>
+
+              <div class="form-row">
+                <div class="form-group">
+                  <label class="form-label" for="fecha">Fecha deseada *</label>
+                  <input type="date" id="fecha" name="fecha" class="form-control" min="2025-03-27" required aria-required="true">
+                </div>
+                <div class="form-group">
+                  <label class="form-label" for="num-personas">Número de personas *</label>
+                  <input type="number" id="num-personas" name="personas" class="form-control" min="1" max="50" value="2" required aria-required="true">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="destino">Destino preferido</label>
+                <select id="destino" name="destino" class="form-control">
+                  <option value="">Sin preferencia (te recomendamos nosotros)</option>
+                  <option value="haro">Haro — Capital del enoturismo</option>
+                  <option value="laguardia">Laguardia — Villa medieval y Ysios</option>
+                  <option value="briones">Briones — Museo Dinastía Vivanco</option>
+                  <option value="logrono">Logroño — Gastronomía y cultura</option>
+                  <option value="san-millan">San Millán de la Cogolla — UNESCO</option>
+                  <option value="ezcaray">Ezcaray — Sierra y gastronomía</option>
+                </select>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label" for="comentarios">Preferencias o comentarios</label>
+                <textarea id="comentarios" name="comentarios" class="form-control" rows="4" placeholder="Cuéntanos cualquier preferencia especial: dieta, movilidad reducida, celebración, intereses concretos..."></textarea>
+              </div>
+
+              <div class="form-group" style="display:flex;align-items:flex-start;gap:.7rem;">
+                <input type="checkbox" id="privacidad" name="privacidad" required aria-required="true" style="margin-top:4px;accent-color:#9f4040;width:16px;height:16px;flex-shrink:0;">
+                <label for="privacidad" style="font-size:.85rem;color:#6b7280;cursor:pointer;">
+                  He leído y acepto la <a href="#" style="color:#9f4040;text-decoration:underline;">política de privacidad</a>. Autorizo el tratamiento de mis datos para gestionar mi reserva. *
+                </label>
+              </div>
+
+              <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;margin-top:.5rem;">
+                Solicitar reserva →
+              </button>
+            </form>
+          </div>
+
+          <!-- PANEL LATERAL INFO -->
+          <aside class="panel-info" aria-label="Información sobre precios y paquetes">
+            <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem;">¿Qué incluye cada paquete?</h3>
+
+            <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f5e8e8;">
+              <div style="font-weight:700;color:#9f4040;margin-bottom:.4rem;">🍷 Estándar (90–150€/persona)</div>
+              <ul style="font-size:.85rem;color:#6b7280;padding-left:1rem;line-height:1.8;">
+                <li>✓ Visita guiada a bodega partner</li>
+                <li>✓ Cata de 4 vinos con maridaje</li>
+                <li>✓ Comida en restaurante local</li>
+                <li>✓ Guía especialista en enoturismo</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f5e8e8;">
+              <div style="font-weight:700;color:#9f4040;margin-bottom:.4rem;">🎨 Personalizada (precio a medida)</div>
+              <ul style="font-size:.85rem;color:#6b7280;padding-left:1rem;line-height:1.8;">
+                <li>✓ Actividades a tu elección</li>
+                <li>✓ Fechas flexibles</li>
+                <li>✓ Consultor dedicado</li>
+                <li>✓ Confirmación en 24h</li>
+              </ul>
+            </div>
+
+            <div style="margin-bottom:1.5rem;">
+              <div style="font-weight:700;color:#1a1a1a;margin-bottom:.4rem;">⭐ Premium (desde 250€/persona)</div>
+              <ul style="font-size:.85rem;color:#6b7280;padding-left:1rem;line-height:1.8;">
+                <li>✓ Todo lo del paquete Estándar</li>
+                <li>✓ Restaurantes de alta cocina</li>
+                <li>✓ Transporte privado puerta a puerta</li>
+                <li>✓ Guía personal exclusivo</li>
+                <li>✓ Alojamiento premium (opcional)</li>
+              </ul>
+            </div>
+
+            <!-- PRECIO ESTIMADO DINÁMICO -->
+            <div id="price-result" class="price-badge" style="display:none;margin-bottom:1.2rem;">
+              <div class="price-badge__label">Precio estimado</div>
+              <div id="price-amount" class="price-badge__amount">—</div>
+              <div id="price-note" class="price-badge__note"></div>
+            </div>
+
+            <p style="font-size:.78rem;color:#9ca3af;margin-bottom:1rem;">Los precios son orientativos. Confirmaremos el precio exacto tras revisar disponibilidad.</p>
+
+            <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;">
+              <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#374151;">
+                <span>📞</span> <a href="tel:+34941000000" style="color:#9f4040;font-weight:600;">+34 941 000 000</a>
+              </div>
+              <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#374151;">
+                <span>📧</span> <a href="mailto:info@viverioja.es" style="color:#9f4040;font-weight:600;">info@viverioja.es</a>
+              </div>
+            </div>
+
+            <div class="trust-badges">
+              <div class="trust-badge">✓ Sin compromiso</div>
+              <div class="trust-badge">✓ Cancelación 48h</div>
+              <div class="trust-badge">✓ Respuesta en 24h</div>
+            </div>
+          </aside>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CÓMO FUNCIONA -->
+    <section class="section section--alt">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">Proceso</span>
+          <h2 class="section__title">¿Cómo funciona?</h2>
+          <div class="divider"></div>
+          <p class="section__subtitle">Tres pasos simples para vivir la experiencia más auténtica de La Rioja.</p>
+        </div>
+        <div class="steps-grid reveal">
+          <div class="step reveal-d1">
+            <div class="step__num">1</div>
+            <div class="step__title">Elige tu experiencia</div>
+            <p style="font-size:.88rem;color:#6b7280;">Selecciona el paquete que mejor se adapte a tus preferencias, presupuesto y número de personas. Estándar, Personalizada o Premium.</p>
+          </div>
+          <div class="step reveal-d2">
+            <div class="step__num">2</div>
+            <div class="step__title">Personalizamos los detalles</div>
+            <p style="font-size:.88rem;color:#6b7280;">Nos ponemos en contacto contigo en menos de 24 horas para ajustar la fecha, el destino, el menú y cualquier preferencia especial.</p>
+          </div>
+          <div class="step reveal-d3">
+            <div class="step__num">3</div>
+            <div class="step__title">¡Disfruta La Rioja!</div>
+            <p style="font-size:.88rem;color:#6b7280;">El día de tu experiencia, nosotros nos encargamos de absolutamente todo. Tú solo tienes que disfrutar y vivir La Rioja con todos los sentidos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ -->
+    <section class="section">
+      <div class="container container--narrow">
+        <div class="section__header reveal">
+          <span class="section__tag">Preguntas frecuentes</span>
+          <h2 class="section__title">Resolvemos tus dudas</h2>
+          <div class="divider"></div>
+        </div>
+        <div class="reveal">
+          <div class="faq-item">
+            <div class="faq-question">¿Puedo cancelar mi reserva? <span>+</span></div>
+            <p class="faq-answer">Sí. Ofrecemos cancelación gratuita hasta 48 horas antes del inicio de la experiencia. Para cancelaciones en las 48h previas, se aplica un cargo del 50% del importe total.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Los precios incluyen transporte? <span>+</span></div>
+            <p class="faq-answer">El paquete Estándar incluye transporte compartido desde Logroño (opcional, +15€/persona). El paquete Premium incluye transporte privado puerta a puerta en el precio base. El paquete Personalizado puede incluir transporte según lo acordado.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Hacéis grupos grandes? <span>+</span></div>
+            <p class="faq-answer">Sí, gestionamos grupos de hasta 50 personas. Para grupos de más de 15 personas aplicamos tarifas especiales. Contacta con nosotros directamente para solicitar un presupuesto personalizado para grupos.</p>
+          </div>
+          <div class="faq-item">
+            <div class="faq-question">¿Disponéis de servicio en inglés y otros idiomas? <span>+</span></div>
+            <p class="faq-answer">Nuestros guías hablan español, inglés y francés. Para otros idiomas, podemos coordinar con traductores o guías especializados con previo aviso. Indícalo en el formulario de reserva.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <div class="footer__brand-name">🍷 ViveRioja Experience</div>
+          <p class="footer__brand-desc">Tu empresa de confianza para descubrir la esencia auténtica de La Rioja a través del enoturismo y el turismo cultural.</p>
+          <div class="footer__socials">
+            <a href="#" class="footer__social" aria-label="Instagram">📷</a>
+            <a href="#" class="footer__social" aria-label="Facebook">📘</a>
+            <a href="#" class="footer__social" aria-label="Twitter/X">🐦</a>
+            <a href="#" class="footer__social" aria-label="TripAdvisor">🦉</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Experiencias</div>
+          <ul class="footer__links">
+            <li><a href="./experiencias.html" class="footer__link">Experiencia Estándar</a></li>
+            <li><a href="./experiencias.html" class="footer__link">Experiencia Personalizada</a></li>
+            <li><a href="./experiencias.html" class="footer__link">Experiencia Premium</a></li>
+            <li><a href="./reservas.html" class="footer__link">Hacer una reserva</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Destinos</div>
+          <ul class="footer__links">
+            <li><a href="./destinos.html" class="footer__link">Haro</a></li>
+            <li><a href="./destinos.html" class="footer__link">Laguardia</a></li>
+            <li><a href="./destinos.html" class="footer__link">Briones</a></li>
+            <li><a href="./destinos.html" class="footer__link">Logroño</a></li>
+            <li><a href="./destinos.html" class="footer__link">San Millán de la Cogolla</a></li>
+            <li><a href="./destinos.html" class="footer__link">Ezcaray</a></li>
+          </ul>
+        </div>
+        <div>
+          <div class="footer__col-title">Empresa</div>
+          <ul class="footer__links">
+            <li><a href="./nosotros.html" class="footer__link">Sobre nosotros</a></li>
+            <li><a href="./contacto.html" class="footer__link">Contacto</a></li>
+            <li><a href="#" class="footer__link">Política de privacidad</a></li>
+            <li><a href="#" class="footer__link">Aviso legal</a></li>
+            <li><a href="#" class="footer__link">Cookies</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>© 2025 ViveRioja Experience S.L. — Todos los derechos reservados · Logroño, La Rioja, España</p>
+        <div class="footer__legal">
+          <a href="#">Privacidad</a>
+          <a href="#">Legal</a>
+          <a href="#">Cookies</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="./main.js"></script>
+</body>
+</html>
