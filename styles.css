@@ -1969,3 +1969,266 @@ textarea.form-control {
   .navbar, .footer, .newsletter { display: none; }
   body { font-size: 12pt; }
 }
+
+/* =====================================================
+   YACIMIENTOS GRID
+   ===================================================== */
+.yacimientos-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+  gap: 2rem;
+}
+
+.yacimiento-card {
+  background: #fff;
+  border-radius: 1rem;
+  overflow: hidden;
+  box-shadow: 0 2px 16px rgba(159,64,64,0.08);
+  border: 1px solid #f0e0e0;
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.yacimiento-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 8px 32px rgba(159,64,64,0.15);
+}
+
+.yacimiento-card__img-wrap {
+  height: 200px;
+  overflow: hidden;
+}
+
+.yacimiento-card__img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+
+.yacimiento-card:hover .yacimiento-card__img {
+  transform: scale(1.05);
+}
+
+.yacimiento-card__body {
+  padding: 1.25rem;
+}
+
+.yacimiento-card__type {
+  font-size: 0.75rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9f4040;
+  margin-bottom: 0.4rem;
+}
+
+.yacimiento-card__name {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.2rem;
+  color: #1a1a1a;
+  margin-bottom: 0.3rem;
+}
+
+.yacimiento-card__loc {
+  font-size: 0.82rem;
+  color: #888;
+  margin-bottom: 0.75rem;
+}
+
+.yacimiento-card__desc {
+  font-size: 0.875rem;
+  color: #555;
+  line-height: 1.65;
+  margin-bottom: 1rem;
+}
+
+.yacimiento-card__niveles {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.35rem;
+  margin-bottom: 1rem;
+}
+
+.nivel-badge {
+  font-size: 0.7rem;
+  font-weight: 600;
+  padding: 0.2rem 0.6rem;
+  border-radius: 99px;
+  white-space: nowrap;
+}
+
+.nivel-badge--estandar { background: #f5e8e8; color: #9f4040; }
+.nivel-badge--personalizada { background: #fff3e8; color: #c06a20; }
+.nivel-badge--premium { background: #f5f0e0; color: #7a5c10; }
+
+/* =====================================================
+   MODAL DE DETALLE
+   ===================================================== */
+.detalle-modal {
+  display: none;
+  position: fixed;
+  inset: 0;
+  z-index: 1000;
+  background: rgba(0, 0, 0, 0.65);
+  backdrop-filter: blur(4px);
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+}
+
+.detalle-modal.active {
+  display: flex;
+}
+
+.detalle-modal__box {
+  background: #fff;
+  border-radius: 1.25rem;
+  max-width: 680px;
+  width: 100%;
+  max-height: 90vh;
+  overflow-y: auto;
+  position: relative;
+  animation: modalIn 0.3s ease;
+}
+
+@keyframes modalIn {
+  from { opacity: 0; transform: translateY(20px) scale(0.97); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.detalle-modal__close {
+  position: sticky;
+  top: 0;
+  float: right;
+  margin: 0.75rem 0.75rem 0 0;
+  width: 2rem;
+  height: 2rem;
+  border-radius: 50%;
+  border: none;
+  background: #f0e0e0;
+  color: #9f4040;
+  font-size: 1.2rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+.detalle-modal__img {
+  width: 100%;
+  height: 240px;
+  object-fit: cover;
+  display: block;
+}
+
+.detalle-modal__content {
+  padding: 1.5rem;
+}
+
+.detalle-modal__type {
+  font-size: 0.78rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.06em;
+  color: #9f4040;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.detalle-modal__title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.6rem;
+  color: #1a1a1a;
+  margin-bottom: 1rem;
+}
+
+.detalle-modal__niveles {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+  margin-top: 1rem;
+}
+
+.nivel-detalle {
+  padding: 0.6rem 0.9rem;
+  border-radius: 0.5rem;
+  font-size: 0.85rem;
+  line-height: 1.5;
+}
+
+.nivel-detalle--estandar { background: #fdf5f5; border-left: 3px solid #9f4040; }
+.nivel-detalle--personalizada { background: #fff8f0; border-left: 3px solid #c06a20; }
+.nivel-detalle--premium { background: #fdfae8; border-left: 3px solid #c9a84c; }
+
+/* =====================================================
+   WIZARD DE RESERVA
+   ===================================================== */
+.reserva-wizard {
+  width: 100%;
+}
+
+.wizard-steps {
+  display: flex;
+  align-items: center;
+  margin-bottom: 2rem;
+}
+
+.wizard-step {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  flex-shrink: 0;
+}
+
+.wizard-step__num {
+  width: 2.5rem;
+  height: 2.5rem;
+  border-radius: 50%;
+  background: #e5e7eb;
+  color: #9ca3af;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: background 0.3s, color 0.3s;
+}
+
+.wizard-step--active .wizard-step__num,
+.wizard-step--done .wizard-step__num {
+  background: #9f4040;
+  color: white;
+}
+
+.wizard-step__label {
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: #9ca3af;
+  white-space: nowrap;
+}
+
+.wizard-step--active .wizard-step__label,
+.wizard-step--done .wizard-step__label {
+  color: #9f4040;
+}
+
+.wizard-step__line {
+  flex: 1;
+  height: 2px;
+  background: #e5e7eb;
+  margin: 0 0.5rem;
+  margin-bottom: 1.3rem;
+  transition: background 0.3s;
+}
+
+.wizard-step__line.active {
+  background: #9f4040;
+}
+
+.btn--sm {
+  padding: 0.4rem 1rem;
+  font-size: 0.85rem;
+}

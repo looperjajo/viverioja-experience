@@ -461,3 +461,191 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
   `;
   document.head.appendChild(style);
 })();
+
+/* =====================================================
+   11. MODALES DE DETALLE (yacimientos, cards)
+   ===================================================== */
+(function initModales() {
+  document.querySelectorAll('.ver-detalle-btn').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var modalId = btn.getAttribute('data-modal');
+      var modal = document.getElementById(modalId);
+      if (modal) {
+        modal.classList.add('active');
+        document.body.style.overflow = 'hidden';
+        modal.querySelector('.detalle-modal__close') &&
+          modal.querySelector('.detalle-modal__close').focus();
+      }
+    });
+  });
+
+  document.querySelectorAll('.detalle-modal').forEach(function(modal) {
+    var closeBtn = modal.querySelector('.detalle-modal__close');
+    if (closeBtn) {
+      closeBtn.addEventListener('click', function() {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+    modal.addEventListener('click', function(e) {
+      if (e.target === modal) {
+        modal.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    });
+  });
+
+  document.addEventListener('keydown', function(e) {
+    if (e.key === 'Escape') {
+      document.querySelectorAll('.detalle-modal.active').forEach(function(m) {
+        m.classList.remove('active');
+        document.body.style.overflow = '';
+      });
+    }
+  });
+})();
+
+/* =====================================================
+   12. WIZARD DE RESERVA — 3 pasos
+   ===================================================== */
+(function initWizard() {
+  var paso1 = document.getElementById('wizard-paso1');
+  var paso2 = document.getElementById('wizard-paso2');
+  var paso3 = document.getElementById('wizard-paso3');
+  var btnPaso2 = document.getElementById('btn-paso2');
+  var btnVolverPaso1 = document.getElementById('btn-volver-paso1');
+  var btnPaso3 = document.getElementById('btn-paso3');
+
+  if (!paso1 || !paso2 || !paso3) return;
+
+  var steps = document.querySelectorAll('.wizard-step');
+  var lines = document.querySelectorAll('.wizard-step__line');
+
+  function irAPaso(num) {
+    [paso1, paso2, paso3].forEach(function(p, i) {
+      p.style.display = (i + 1 === num) ? 'block' : 'none';
+    });
+    steps.forEach(function(s, i) {
+      s.classList.remove('wizard-step--active', 'wizard-step--done');
+      if (i + 1 === num) s.classList.add('wizard-step--active');
+      if (i + 1 < num) s.classList.add('wizard-step--done');
+    });
+    lines.forEach(function(l, i) {
+      l.classList.toggle('active', i + 1 < num);
+    });
+    window.scrollTo({ top: paso1.closest('.section') ? paso1.closest('.section').offsetTop - 100 : 0, behavior: 'smooth' });
+  }
+
+  if (btnPaso2) {
+    btnPaso2.addEventListener('click', function() {
+      var form = document.getElementById('reservas-form');
+      var valid = true;
+      form.querySelectorAll('.form-error').forEach(function(e) { e.remove(); });
+      form.querySelectorAll('.form-control').forEach(function(e) { e.classList.remove('error'); });
+      form.querySelectorAll('[required]').forEach(function(field) {
+        if (!field.value.trim() || (field.type === 'checkbox' && !field.checked)) {
+          valid = false;
+          field.classList.add('error');
+          var err = document.createElement('span');
+          err.className = 'form-error';
+          err.textContent = 'Este campo es obligatorio';
+          field.parentNode.appendChild(err);
+        }
+      });
+      if (!valid) return;
+      rellenarResumen();
+      irAPaso(2);
+    });
+  }
+
+  if (btnVolverPaso1) {
+    btnVolverPaso1.addEventListener('click', function() { irAPaso(1); });
+  }
+
+  if (btnPaso3) {
+    btnPaso3.addEventListener('click', function() {
+      mostrarConfirmacion();
+      irAPaso(3);
+    });
+  }
+
+  var cardNum = document.getElementById('card-number');
+  if (cardNum) {
+    cardNum.addEventListener('input', function() {
+      var v = cardNum.value.replace(/\D/g,'').substring(0,16);
+      cardNum.value = v.match(/.{1,4}/g) ? v.match(/.{1,4}/g).join(' ') : v;
+    });
+  }
+
+  var cardExp = document.getElementById('card-expiry');
+  if (cardExp) {
+    cardExp.addEventListener('input', function() {
+      var v = cardExp.value.replace(/\D/g,'');
+      if (v.length >= 2) v = v.substring(0,2) + '/' + v.substring(2,4);
+      cardExp.value = v;
+    });
+  }
+
+  function rellenarResumen() {
+    var exp = document.getElementById('experiencia');
+    var nom = document.getElementById('nombre');
+    var ape = document.getElementById('apellidos');
+    var fec = document.getElementById('fecha');
+    var per = document.getElementById('num-personas');
+    var des = document.getElementById('destino');
+
+    var expMap = {
+      'estandar': 'Experiencia Est\u00e1ndar',
+      'personalizada': 'Experiencia Personalizada',
+      'premium': 'Experiencia Premium'
+    };
+    var precioMap = { 'estandar': 90, 'personalizada': null, 'premium': 250 };
+
+    var expVal = exp ? exp.value : '';
+    var perVal = parseInt(per ? per.value : '2', 10) || 2;
+    var precio = precioMap[expVal];
+    var totalText = precio ? (precio * perVal).toLocaleString('es-ES') + ' \u20ac' : 'A consultar';
+    var fechaText = fec && fec.value ? new Date(fec.value).toLocaleDateString('es-ES', {day:'2-digit',month:'long',year:'numeric'}) : 'Sin especificar';
+    var desText = des && des.options[des.selectedIndex] ? des.options[des.selectedIndex].text : '';
+
+    var html = [
+      '<div style="display:flex;justify-content:space-between;"><span style="color:#777;">Experiencia:</span><span style="font-weight:600;">' + (expMap[expVal] || '\u2014') + '</span></div>',
+      '<div style="display:flex;justify-content:space-between;"><span style="color:#777;">Nombre:</span><span style="font-weight:600;">' + ((nom ? nom.value : '') + ' ' + (ape ? ape.value : '')).trim() + '</span></div>',
+      '<div style="display:flex;justify-content:space-between;"><span style="color:#777;">Fecha:</span><span style="font-weight:600;">' + fechaText + '</span></div>',
+      '<div style="display:flex;justify-content:space-between;"><span style="color:#777;">Personas:</span><span style="font-weight:600;">' + perVal + '</span></div>',
+      desText ? '<div style="display:flex;justify-content:space-between;"><span style="color:#777;">Destino:</span><span style="font-weight:600;">' + desText + '</span></div>' : ''
+    ].join('');
+
+    var resumenDiv = document.getElementById('resumen-contenido');
+    if (resumenDiv) resumenDiv.innerHTML = html;
+    var totalDiv = document.getElementById('resumen-total');
+    if (totalDiv) totalDiv.textContent = totalText;
+    var btnTotal = document.getElementById('btn-total-precio');
+    if (btnTotal) btnTotal.textContent = precio ? '\u00b7 ' + totalText : '';
+  }
+
+  function mostrarConfirmacion() {
+    var codigo = 'VR-2026-' + Math.floor(1000 + Math.random() * 9000);
+    var numEl = document.getElementById('reserva-numero');
+    if (numEl) numEl.textContent = codigo;
+
+    var exp = document.getElementById('experiencia');
+    var fec = document.getElementById('fecha');
+    var per = document.getElementById('num-personas');
+    var expMap = { 'estandar': 'Experiencia Est\u00e1ndar', 'personalizada': 'Experiencia Personalizada', 'premium': 'Experiencia Premium' };
+    var fechaText = fec && fec.value ? new Date(fec.value).toLocaleDateString('es-ES', {day:'2-digit',month:'long',year:'numeric'}) : 'Sin especificar';
+
+    var html = [
+      '<div style="display:flex;gap:.5rem;"><span style="color:#9f4040;font-weight:600;">Experiencia:</span><span>' + (expMap[exp ? exp.value : ''] || '\u2014') + '</span></div>',
+      '<div style="display:flex;gap:.5rem;"><span style="color:#9f4040;font-weight:600;">Fecha:</span><span>' + fechaText + '</span></div>',
+      '<div style="display:flex;gap:.5rem;"><span style="color:#9f4040;font-weight:600;">Personas:</span><span>' + (per ? per.value : '\u2014') + '</span></div>'
+    ].join('');
+
+    var detalle = document.getElementById('confirmacion-detalle');
+    if (detalle) detalle.innerHTML = html;
+
+    if (window.lucide) lucide.createIcons();
+  }
+
+  irAPaso(1);
+})();

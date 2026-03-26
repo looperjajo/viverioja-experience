@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/reservas.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
   {
@@ -157,87 +158,198 @@
       <div class="container">
         <div class="reservas-layout">
 
-          <!-- FORMULARIO -->
-          <div>
-            <span class="section__tag">Solicitud de reserva</span>
-            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Cuéntanos qué buscas</h2>
-            <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
+          <!-- WIZARD DE RESERVA - 3 PASOS -->
+          <div class="reserva-wizard">
 
-            <form id="reservas-form" data-validate action="https://formspree.io/f/example" method="POST" novalidate>
-              <input type="hidden" name="_subject" value="Nueva reserva ViveRioja Experience">
-
-              <div class="form-group">
-                <label class="form-label" for="experiencia">Tipo de experiencia *</label>
-                <select id="experiencia" name="experiencia" class="form-control" required aria-required="true">
-                  <option value="">— Selecciona tu experiencia —</option>
-                  <option value="estandar">🍷 Experiencia Estándar — desde 90€/persona</option>
-                  <option value="personalizada">🎨 Experiencia Personalizada — presupuesto a medida</option>
-                  <option value="premium">⭐ Experiencia Premium — desde 250€/persona (exclusivo)</option>
-                </select>
+            <!-- INDICADOR DE PASOS -->
+            <div class="wizard-steps" aria-label="Pasos del proceso de reserva">
+              <div class="wizard-step wizard-step--active" data-step="1">
+                <div class="wizard-step__num">1</div>
+                <span class="wizard-step__label">Tu experiencia</span>
               </div>
+              <div class="wizard-step__line"></div>
+              <div class="wizard-step" data-step="2">
+                <div class="wizard-step__num">2</div>
+                <span class="wizard-step__label">Pago</span>
+              </div>
+              <div class="wizard-step__line"></div>
+              <div class="wizard-step" data-step="3">
+                <div class="wizard-step__num">3</div>
+                <span class="wizard-step__label">Confirmación</span>
+              </div>
+            </div>
 
-              <div class="form-row">
+            <!-- PASO 1 — SELECCIÓN -->
+            <div class="wizard-panel" id="wizard-paso1">
+              <span class="section__tag">Paso 1 de 3</span>
+              <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Cuéntanos qué buscas</h2>
+              <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
+
+              <form id="reservas-form" data-validate novalidate>
+                <input type="hidden" name="_subject" value="Nueva reserva ViveRioja Experience">
+
                 <div class="form-group">
-                  <label class="form-label" for="nombre">Nombre *</label>
-                  <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" required aria-required="true">
+                  <label class="form-label" for="experiencia">Tipo de experiencia *</label>
+                  <select id="experiencia" name="experiencia" class="form-control" required aria-required="true">
+                    <option value="">— Selecciona tu experiencia —</option>
+                    <option value="estandar">Experiencia Estándar — desde 90€/persona</option>
+                    <option value="personalizada">Experiencia Personalizada — presupuesto a medida</option>
+                    <option value="premium">Experiencia Premium — desde 250€/persona (exclusivo)</option>
+                  </select>
                 </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="nombre">Nombre *</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" required aria-required="true">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="apellidos">Apellidos *</label>
+                    <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" required aria-required="true">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="email">Email *</label>
+                    <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required aria-required="true">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="telefono">Teléfono *</label>
+                    <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="+34 600 000 000" required aria-required="true">
+                  </div>
+                </div>
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="fecha">Fecha deseada *</label>
+                    <input type="date" id="fecha" name="fecha" class="form-control" min="2026-03-27" required aria-required="true">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="num-personas">Número de personas *</label>
+                    <input type="number" id="num-personas" name="personas" class="form-control" min="1" max="50" value="2" required aria-required="true">
+                  </div>
+                </div>
+
                 <div class="form-group">
-                  <label class="form-label" for="apellidos">Apellidos *</label>
-                  <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" required aria-required="true">
+                  <label class="form-label" for="destino">Destino preferido</label>
+                  <select id="destino" name="destino" class="form-control">
+                    <option value="">Sin preferencia (te recomendamos nosotros)</option>
+                    <option value="haro">Haro — Capital del enoturismo</option>
+                    <option value="laguardia">Laguardia — Villa medieval y Ysios</option>
+                    <option value="briones">Briones — Museo Dinastía Vivanco</option>
+                    <option value="logrono">Logroño — Gastronomía y cultura</option>
+                    <option value="san-millan">San Millán de la Cogolla — UNESCO</option>
+                    <option value="ezcaray">Ezcaray — Sierra y gastronomía</option>
+                  </select>
                 </div>
-              </div>
 
-              <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="email">Email *</label>
-                  <input type="email" id="email" name="email" class="form-control" placeholder="tu@email.com" required aria-required="true">
+                  <label class="form-label" for="comentarios">Preferencias o comentarios</label>
+                  <textarea id="comentarios" name="comentarios" class="form-control" rows="3" placeholder="Cuéntanos cualquier preferencia especial: dieta, celebración, intereses..."></textarea>
                 </div>
+
+                <div class="form-group" style="display:flex;align-items:flex-start;gap:.7rem;">
+                  <input type="checkbox" id="privacidad" name="privacidad" required aria-required="true" style="margin-top:4px;accent-color:#9f4040;width:16px;height:16px;flex-shrink:0;">
+                  <label for="privacidad" style="font-size:.85rem;color:#6b7280;cursor:pointer;">
+                    He leído y acepto la <a href="#" style="color:#9f4040;">política de privacidad</a>. Autorizo el tratamiento de mis datos para gestionar mi reserva. *
+                  </label>
+                </div>
+
+                <button type="button" id="btn-paso2" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;margin-top:.5rem;">
+                  Continuar al pago →
+                </button>
+              </form>
+            </div>
+
+            <!-- PASO 2 — PAGO -->
+            <div class="wizard-panel" id="wizard-paso2" style="display:none;">
+              <span class="section__tag">Paso 2 de 3</span>
+              <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Resumen y pago</h2>
+              <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
+
+              <div class="reserva-resumen" id="reserva-resumen" style="background:#fdf6f0;border:1px solid #f5e8e8;border-radius:16px;padding:1.5rem;margin-bottom:1.5rem;">
+                <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin-bottom:1rem;color:#9f4040;">Resumen de tu reserva</h3>
+                <div id="resumen-contenido" style="font-size:.9rem;display:flex;flex-direction:column;gap:.5rem;"></div>
+                <div style="border-top:2px solid #e8d0d0;margin-top:1rem;padding-top:1rem;display:flex;justify-content:space-between;align-items:center;">
+                  <span style="font-weight:600;font-size:1rem;">Total estimado:</span>
+                  <span id="resumen-total" style="font-size:1.4rem;font-weight:700;color:#9f4040;font-family:'Playfair Display',serif;">—</span>
+                </div>
+              </div>
+
+              <div class="pago-form" style="background:#fff;border:1px solid #e8d8d8;border-radius:16px;padding:1.5rem;">
+                <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:1rem;">
+                  <h3 style="font-family:'Playfair Display',serif;font-size:1.1rem;margin:0;">Datos de pago</h3>
+                  <div style="display:flex;gap:.5rem;align-items:center;">
+                    <span style="background:#1a1f71;color:white;font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;">VISA</span>
+                    <span style="background:#eb001b;color:white;font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;margin-left:-8px;">MC</span>
+                    <span style="background:#016fd0;color:white;font-size:.65rem;font-weight:700;padding:.2rem .5rem;border-radius:4px;">AMEX</span>
+                    <i data-lucide="lock" style="width:14px;height:14px;color:#16a34a;margin-left:.3rem;"></i>
+                    <span style="font-size:.75rem;color:#16a34a;font-weight:600;">SSL Seguro</span>
+                  </div>
+                </div>
+
                 <div class="form-group">
-                  <label class="form-label" for="telefono">Teléfono *</label>
-                  <input type="tel" id="telefono" name="telefono" class="form-control" placeholder="+34 600 000 000" required aria-required="true">
+                  <label class="form-label" for="card-number">Número de tarjeta</label>
+                  <input type="text" id="card-number" class="form-control" placeholder="1234 5678 9012 3456" maxlength="19" inputmode="numeric" autocomplete="cc-number">
                 </div>
-              </div>
 
-              <div class="form-row">
                 <div class="form-group">
-                  <label class="form-label" for="fecha">Fecha deseada *</label>
-                  <input type="date" id="fecha" name="fecha" class="form-control" min="2025-03-27" required aria-required="true">
+                  <label class="form-label" for="card-name">Nombre del titular</label>
+                  <input type="text" id="card-name" class="form-control" placeholder="Nombre tal como aparece en la tarjeta" autocomplete="cc-name">
                 </div>
-                <div class="form-group">
-                  <label class="form-label" for="num-personas">Número de personas *</label>
-                  <input type="number" id="num-personas" name="personas" class="form-control" min="1" max="50" value="2" required aria-required="true">
+
+                <div class="form-row">
+                  <div class="form-group">
+                    <label class="form-label" for="card-expiry">Caducidad (MM/AA)</label>
+                    <input type="text" id="card-expiry" class="form-control" placeholder="MM/AA" maxlength="5" inputmode="numeric" autocomplete="cc-exp">
+                  </div>
+                  <div class="form-group">
+                    <label class="form-label" for="card-cvv">CVV</label>
+                    <input type="text" id="card-cvv" class="form-control" placeholder="123" maxlength="4" inputmode="numeric" autocomplete="cc-csc">
+                  </div>
+                </div>
+
+                <p style="font-size:.78rem;color:#9ca3af;margin-bottom:1.2rem;">
+                  <i data-lucide="info" style="width:12px;height:12px;vertical-align:middle;"></i>
+                  Este es un formulario de demostración. No se realizará ningún cargo real.
+                </p>
+
+                <div style="display:flex;gap:1rem;flex-wrap:wrap;">
+                  <button type="button" id="btn-volver-paso1" class="btn btn--outline-brand" style="flex:1;">← Volver</button>
+                  <button type="button" id="btn-paso3" class="btn btn--primary btn--lg" style="flex:2;justify-content:center;">
+                    Confirmar y pagar <span id="btn-total-precio"></span> →
+                  </button>
                 </div>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="form-label" for="destino">Destino preferido</label>
-                <select id="destino" name="destino" class="form-control">
-                  <option value="">Sin preferencia (te recomendamos nosotros)</option>
-                  <option value="haro">Haro — Capital del enoturismo</option>
-                  <option value="laguardia">Laguardia — Villa medieval y Ysios</option>
-                  <option value="briones">Briones — Museo Dinastía Vivanco</option>
-                  <option value="logrono">Logroño — Gastronomía y cultura</option>
-                  <option value="san-millan">San Millán de la Cogolla — UNESCO</option>
-                  <option value="ezcaray">Ezcaray — Sierra y gastronomía</option>
-                </select>
+            <!-- PASO 3 — CONFIRMACIÓN -->
+            <div class="wizard-panel" id="wizard-paso3" style="display:none;">
+              <div class="reserva-confirmacion" style="text-align:center;padding:2rem 1rem;">
+                <div style="width:80px;height:80px;background:#f0fdf4;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;">
+                  <i data-lucide="check-circle" style="width:48px;height:48px;color:#16a34a;"></i>
+                </div>
+                <h2 style="font-family:'Playfair Display',serif;font-size:2rem;color:#1a1a1a;margin-bottom:.5rem;">¡Reserva Confirmada!</h2>
+                <p style="color:#555;margin-bottom:1.5rem;font-size:1.05rem;">Gracias por confiar en ViveRioja Experience. Te contactaremos en menos de 24 horas.</p>
+
+                <div style="background:#fdf6f0;border:1px solid #f5e8e8;border-radius:16px;padding:1.5rem;max-width:400px;margin:0 auto 1.5rem;text-align:left;">
+                  <div style="text-align:center;margin-bottom:1rem;">
+                    <span style="font-size:.8rem;color:#777;text-transform:uppercase;letter-spacing:.1em;">Número de reserva</span>
+                    <div id="reserva-numero" style="font-size:1.6rem;font-weight:700;color:#9f4040;font-family:'Playfair Display',serif;margin-top:.2rem;">VR-2026-XXXX</div>
+                  </div>
+                  <div id="confirmacion-detalle" style="font-size:.88rem;color:#555;display:flex;flex-direction:column;gap:.4rem;"></div>
+                </div>
+
+                <p style="font-size:.875rem;color:#6b7280;margin-bottom:1.5rem;">
+                  <i data-lucide="mail" style="width:14px;height:14px;vertical-align:middle;"></i>
+                  Recibirás un email de confirmación en breve con todos los detalles de tu experiencia.
+                </p>
+
+                <a href="./index.html" class="btn btn--primary btn--lg">Volver al inicio →</a>
               </div>
+            </div>
 
-              <div class="form-group">
-                <label class="form-label" for="comentarios">Preferencias o comentarios</label>
-                <textarea id="comentarios" name="comentarios" class="form-control" rows="4" placeholder="Cuéntanos cualquier preferencia especial: dieta, movilidad reducida, celebración, intereses concretos..."></textarea>
-              </div>
-
-              <div class="form-group" style="display:flex;align-items:flex-start;gap:.7rem;">
-                <input type="checkbox" id="privacidad" name="privacidad" required aria-required="true" style="margin-top:4px;accent-color:#9f4040;width:16px;height:16px;flex-shrink:0;">
-                <label for="privacidad" style="font-size:.85rem;color:#6b7280;cursor:pointer;">
-                  He leído y acepto la <a href="#" style="color:#9f4040;text-decoration:underline;">política de privacidad</a>. Autorizo el tratamiento de mis datos para gestionar mi reserva. *
-                </label>
-              </div>
-
-              <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;margin-top:.5rem;">
-                Solicitar reserva →
-              </button>
-            </form>
           </div>
 
           <!-- PANEL LATERAL INFO -->
@@ -245,7 +357,7 @@
             <h3 style="font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:1rem;">¿Qué incluye cada paquete?</h3>
 
             <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f5e8e8;">
-              <div style="font-weight:700;color:#9f4040;margin-bottom:.4rem;">🍷 Estándar (90–150€/persona)</div>
+              <div style="font-weight:700;color:#9f4040;margin-bottom:.4rem;"><i data-lucide="wine" style="width:1em;height:1em;vertical-align:middle;"></i> Estándar (90–150€/persona)</div>
               <ul style="font-size:.85rem;color:#6b7280;padding-left:1rem;line-height:1.8;">
                 <li>✓ Visita guiada a bodega partner</li>
                 <li>✓ Cata de 4 vinos con maridaje</li>
@@ -255,7 +367,7 @@
             </div>
 
             <div style="margin-bottom:1.2rem;padding-bottom:1.2rem;border-bottom:1px solid #f5e8e8;">
-              <div style="font-weight:700;color:#9f4040;margin-bottom:.4rem;">🎨 Personalizada (precio a medida)</div>
+              <div style="font-weight:700;color:#9f4040;margin-bottom:.4rem;"><i data-lucide="map" style="width:1em;height:1em;vertical-align:middle;"></i> Personalizada (precio a medida)</div>
               <ul style="font-size:.85rem;color:#6b7280;padding-left:1rem;line-height:1.8;">
                 <li>✓ Actividades a tu elección</li>
                 <li>✓ Fechas flexibles</li>
@@ -265,7 +377,7 @@
             </div>
 
             <div style="margin-bottom:1.5rem;">
-              <div style="font-weight:700;color:#1a1a1a;margin-bottom:.4rem;">⭐ Premium (desde 250€/persona)</div>
+              <div style="font-weight:700;color:#1a1a1a;margin-bottom:.4rem;"><i data-lucide="star" style="width:1em;height:1em;vertical-align:middle;"></i> Premium (desde 250€/persona)</div>
               <ul style="font-size:.85rem;color:#6b7280;padding-left:1rem;line-height:1.8;">
                 <li>✓ Todo lo del paquete Estándar</li>
                 <li>✓ Restaurantes de alta cocina</li>
@@ -286,10 +398,10 @@
 
             <div style="display:flex;flex-direction:column;gap:.6rem;margin-bottom:1rem;">
               <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#374151;">
-                <span>📞</span> <a href="tel:+34941000000" style="color:#9f4040;font-weight:600;">+34 941 000 000</a>
+                <i data-lucide="phone" style="width:1em;height:1em;vertical-align:middle;"></i> <a href="tel:+34941000000" style="color:#9f4040;font-weight:600;">+34 941 000 000</a>
               </div>
               <div style="display:flex;align-items:center;gap:.5rem;font-size:.85rem;color:#374151;">
-                <span>📧</span> <a href="mailto:info@viverioja.es" style="color:#9f4040;font-weight:600;">info@viverioja.es</a>
+                <i data-lucide="mail" style="width:1em;height:1em;vertical-align:middle;"></i> <a href="mailto:info@viverioja.es" style="color:#9f4040;font-weight:600;">info@viverioja.es</a>
               </div>
             </div>
 
@@ -369,13 +481,13 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="footer__brand-name">🍷 ViveRioja Experience</div>
+          <div class="footer__brand-name"><img src="./img/logo_viverioja.svg" alt="" style="width:28px;height:28px;vertical-align:middle;margin-right:6px;"> ViveRioja Experience</div>
           <p class="footer__brand-desc">Tu empresa de confianza para descubrir la esencia auténtica de La Rioja a través del enoturismo y el turismo cultural.</p>
           <div class="footer__socials">
-            <a href="#" class="footer__social" aria-label="Instagram">📷</a>
-            <a href="#" class="footer__social" aria-label="Facebook">📘</a>
-            <a href="#" class="footer__social" aria-label="Twitter/X">🐦</a>
-            <a href="#" class="footer__social" aria-label="TripAdvisor">🦉</a>
+            <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="instagram" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
+            <a href="#" class="footer__social" aria-label="Facebook"><i data-lucide="facebook" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
+            <a href="#" class="footer__social" aria-label="Twitter/X"><i data-lucide="twitter" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
+            <a href="#" class="footer__social" aria-label="TripAdvisor"><i data-lucide="globe" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
           </div>
         </div>
         <div>
@@ -421,5 +533,6 @@
   </footer>
 
   <script src="./main.js"></script>
+  <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>

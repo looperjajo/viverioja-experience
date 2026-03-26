@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/destinos.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
   {
@@ -115,12 +116,12 @@
         </div>
         <div class="value-props reveal">
           <div class="value-prop reveal-d1">
-            <div class="value-prop__icon">🍷</div>
+            <div class="value-prop__icon"><i data-lucide="wine" style="width:1em;height:1em;vertical-align:middle;"></i></div>
             <h3 class="value-prop__title">DOCa Rioja</h3>
             <p class="value-prop__text">La denominación de origen más prestigiosa de España, con más de 600 bodegas inscritas y siglos de tradición vinícola.</p>
           </div>
           <div class="value-prop reveal-d2">
-            <div class="value-prop__icon">🏛️</div>
+            <div class="value-prop__icon"><i data-lucide="building" style="width:1em;height:1em;vertical-align:middle;"></i></div>
             <h3 class="value-prop__title">Patrimonio UNESCO</h3>
             <p class="value-prop__text">San Millán de la Cogolla alberga dos monasterios declarados Patrimonio de la Humanidad y la cuna del castellano escrito.</p>
           </div>
@@ -277,6 +278,242 @@
       </div>
     </section>
 
+    <!-- YACIMIENTOS ARQUEOLÓGICOS -->
+    <section class="section" id="yacimientos" aria-labelledby="yacimientos-title">
+      <div class="container">
+        <div class="section__header reveal">
+          <span class="section__tag">Patrimonio arqueológico</span>
+          <h2 id="yacimientos-title" class="section__title">Yacimientos que Cuentan la Historia</h2>
+          <div class="divider"></div>
+          <p class="section__subtitle">La Rioja atesora un patrimonio arqueológico excepcional: desde huellas de dinosaurios Patrimonio Mundial hasta ciudades celtíberas y capitales romanas de la cerámica.</p>
+        </div>
+        <div class="yacimientos-grid">
+
+          <article class="yacimiento-card reveal reveal-d1" data-yac="contrebia">
+            <div class="yacimiento-card__img-wrap">
+              <img src="./img/yacimientos/contrebia-leucade.jpg" alt="Restos arqueológicos de Contrebia Leucade, ciudad celtíbera en Aguilar del Río Alhama, La Rioja" loading="lazy" class="yacimiento-card__img">
+            </div>
+            <div class="yacimiento-card__body">
+              <div class="yacimiento-card__type"><i data-lucide="landmark" style="width:14px;height:14px;vertical-align:middle;"></i> Ciudad celtíbera</div>
+              <h3 class="yacimiento-card__name">Contrebia Leucade</h3>
+              <p class="yacimiento-card__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Aguilar del Río Alhama</p>
+              <p class="yacimiento-card__desc">Una de las ciudades celtíberas mejor conservadas de la Península Ibérica. Sus muros, calles y estructuras revelan la vida de un pueblo guerrero que desafió a Roma durante siglos.</p>
+              <div class="yacimiento-card__niveles">
+                <span class="nivel-badge nivel-badge--estandar">Estándar: visita libre</span>
+                <span class="nivel-badge nivel-badge--personalizada">Personalizada: guía opcional</span>
+                <span class="nivel-badge nivel-badge--premium">Premium: guía privado</span>
+              </div>
+              <button class="btn btn--outline-brand btn--sm ver-detalle-btn" data-modal="modal-contrebia">Ver detalles</button>
+            </div>
+          </article>
+
+          <article class="yacimiento-card reveal reveal-d2" data-yac="enciso">
+            <div class="yacimiento-card__img-wrap">
+              <img src="./img/yacimientos/enciso-icnitas.jpg" alt="Icnitas de dinosaurios en Enciso, La Rioja, Patrimonio Mundial UNESCO" loading="lazy" class="yacimiento-card__img">
+            </div>
+            <div class="yacimiento-card__body">
+              <div class="yacimiento-card__type"><i data-lucide="footprints" style="width:14px;height:14px;vertical-align:middle;"></i> Patrimonio Mundial UNESCO</div>
+              <h3 class="yacimiento-card__name">Enciso — Icnitas</h3>
+              <p class="yacimiento-card__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Enciso, La Rioja</p>
+              <p class="yacimiento-card__desc">El mayor conjunto de huellas de dinosaurios de Europa, con más de 3.000 icnitas del Cretácico. Declarado Patrimonio Mundial de la UNESCO, es uno de los yacimientos paleontológicos más importantes del planeta.</p>
+              <div class="yacimiento-card__niveles">
+                <span class="nivel-badge nivel-badge--estandar">Estándar: visita libre</span>
+                <span class="nivel-badge nivel-badge--personalizada">Personalizada: guía opcional</span>
+                <span class="nivel-badge nivel-badge--premium">Premium: guía privado</span>
+              </div>
+              <button class="btn btn--outline-brand btn--sm ver-detalle-btn" data-modal="modal-enciso">Ver detalles</button>
+            </div>
+          </article>
+
+          <article class="yacimiento-card reveal reveal-d3" data-yac="cornago">
+            <div class="yacimiento-card__img-wrap">
+              <img src="./img/yacimientos/cornago-castro.jpg" alt="Castro medieval de Cornago con restos romanos, La Rioja" loading="lazy" class="yacimiento-card__img">
+            </div>
+            <div class="yacimiento-card__body">
+              <div class="yacimiento-card__type"><i data-lucide="castle" style="width:14px;height:14px;vertical-align:middle;"></i> Castro medieval · Restos romanos</div>
+              <h3 class="yacimiento-card__name">Cornago</h3>
+              <p class="yacimiento-card__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Cornago, La Rioja</p>
+              <p class="yacimiento-card__desc">Castro medieval encaramado sobre un promontorio rocoso con vistas espectaculares al valle del Linares. Bajo sus cimientos se conservan restos de ocupación romana que evidencian siglos de historia ininterrumpida.</p>
+              <div class="yacimiento-card__niveles">
+                <span class="nivel-badge nivel-badge--estandar">Estándar: visita libre</span>
+                <span class="nivel-badge nivel-badge--personalizada">Personalizada: guía opcional</span>
+                <span class="nivel-badge nivel-badge--premium">Premium: guía privado</span>
+              </div>
+              <button class="btn btn--outline-brand btn--sm ver-detalle-btn" data-modal="modal-cornago">Ver detalles</button>
+            </div>
+          </article>
+
+          <article class="yacimiento-card reveal reveal-d1" data-yac="varea">
+            <div class="yacimiento-card__img-wrap">
+              <img src="./img/yacimientos/varea-romana.jpg" alt="Restos de Varea, la antigua ciudad romana Varia junto al Ebro en Logroño, La Rioja" loading="lazy" class="yacimiento-card__img">
+            </div>
+            <div class="yacimiento-card__body">
+              <div class="yacimiento-card__type"><i data-lucide="columns" style="width:14px;height:14px;vertical-align:middle;"></i> Ciudad romana</div>
+              <h3 class="yacimiento-card__name">Varea (Varia Romana)</h3>
+              <p class="yacimiento-card__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Varea, Logroño</p>
+              <p class="yacimiento-card__desc">La antigua Varia romana, estratégicamente ubicada a orillas del Ebro junto a lo que hoy es Logroño. Centro neurálgico de la romanización riojana, sus excavaciones han revelado estructuras termales, calzadas y un rico ajuar cerámico.</p>
+              <div class="yacimiento-card__niveles">
+                <span class="nivel-badge nivel-badge--estandar">Estándar: visita libre</span>
+                <span class="nivel-badge nivel-badge--personalizada">Personalizada: guía opcional</span>
+                <span class="nivel-badge nivel-badge--premium">Premium: guía privado</span>
+              </div>
+              <button class="btn btn--outline-brand btn--sm ver-detalle-btn" data-modal="modal-varea">Ver detalles</button>
+            </div>
+          </article>
+
+          <article class="yacimiento-card reveal reveal-d2" data-yac="tritium">
+            <div class="yacimiento-card__img-wrap">
+              <img src="./img/yacimientos/tritium-magallum.jpg" alt="Terra sigillata hispánica, cerámica romana producida en Tritium Magallum, Tricio, La Rioja" loading="lazy" class="yacimiento-card__img">
+            </div>
+            <div class="yacimiento-card__body">
+              <div class="yacimiento-card__type"><i data-lucide="archive" style="width:14px;height:14px;vertical-align:middle;"></i> Capital de la terra sigillata</div>
+              <h3 class="yacimiento-card__name">Tritium Magallum</h3>
+              <p class="yacimiento-card__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Tricio, La Rioja</p>
+              <p class="yacimiento-card__desc">Capital de la producción de terra sigillata hispánica, la cerámica de lujo romana que se distribuía por todo el Imperio. Sus hornos alfareros del siglo I d.C. abastecieron a legiones y ciudades desde Britannia hasta el Norte de África.</p>
+              <div class="yacimiento-card__niveles">
+                <span class="nivel-badge nivel-badge--estandar">Estándar: visita libre</span>
+                <span class="nivel-badge nivel-badge--personalizada">Personalizada: guía opcional</span>
+                <span class="nivel-badge nivel-badge--premium">Premium: guía privado</span>
+              </div>
+              <button class="btn btn--outline-brand btn--sm ver-detalle-btn" data-modal="modal-tritium">Ver detalles</button>
+            </div>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- MODALES DE YACIMIENTOS -->
+    <div id="modal-contrebia" class="detalle-modal" role="dialog" aria-modal="true" aria-label="Detalle Contrebia Leucade">
+      <div class="detalle-modal__box">
+        <button class="detalle-modal__close" aria-label="Cerrar">&times;</button>
+        <img src="./img/yacimientos/contrebia-leucade.jpg" alt="Contrebia Leucade" class="detalle-modal__img">
+        <div class="detalle-modal__content">
+          <span class="detalle-modal__type">Ciudad celtíbera · Aguilar del Río Alhama</span>
+          <h2 class="detalle-modal__title">Contrebia Leucade</h2>
+          <p>Una de las ciudades celtíberas mejor conservadas de la Península Ibérica, situada sobre un espolón rocoso dominando el valle del Alhama. Sus murallas ciclópeas, calles empedradas y estructuras defensivas han sobrevivido más de 2.000 años.</p>
+          <p>El yacimiento fue ocupado desde el siglo III a.C. y resistió el avance romano durante décadas. Los vestigios hallados en las excavaciones incluyen cerámica ibérica, armas de bronce y hierro, y estructuras de gran complejidad arquitectónica.</p>
+          <h4>¿Qué ver y hacer?</h4>
+          <ul style="padding-left:1.2rem;line-height:1.8;">
+            <li>Recorrido por las murallas y el perímetro defensivo</li>
+            <li>Visita al centro de interpretación de Aguilar del Río Alhama</li>
+            <li>Paneles explicativos con recreaciones de la ciudad en su apogeo</li>
+            <li>Vistas panorámicas del valle del Alhama desde las murallas</li>
+          </ul>
+          <div class="detalle-modal__niveles">
+            <div class="nivel-detalle nivel-detalle--estandar"><strong>Estándar:</strong> Visita libre con información básica y mapa del yacimiento incluido en el kit ViveRioja.</div>
+            <div class="nivel-detalle nivel-detalle--personalizada"><strong>Personalizada:</strong> Visita guiada con arqueólogo local. El cliente decide si incluirla en su ruta.</div>
+            <div class="nivel-detalle nivel-detalle--premium"><strong>Premium:</strong> Visita guiada privada con arqueólogo especialista. Experiencia inmersiva con explicación del contexto celtíbero y romano. Combinada con visita a bodega y cata.</div>
+          </div>
+          <a href="./reservas.html?pack=estandar" class="btn btn--primary" style="margin-top:1rem;">Reservar con visita a Contrebia →</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-enciso" class="detalle-modal" role="dialog" aria-modal="true" aria-label="Detalle Enciso Icnitas">
+      <div class="detalle-modal__box">
+        <button class="detalle-modal__close" aria-label="Cerrar">&times;</button>
+        <img src="./img/yacimientos/enciso-icnitas.jpg" alt="Icnitas de dinosaurios en Enciso" class="detalle-modal__img">
+        <div class="detalle-modal__content">
+          <span class="detalle-modal__type">Patrimonio Mundial UNESCO · Enciso</span>
+          <h2 class="detalle-modal__title">Enciso — Las Huellas del Jurásico</h2>
+          <p>El mayor yacimiento de icnitas (huellas de dinosaurios) de Europa, con más de 3.000 huellas fosilizadas del Cretácico Inferior (hace 120 millones de años). Declarado Patrimonio Mundial de la UNESCO en el marco de los "Sitios de Icnitas de Dinosaurios de la Península Ibérica".</p>
+          <p>Las huellas pertenecen a saurópodos, terópodos, ornitópodos e incluso pterosaurios. Algunas pistas de huellas alcanzan los 150 metros de longitud, haciendo de Enciso un lugar único en el planeta.</p>
+          <h4>¿Qué ver y hacer?</h4>
+          <ul style="padding-left:1.2rem;line-height:1.8;">
+            <li>Ruta de las icnitas: 5 yacimientos con huellas accesibles</li>
+            <li>Centro Paleontológico de Enciso con réplicas y exposición</li>
+            <li>Reproducción a tamaño real de dinosaurios del Cretácico</li>
+            <li>Senderismo por el entorno natural del barranco</li>
+          </ul>
+          <div class="detalle-modal__niveles">
+            <div class="nivel-detalle nivel-detalle--estandar"><strong>Estándar:</strong> Visita libre a los yacimientos con el mapa de la ruta de icnitas incluido en el kit ViveRioja.</div>
+            <div class="nivel-detalle nivel-detalle--personalizada"><strong>Personalizada:</strong> Visita guiada con paleontólogo o guía especializado en la ruta de los dinosaurios.</div>
+            <div class="nivel-detalle nivel-detalle--premium"><strong>Premium:</strong> Jornada completa con guía privado paleontólogo, visita al Centro Paleontológico y combinación con experiencia enológica en bodega próxima.</div>
+          </div>
+          <a href="./reservas.html?pack=estandar" class="btn btn--primary" style="margin-top:1rem;">Reservar con visita a Enciso →</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-cornago" class="detalle-modal" role="dialog" aria-modal="true" aria-label="Detalle Cornago">
+      <div class="detalle-modal__box">
+        <button class="detalle-modal__close" aria-label="Cerrar">&times;</button>
+        <img src="./img/yacimientos/cornago-castro.jpg" alt="Castro medieval de Cornago" class="detalle-modal__img">
+        <div class="detalle-modal__content">
+          <span class="detalle-modal__type">Castro medieval · Restos romanos · Cornago</span>
+          <h2 class="detalle-modal__title">Cornago</h2>
+          <p>El castro de Cornago se erige sobre un espolón rocoso de roca arenisca que domina el valle del río Linares. Este enclave estratégico fue ocupado continuamente desde la Edad del Bronce hasta la Edad Media, dejando capas arqueológicas de excepcional valor.</p>
+          <p>Los restos romanos hallados bajo la fortaleza medieval evidencian la importancia del lugar como punto de control de la vía de comunicación entre el valle del Ebro y Castilla. La fortaleza medieval añade una dimensión histórica adicional que lo convierte en uno de los enclaves más completos de La Rioja.</p>
+          <h4>¿Qué ver y hacer?</h4>
+          <ul style="padding-left:1.2rem;line-height:1.8;">
+            <li>Recorrido por el castro y sus estructuras medievales</li>
+            <li>Restos de murallas y torres de vigilancia</li>
+            <li>Vistas panorámicas del valle y la Sierra de Camero</li>
+            <li>Visita al pueblo de Cornago y su entorno natural</li>
+          </ul>
+          <div class="detalle-modal__niveles">
+            <div class="nivel-detalle nivel-detalle--estandar"><strong>Estándar:</strong> Visita libre con información histórica incluida en el kit ViveRioja.</div>
+            <div class="nivel-detalle nivel-detalle--personalizada"><strong>Personalizada:</strong> Guía con especialista en historia medieval de La Rioja, a elegir según interés del cliente.</div>
+            <div class="nivel-detalle nivel-detalle--premium"><strong>Premium:</strong> Visita guiada privada con historiador especializado, combinada con experiencia en bodega de la zona y gastronomía local.</div>
+          </div>
+          <a href="./reservas.html?pack=estandar" class="btn btn--primary" style="margin-top:1rem;">Reservar con visita a Cornago →</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-varea" class="detalle-modal" role="dialog" aria-modal="true" aria-label="Detalle Varea romana">
+      <div class="detalle-modal__box">
+        <button class="detalle-modal__close" aria-label="Cerrar">&times;</button>
+        <img src="./img/yacimientos/varea-romana.jpg" alt="Varea romana" class="detalle-modal__img">
+        <div class="detalle-modal__content">
+          <span class="detalle-modal__type">Ciudad romana · Varea, Logroño</span>
+          <h2 class="detalle-modal__title">Varea (Varia Romana)</h2>
+          <p>La antigua Varia fue un importante enclave romano a orillas del Ebro, precursora de la actual Logroño. Estratégicamente situada en el cruce de la calzada romana con el río, fue un nudo de comunicaciones fundamental durante la presencia romana en Hispania.</p>
+          <p>Las excavaciones han sacado a la luz estructuras termales, pavimentos de opus signinum, ánforas vinarias y una notable colección de terra sigillata que confirman la intensa actividad comercial del lugar entre los siglos I y IV d.C.</p>
+          <h4>¿Qué ver y hacer?</h4>
+          <ul style="padding-left:1.2rem;line-height:1.8;">
+            <li>Visita a los restos arqueológicos en el barrio de Varea</li>
+            <li>Centro de interpretación de la romanización en La Rioja</li>
+            <li>Paseo por la ribera del Ebro junto al yacimiento</li>
+            <li>Conexión con el casco histórico de Logroño a 5 km</li>
+          </ul>
+          <div class="detalle-modal__niveles">
+            <div class="nivel-detalle nivel-detalle--estandar"><strong>Estándar:</strong> Visita libre al yacimiento con información histórica incluida en el kit ViveRioja.</div>
+            <div class="nivel-detalle nivel-detalle--personalizada"><strong>Personalizada:</strong> Visita guiada con arqueólogo especialista en época romana, combinable con recorrido por Logroño.</div>
+            <div class="nivel-detalle nivel-detalle--premium"><strong>Premium:</strong> Jornada completa: Varea + casco histórico de Logroño + cata de vinos en bodega de la ciudad. Guía privado todo el día.</div>
+          </div>
+          <a href="./reservas.html?pack=estandar" class="btn btn--primary" style="margin-top:1rem;">Reservar con visita a Varea →</a>
+        </div>
+      </div>
+    </div>
+
+    <div id="modal-tritium" class="detalle-modal" role="dialog" aria-modal="true" aria-label="Detalle Tritium Magallum">
+      <div class="detalle-modal__box">
+        <button class="detalle-modal__close" aria-label="Cerrar">&times;</button>
+        <img src="./img/yacimientos/tritium-magallum.jpg" alt="Terra sigillata de Tritium Magallum" class="detalle-modal__img">
+        <div class="detalle-modal__content">
+          <span class="detalle-modal__type">Capital de la terra sigillata · Tricio</span>
+          <h2 class="detalle-modal__title">Tritium Magallum</h2>
+          <p>Tricio fue en época romana la capital mundial de la terra sigillata hispánica, la cerámica de lujo que abastecía al Imperio Romano. Sus alfares producían millones de piezas al año en el siglo I y II d.C., exportadas desde Britannia hasta el Norte de África.</p>
+          <p>El yacimiento de Tritium Magallum es único en el mundo hispanorromano: la concentración de hornos alfareros, escorias de cocción y moldes de cerámica hallados no tiene equivalente en todo el Imperio. La cerámica con sello de los alfareros tricenses se convirtió en el "Made in Rioja" de la Antigüedad.</p>
+          <h4>¿Qué ver y hacer?</h4>
+          <ul style="padding-left:1.2rem;line-height:1.8;">
+            <li>Visita al centro de interpretación de Tricio</li>
+            <li>Colección de terra sigillata en el Museo de La Rioja (Logroño)</li>
+            <li>Recorrido por los restos de hornos alfareros</li>
+            <li>Taller de cerámica romana (opcional en pack Personalizado y Premium)</li>
+          </ul>
+          <div class="detalle-modal__niveles">
+            <div class="nivel-detalle nivel-detalle--estandar"><strong>Estándar:</strong> Visita libre con información sobre la historia de la cerámica romana en La Rioja.</div>
+            <div class="nivel-detalle nivel-detalle--personalizada"><strong>Personalizada:</strong> Visita guiada con especialista + taller de cerámica romana opcional.</div>
+            <div class="nivel-detalle nivel-detalle--premium"><strong>Premium:</strong> Jornada completa: Tritium + Museo de La Rioja + cata de vinos en bodega de Tricio. Una experiencia que une el pasado romano con el presente enológico.</div>
+          </div>
+          <a href="./reservas.html?pack=estandar" class="btn btn--primary" style="margin-top:1rem;">Reservar con visita a Tritium Magallum →</a>
+        </div>
+      </div>
+    </div>
+
     <!-- CTA FINAL -->
     <section class="section section--dark">
       <div class="container" style="text-align:center;">
@@ -298,13 +535,13 @@
     <div class="container">
       <div class="footer__grid">
         <div>
-          <div class="footer__brand-name">🍷 ViveRioja Experience</div>
+          <div class="footer__brand-name"><img src="./img/logo_viverioja.svg" alt="" style="width:28px;height:28px;vertical-align:middle;margin-right:6px;"> ViveRioja Experience</div>
           <p class="footer__brand-desc">Tu empresa de confianza para descubrir la esencia auténtica de La Rioja a través del enoturismo y el turismo cultural.</p>
           <div class="footer__socials">
-            <a href="#" class="footer__social" aria-label="Instagram">📷</a>
-            <a href="#" class="footer__social" aria-label="Facebook">📘</a>
-            <a href="#" class="footer__social" aria-label="Twitter/X">🐦</a>
-            <a href="#" class="footer__social" aria-label="TripAdvisor">🦉</a>
+            <a href="#" class="footer__social" aria-label="Instagram"><i data-lucide="instagram" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
+            <a href="#" class="footer__social" aria-label="Facebook"><i data-lucide="facebook" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
+            <a href="#" class="footer__social" aria-label="Twitter/X"><i data-lucide="twitter" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
+            <a href="#" class="footer__social" aria-label="TripAdvisor"><i data-lucide="globe" style="width:1.2em;height:1.2em;vertical-align:middle;"></i></a>
           </div>
         </div>
         <div>
@@ -350,5 +587,6 @@
   </footer>
 
   <script src="./main.js"></script>
+  <script>if(window.lucide) lucide.createIcons();</script>
 </body>
 </html>
