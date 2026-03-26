@@ -649,3 +649,39 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 
   irAPaso(1);
 })();
+
+/* =====================================================
+   13. CARRUSELES (destinos)
+   ===================================================== */
+(function initCarousels() {
+  document.querySelectorAll('[data-carousel]').forEach(function(car) {
+    var track = car.querySelector('.carousel__track');
+    var slides = car.querySelectorAll('.carousel__slide');
+    var dots = car.querySelectorAll('.carousel__dot');
+    var total = slides.length;
+    if (total < 2) return;
+    var current = 0;
+
+    function goTo(idx) {
+      current = (idx + total) % total;
+      track.style.transform = 'translateX(-' + (current * 100) + '%)';
+      dots.forEach(function(d, i) {
+        d.classList.toggle('carousel__dot--active', i === current);
+      });
+    }
+
+    var prevBtn = car.querySelector('.carousel__btn--prev');
+    var nextBtn = car.querySelector('.carousel__btn--next');
+    if (prevBtn) prevBtn.addEventListener('click', function(e) { e.preventDefault(); goTo(current - 1); });
+    if (nextBtn) nextBtn.addEventListener('click', function(e) { e.preventDefault(); goTo(current + 1); });
+
+    dots.forEach(function(d, i) {
+      d.addEventListener('click', function() { goTo(i); });
+    });
+
+    // Auto-advance every 5 s, pause on hover
+    var timer = setInterval(function() { goTo(current + 1); }, 5000);
+    car.addEventListener('mouseenter', function() { clearInterval(timer); });
+    car.addEventListener('mouseleave', function() { timer = setInterval(function() { goTo(current + 1); }, 5000); });
+  });
+})();
