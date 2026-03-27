@@ -57,6 +57,7 @@
     ]
   }
   </script>
+  <script src="./translations.js"></script>
 
   <style>
     .reservas-layout {
@@ -114,24 +115,29 @@
         <span class="navbar__logo-text">ViveRioja Experience</span>
       </a>
       <ul class="navbar__nav" role="list">
-        <li><a href="./index.html" class="navbar__link">Inicio</a></li>
-        <li><a href="./experiencias.html" class="navbar__link">Experiencias</a></li>
-        <li><a href="./destinos.html" class="navbar__link">Destinos</a></li>
-        <li><a href="./nosotros.html" class="navbar__link">Nosotros</a></li>
-        <li><a href="./contacto.html" class="navbar__link">Contacto</a></li>
-        <li><a href="./reservas.html" class="navbar__link navbar__cta active">Reservar</a></li>
+        <li><a href="./index.html" class="navbar__link" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link" data-i18n="nav.experiencias">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link" data-i18n="nav.destinos">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link" data-i18n="nav.nosotros">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link" data-i18n="nav.contacto">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta active" data-i18n="nav.reservar">Reservar</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="navbar__mobile" aria-label="Menú móvil">
-      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
-      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
-      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
-      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
-      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
-      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+      <a href="./index.html" class="navbar__mobile-link" data-i18n="nav.inicio">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link" data-i18n="nav.experiencias">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link" data-i18n="nav.destinos">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link" data-i18n="nav.nosotros">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link" data-i18n="nav.contacto">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;" data-i18n="nav.reservar.mobile">Reservar ahora →</a>
     </nav>
   </nav>
 
@@ -143,11 +149,11 @@
       <nav class="breadcrumb" aria-label="Ruta de navegación">
         <a href="./index.html">Inicio</a>
         <span class="breadcrumb__sep">›</span>
-        <span>Reservas</span>
+        <span data-i18n="res.hero.bc">Reservas</span>
       </nav>
-      <span class="hero__tag">Reservas Online</span>
-      <h1 class="hero__title">Reserva tu Experiencia en La Rioja</h1>
-      <p class="hero__subtitle">Elige tu paquete, indícanos tus preferencias y nos encargamos de todo lo demás. Respuesta garantizada en menos de 24 horas.</p>
+      <span class="hero__tag" data-i18n="res.hero.tag">Reservas Online</span>
+      <h1 class="hero__title" data-i18n="res.hero.title">Reserva tu Experiencia en La Rioja</h1>
+      <p class="hero__subtitle" data-i18n="res.hero.subtitle">Elige tu paquete, indícanos tus preferencias y nos encargamos de todo lo demás. Respuesta garantizada en menos de 24 horas.</p>
     </div>
   </header>
 
@@ -165,47 +171,47 @@
             <div class="wizard-steps" aria-label="Pasos del proceso de reserva">
               <div class="wizard-step wizard-step--active" data-step="1">
                 <div class="wizard-step__num">1</div>
-                <span class="wizard-step__label">Tu experiencia</span>
+                <span class="wizard-step__label" data-i18n="res.step1">Tu experiencia</span>
               </div>
               <div class="wizard-step__line"></div>
               <div class="wizard-step" data-step="2">
                 <div class="wizard-step__num">2</div>
-                <span class="wizard-step__label">Pago</span>
+                <span class="wizard-step__label" data-i18n="res.step2">Pago</span>
               </div>
               <div class="wizard-step__line"></div>
               <div class="wizard-step" data-step="3">
                 <div class="wizard-step__num">3</div>
-                <span class="wizard-step__label">Confirmación</span>
+                <span class="wizard-step__label" data-i18n="res.step3">Confirmación</span>
               </div>
             </div>
 
             <!-- PASO 1 — SELECCIÓN -->
             <div class="wizard-panel" id="wizard-paso1">
-              <span class="section__tag">Paso 1 de 3</span>
-              <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Cuéntanos qué buscas</h2>
+              <span class="section__tag" data-i18n="res.p1.tag">Paso 1 de 3</span>
+              <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;" data-i18n="res.p1.title">Cuéntanos qué buscas</h2>
               <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
 
               <form id="reservas-form" data-validate novalidate>
                 <input type="hidden" name="_subject" value="Nueva reserva ViveRioja Experience">
 
                 <div class="form-group">
-                  <label class="form-label" for="experiencia">Tipo de experiencia *</label>
+                  <label class="form-label" for="experiencia" data-i18n="res.f.exp.lab">Tipo de experiencia *</label>
                   <select id="experiencia" name="experiencia" class="form-control" required aria-required="true">
-                    <option value="">— Selecciona tu experiencia —</option>
-                    <option value="estandar">Experiencia Estándar — desde 90€/persona</option>
-                    <option value="personalizada">Experiencia Personalizada — presupuesto a medida</option>
-                    <option value="premium">Experiencia Premium — desde 250€/persona (exclusivo)</option>
+                    <option value="" data-i18n="res.f.exp.opt0">— Selecciona tu experiencia —</option>
+                    <option value="estandar" data-i18n="res.f.exp.opt1">Experiencia Estándar — desde 90€/persona</option>
+                    <option value="personalizada" data-i18n="res.f.exp.opt2">Experiencia Personalizada — presupuesto a medida</option>
+                    <option value="premium" data-i18n="res.f.exp.opt3">Experiencia Premium — desde 250€/persona (exclusivo)</option>
                   </select>
                 </div>
 
                 <div class="form-row">
                   <div class="form-group">
-                    <label class="form-label" for="nombre">Nombre *</label>
-                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" required aria-required="true">
+                    <label class="form-label" for="nombre" data-i18n="res.f.nom.lab">Nombre *</label>
+                    <input type="text" id="nombre" name="nombre" class="form-control" placeholder="Tu nombre" data-i18n-ph="res.f.nom.ph" required aria-required="true">
                   </div>
                   <div class="form-group">
-                    <label class="form-label" for="apellidos">Apellidos *</label>
-                    <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" required aria-required="true">
+                    <label class="form-label" for="apellidos" data-i18n="res.f.ape.lab">Apellidos *</label>
+                    <input type="text" id="apellidos" name="apellidos" class="form-control" placeholder="Tus apellidos" data-i18n-ph="res.f.ape.ph" required aria-required="true">
                   </div>
                 </div>
 

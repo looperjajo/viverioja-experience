@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/nosotros.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./translations.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
@@ -81,24 +82,29 @@
         <span class="navbar__logo-text">ViveRioja Experience</span>
       </a>
       <ul class="navbar__nav" role="list">
-        <li><a href="./index.html" class="navbar__link">Inicio</a></li>
-        <li><a href="./experiencias.html" class="navbar__link">Experiencias</a></li>
-        <li><a href="./destinos.html" class="navbar__link">Destinos</a></li>
-        <li><a href="./nosotros.html" class="navbar__link active">Nosotros</a></li>
-        <li><a href="./contacto.html" class="navbar__link">Contacto</a></li>
-        <li><a href="./reservas.html" class="navbar__link navbar__cta">Reservar</a></li>
+        <li><a href="./index.html" class="navbar__link" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link" data-i18n="nav.experiencias">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link" data-i18n="nav.destinos">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link active" data-i18n="nav.nosotros">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link" data-i18n="nav.contacto">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta" data-i18n="nav.reservar">Reservar</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="navbar__mobile" aria-label="Menú móvil">
-      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
-      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
-      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
-      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
-      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
-      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+      <a href="./index.html" class="navbar__mobile-link" data-i18n="nav.inicio">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link" data-i18n="nav.experiencias">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link" data-i18n="nav.destinos">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link" data-i18n="nav.nosotros">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link" data-i18n="nav.contacto">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;" data-i18n="nav.reservar.mobile">Reservar ahora →</a>
     </nav>
   </nav>
 
@@ -107,10 +113,10 @@
     <div class="easter-popup">
       <button id="easter-close" class="easter-popup__close" aria-label="Cerrar popup">✕</button>
       <span class="easter-popup__emoji">🎉</span>
-      <h2 class="easter-popup__title">¡Código especial para el tribunal de evaluación!</h2>
+      <h2 class="easter-popup__title" data-i18n="nos.egg.title">¡Código especial para el tribunal de evaluación!</h2>
       <div class="easter-popup__code">TRIBUNAL2026</div>
-      <p class="easter-popup__desc">Usa este código y obtén un <strong>15% de descuento</strong> en tu primera experiencia ViveRioja. ¡Gracias por evaluar nuestro proyecto de TFG!</p>
-      <a href="./reservas.html" class="btn btn--primary">Reservar con descuento →</a>
+      <p class="easter-popup__desc" data-i18n="nos.egg.desc">Usa este código y obtén un <strong>15% de descuento</strong> en tu primera experiencia ViveRioja. ¡Gracias por evaluar nuestro proyecto de TFG!</p>
+      <a href="./reservas.html" class="btn btn--primary" data-i18n="nos.egg.cta">Reservar con descuento →</a>
     </div>
   </div>
   <canvas id="confetti-canvas"></canvas>
@@ -123,11 +129,11 @@
       <nav class="breadcrumb" aria-label="Ruta de navegación">
         <a href="./index.html">Inicio</a>
         <span class="breadcrumb__sep">›</span>
-        <span>Nosotros</span>
+        <span data-i18n="nos.hero.bc">Nosotros</span>
       </nav>
-      <span class="hero__tag">Nuestra Historia</span>
-      <h1 class="hero__title">Apasionados por La Rioja</h1>
-      <p class="hero__subtitle">Nacimos para conectar personas con la esencia más auténtica de La Rioja. Cada experiencia que ofrecemos lleva la huella de nuestra pasión por el vino, la cultura y la tierra riojana.</p>
+      <span class="hero__tag" data-i18n="nos.hero.tag">Nuestra Historia</span>
+      <h1 class="hero__title" data-i18n="nos.hero.title">Apasionados por La Rioja</h1>
+      <p class="hero__subtitle" data-i18n="nos.hero.subtitle">Nacimos para conectar personas con la esencia más auténtica de La Rioja. Cada experiencia que ofrecemos lleva la huella de nuestra pasión por el vino, la cultura y la tierra riojana.</p>
     </div>
   </header>
 
@@ -146,8 +152,8 @@
             <img src="./img/bodega-barricas.jpg" alt="Sala de barricas de una bodega tradicional en La Rioja con cientos de barriles de roble" loading="lazy">
           </div>
           <div>
-            <span class="section__tag">Nuestra historia</span>
-            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:1rem;">Nacimos del amor por La Rioja</h2>
+            <span class="section__tag" data-i18n="nos.story.tag">Nuestra historia</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:clamp(1.7rem,3vw,2.4rem);margin-bottom:1rem;" data-i18n="nos.story.title">Nacimos del amor por La Rioja</h2>
             <div class="divider divider--left"></div>
             <p style="margin-bottom:1rem;">ViveRioja Experience S.L. nació en Logroño con una misión clara: que cada viajero pudiera vivir La Rioja de verdad, no como un simple turista, sino como alguien que forma parte de su historia, su cultura y su sabor.</p>
             <p style="margin-bottom:1rem;">Constituida como Sociedad Limitada en La Rioja, somos una empresa joven y dinámica que actúa como intermediaria y organizadora de experiencias turísticas enológicas, culturales y gastronómicas en toda la región. Trabajamos directamente con las bodegas más emblemáticas, los mejores restaurantes y los alojamientos de mayor calidad.</p>
@@ -162,21 +168,21 @@
     <section class="section section--alt">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Nuestra identidad</span>
-          <h2 class="section__title">Misión, Visión y Propósito</h2>
+          <span class="section__tag" data-i18n="nos.mvv.tag">Nuestra identidad</span>
+          <h2 class="section__title" data-i18n="nos.mvv.title">Misión, Visión y Propósito</h2>
           <div class="divider"></div>
         </div>
         <div class="mvv-grid reveal">
           <div class="mvv-box reveal-d1">
-            <div class="mvv-box__label">🎯 Misión</div>
+            <div class="mvv-box__label" data-i18n="nos.mvv.mision">🎯 Misión</div>
             <p class="mvv-box__text">"Conectar a los viajeros con la esencia auténtica de La Rioja a través de experiencias enoturísticas y culturales únicas, personalizadas y de calidad."</p>
           </div>
           <div class="mvv-box reveal-d2">
-            <div class="mvv-box__label">🔭 Visión</div>
+            <div class="mvv-box__label" data-i18n="nos.mvv.vision">🔭 Visión</div>
             <p class="mvv-box__text">"Ser la plataforma de referencia del enoturismo en La Rioja, reconocida por la personalización del servicio y la promoción del patrimonio riojano."</p>
           </div>
           <div class="mvv-box reveal-d3">
-            <div class="mvv-box__label">💡 Propósito</div>
+            <div class="mvv-box__label" data-i18n="nos.mvv.proposito">💡 Propósito</div>
             <p class="mvv-box__text">"Crear momentos únicos e irrepetibles que transformen la manera en que las personas se relacionan con el vino, la gastronomía y la cultura de La Rioja."</p>
           </div>
         </div>
@@ -187,35 +193,35 @@
     <section class="section">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Lo que nos define</span>
-          <h2 class="section__title">Nuestros 5 Valores</h2>
+          <span class="section__tag" data-i18n="nos.val.tag">Lo que nos define</span>
+          <h2 class="section__title" data-i18n="nos.val.title">Nuestros 5 Valores</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Estos principios guían cada decisión que tomamos y cada experiencia que diseñamos.</p>
+          <p class="section__subtitle" data-i18n="nos.val.subtitle">Estos principios guían cada decisión que tomamos y cada experiencia que diseñamos.</p>
         </div>
         <div class="valores-grid reveal">
           <div class="valor reveal-d1">
             <div class="valor__icon">🍇</div>
-            <div class="valor__name">Autenticidad</div>
+            <div class="valor__name" data-i18n="nos.val.v1">Autenticidad</div>
             <p style="font-size:.82rem;color:#6b7280;margin-top:.4rem;">Trabajamos solo con proveedores locales que comparten nuestra pasión por lo auténtico.</p>
           </div>
           <div class="valor reveal-d2">
             <div class="valor__icon">🎯</div>
-            <div class="valor__name">Personalización</div>
+            <div class="valor__name" data-i18n="nos.val.v2">Personalización</div>
             <p style="font-size:.82rem;color:#6b7280;margin-top:.4rem;">Cada cliente es único. Adaptamos cada experiencia a sus preferencias y necesidades.</p>
           </div>
           <div class="valor reveal-d3">
             <div class="valor__icon">🌱</div>
-            <div class="valor__name">Sostenibilidad</div>
+            <div class="valor__name" data-i18n="nos.val.v3">Sostenibilidad</div>
             <p style="font-size:.82rem;color:#6b7280;margin-top:.4rem;">Promovemos el turismo responsable que respeta el entorno natural y cultural de La Rioja.</p>
           </div>
           <div class="valor reveal-d4">
             <div class="valor__icon">⭐</div>
-            <div class="valor__name">Calidad</div>
+            <div class="valor__name" data-i18n="nos.val.v4">Calidad</div>
             <p style="font-size:.82rem;color:#6b7280;margin-top:.4rem;">Solo trabajamos con los mejores proveedores: bodegas de prestigio, restaurantes reconocidos y alojamientos de categoría.</p>
           </div>
           <div class="valor reveal-d5">
             <div class="valor__icon">💡</div>
-            <div class="valor__name">Innovación</div>
+            <div class="valor__name" data-i18n="nos.val.v5">Innovación</div>
             <p style="font-size:.82rem;color:#6b7280;margin-top:.4rem;">Incorporamos tecnología digital para facilitar la reserva y mejorar la experiencia del cliente en cada punto de contacto.</p>
           </div>
         </div>
@@ -226,10 +232,10 @@
     <section class="section section--alt">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Las personas detrás de ViveRioja</span>
-          <h2 class="section__title">Nuestro Equipo</h2>
+          <span class="section__tag" data-i18n="nos.team.tag">Las personas detrás de ViveRioja</span>
+          <h2 class="section__title" data-i18n="nos.team.title">Nuestro Equipo</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Un equipo pequeño, ágil y completamente comprometido con ofrecerte la mejor experiencia en La Rioja.</p>
+          <p class="section__subtitle" data-i18n="nos.team.subtitle">Un equipo pequeño, ágil y completamente comprometido con ofrecerte la mejor experiencia en La Rioja.</p>
         </div>
         <div class="team-grid reveal">
           <article class="team-member reveal-d1">

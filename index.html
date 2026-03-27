@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./translations.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
@@ -85,24 +86,29 @@
         <span class="navbar__logo-text">ViveRioja Experience</span>
       </a>
       <ul class="navbar__nav" role="list">
-        <li><a href="./index.html" class="navbar__link active">Inicio</a></li>
-        <li><a href="./experiencias.html" class="navbar__link">Experiencias</a></li>
-        <li><a href="./destinos.html" class="navbar__link">Destinos</a></li>
-        <li><a href="./nosotros.html" class="navbar__link">Nosotros</a></li>
-        <li><a href="./contacto.html" class="navbar__link">Contacto</a></li>
-        <li><a href="./reservas.html" class="navbar__link navbar__cta">Reservar</a></li>
+        <li><a href="./index.html" class="navbar__link active" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link" data-i18n="nav.experiencias">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link" data-i18n="nav.destinos">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link" data-i18n="nav.nosotros">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link" data-i18n="nav.contacto">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta" data-i18n="nav.reservar">Reservar</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="navbar__mobile" aria-label="Menú móvil">
-      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
-      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
-      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
-      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
-      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
-      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+      <a href="./index.html" class="navbar__mobile-link" data-i18n="nav.inicio">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link" data-i18n="nav.experiencias">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link" data-i18n="nav.destinos">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link" data-i18n="nav.nosotros">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link" data-i18n="nav.contacto">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;" data-i18n="nav.reservar.mobile">Reservar ahora →</a>
     </nav>
   </nav>
 
@@ -111,35 +117,35 @@
     <div class="hero__bg" id="hero-bg" style="background-image:url('./img/hero-vinedos.jpg');"></div>
     <div class="hero__overlay"></div>
     <div class="hero__content">
-      <span class="hero__tag">La Rioja · Enoturismo Premium</span>
+      <span class="hero__tag" data-i18n="idx.hero.tag">La Rioja · Enoturismo Premium</span>
       <h1 class="hero__title">Vive La Rioja con<br><em>todos los sentidos</em></h1>
-      <p class="hero__subtitle">Viñedos interminables, bodegas centenarias, gastronomía de altura. Diseñamos experiencias únicas que te conectan con la esencia más auténtica de La Rioja.</p>
+      <p class="hero__subtitle" data-i18n="idx.hero.subtitle">Viñedos interminables, bodegas centenarias, gastronomía de altura. Diseñamos experiencias únicas que te conectan con la esencia más auténtica de La Rioja.</p>
       <div class="hero__actions">
-        <a href="./experiencias.html" class="btn btn--primary btn--lg">Descubre nuestras experiencias</a>
-        <a href="./destinos.html" class="btn btn--outline btn--lg">Ver destinos</a>
+        <a href="./experiencias.html" class="btn btn--primary btn--lg" data-i18n="idx.hero.cta1">Descubre nuestras experiencias</a>
+        <a href="./destinos.html" class="btn btn--outline btn--lg" data-i18n="idx.hero.cta2">Ver destinos</a>
       </div>
     </div>
     <div class="hero__scroll" role="button" aria-label="Scroll hacia abajo" tabindex="0">
       <div class="hero__scroll-arrow">↓</div>
-      <span>Explorar</span>
+      <span data-i18n="idx.hero.scroll">Explorar</span>
     </div>
     <div class="hero__stats">
       <div class="hero__stats-inner">
         <div class="hero__stat">
           <span class="hero__stat-num" data-count="4">0</span>
-          <span class="hero__stat-label">Bodegas Partner</span>
+          <span class="hero__stat-label" data-i18n="idx.stat.bodegas">Bodegas Partner</span>
         </div>
         <div class="hero__stat">
           <span class="hero__stat-num" data-count="500" data-suffix="+">0+</span>
-          <span class="hero__stat-label">Experiencias</span>
+          <span class="hero__stat-label" data-i18n="idx.stat.exp">Experiencias</span>
         </div>
         <div class="hero__stat">
           <span class="hero__stat-num" data-count="98" data-suffix="%">0%</span>
-          <span class="hero__stat-label">Satisfacción</span>
+          <span class="hero__stat-label" data-i18n="idx.stat.sat">Satisfacción</span>
         </div>
         <div class="hero__stat">
           <span class="hero__stat-num">90€</span>
-          <span class="hero__stat-label">Desde</span>
+          <span class="hero__stat-label" data-i18n="idx.stat.desde">Desde</span>
         </div>
       </div>
     </div>
@@ -151,26 +157,26 @@
     <section class="section section--alt" aria-labelledby="value-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">¿Por qué elegirnos?</span>
-          <h2 id="value-title" class="section__title">La experiencia que mereces</h2>
+          <span class="section__tag" data-i18n="idx.val.tag">¿Por qué elegirnos?</span>
+          <h2 id="value-title" class="section__title" data-i18n="idx.val.title">La experiencia que mereces</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Somos especialistas en enoturismo riojano. Conocemos cada bodega, cada ruta y cada rincón de La Rioja para ofrecerte lo mejor.</p>
+          <p class="section__subtitle" data-i18n="idx.val.subtitle">Somos especialistas en enoturismo riojano. Conocemos cada bodega, cada ruta y cada rincón de La Rioja para ofrecerte lo mejor.</p>
         </div>
         <div class="value-props">
           <div class="value-prop reveal reveal-d1">
             <div class="value-prop__icon"><i data-lucide="wine" style="width:1em;height:1em;vertical-align:middle;"></i></div>
-            <h3 class="value-prop__title">Bodegas exclusivas</h3>
-            <p class="value-prop__text">Acceso a Marqués de Riscal, Ysios, Muga y López de Heredia Viña Tondonia. Bodegas con historia, arquitectura y vinos que hablan por sí solos.</p>
+            <h3 class="value-prop__title" data-i18n="idx.val.p1.title">Bodegas exclusivas</h3>
+            <p class="value-prop__text" data-i18n="idx.val.p1.text">Acceso a Marqués de Riscal, Ysios, Muga y López de Heredia Viña Tondonia. Bodegas con historia, arquitectura y vinos que hablan por sí solos.</p>
           </div>
           <div class="value-prop reveal reveal-d2">
             <div class="value-prop__icon"><i data-lucide="map" style="width:1em;height:1em;vertical-align:middle;"></i></div>
-            <h3 class="value-prop__title">Rutas personalizadas</h3>
-            <p class="value-prop__text">Adaptamos cada experiencia a tus preferencias, fechas y presupuesto. Tú decides qué quieres vivir; nosotros nos encargamos de todo.</p>
+            <h3 class="value-prop__title" data-i18n="idx.val.p2.title">Rutas personalizadas</h3>
+            <p class="value-prop__text" data-i18n="idx.val.p2.text">Adaptamos cada experiencia a tus preferencias, fechas y presupuesto. Tú decides qué quieres vivir; nosotros nos encargamos de todo.</p>
           </div>
           <div class="value-prop reveal reveal-d3">
             <div class="value-prop__icon"><i data-lucide="star" style="width:1em;height:1em;vertical-align:middle;"></i></div>
-            <h3 class="value-prop__title">Servicio premium</h3>
-            <p class="value-prop__text">Guías especializados en enoturismo, restaurantes de alto nivel, transporte privado y atención personal durante toda tu experiencia en La Rioja.</p>
+            <h3 class="value-prop__title" data-i18n="idx.val.p3.title">Servicio premium</h3>
+            <p class="value-prop__text" data-i18n="idx.val.p3.text">Guías especializados en enoturismo, restaurantes de alto nivel, transporte privado y atención personal durante toda tu experiencia en La Rioja.</p>
           </div>
         </div>
       </div>
@@ -180,10 +186,10 @@
     <section class="section" id="paquetes" aria-labelledby="paquetes-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Nuestros paquetes</span>
-          <h2 id="paquetes-title" class="section__title">Tres niveles de experiencia</h2>
+          <span class="section__tag" data-i18n="idx.paq.tag">Nuestros paquetes</span>
+          <h2 id="paquetes-title" class="section__title" data-i18n="idx.paq.title">Tres niveles de experiencia</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Desde una escapada de día hasta una experiencia de lujo total. Encuentra el nivel que mejor se adapta a lo que buscas.</p>
+          <p class="section__subtitle" data-i18n="idx.paq.subtitle">Desde una escapada de día hasta una experiencia de lujo total. Encuentra el nivel que mejor se adapta a lo que buscas.</p>
         </div>
         <div class="packages">
 
@@ -191,11 +197,11 @@
           <article class="package reveal reveal-d1">
             <div class="package__header">
               <span class="package__level">Nivel 01</span>
-              <h3 class="package__name">Estándar</h3>
-              <div class="package__price">Desde <strong>90€</strong> /persona</div>
+              <h3 class="package__name" data-i18n="idx.paq.std.name">Estándar</h3>
+              <div class="package__price" data-promo-price="90">Desde <strong>90€</strong> /persona</div>
             </div>
             <div class="package__body">
-              <p class="package__desc">La experiencia perfecta para descubrir La Rioja por primera vez. Ideal para grupos de amigos, parejas y turistas individuales que quieren vivir el enoturismo riojano.</p>
+              <p class="package__desc" data-i18n="idx.paq.std.desc">La experiencia perfecta para descubrir La Rioja por primera vez. Ideal para grupos de amigos, parejas y turistas individuales que quieren vivir el enoturismo riojano.</p>
               <ul class="package__features">
                 <li class="package__feature"><span class="package__feature-icon">✓</span> Visita guiada a bodega partner</li>
                 <li class="package__feature"><span class="package__feature-icon">✓</span> Cata de 4 vinos seleccionados</li>
@@ -205,20 +211,20 @@
                 <li class="package__feature"><span class="package__feature-icon">✓</span> Transporte desde Logroño (+15€)</li>
               </ul>
               <div style="font-size:.8rem;color:#9ca3af;margin:.5rem 0;">Duración: 5–6 horas · Grupos de 2 a 20 personas</div>
-              <a href="./reservas.html" class="package__cta">Reservar Estándar →</a>
+              <a href="./reservas.html" class="package__cta" data-i18n="idx.paq.std.cta">Reservar Estándar →</a>
             </div>
           </article>
 
           <!-- PERSONALIZADA -->
           <article class="package package--featured reveal reveal-d2">
-            <div class="package__badge">Más popular</div>
+            <div class="package__badge" data-i18n="idx.paq.per.badge">Más popular</div>
             <div class="package__header">
               <span class="package__level">Nivel 02</span>
-              <h3 class="package__name">Personalizada</h3>
+              <h3 class="package__name" data-i18n="idx.paq.per.name">Personalizada</h3>
               <div class="package__price">Precio <strong>a medida</strong></div>
             </div>
             <div class="package__body">
-              <p class="package__desc">Tú diseñas la experiencia. Elige las actividades, las bodegas, las fechas y la duración. Un consultor dedicado te acompañará en todo el proceso.</p>
+              <p class="package__desc" data-i18n="idx.paq.per.desc">Tú diseñas la experiencia. Elige las actividades, las bodegas, las fechas y la duración. Un consultor dedicado te acompañará en todo el proceso.</p>
               <ul class="package__features">
                 <li class="package__feature"><span class="package__feature-icon">✓</span> Actividades totalmente a tu elección</li>
                 <li class="package__feature"><span class="package__feature-icon">✓</span> Bodegas y destinos personalizados</li>
@@ -228,7 +234,7 @@
                 <li class="package__feature"><span class="package__feature-icon">✓</span> Pago fraccionado disponible</li>
               </ul>
               <div style="font-size:.8rem;color:#9ca3af;margin:.5rem 0;">Confirmación en 24h · Sin mínimo de personas</div>
-              <a href="./reservas.html" class="package__cta">Solicitar presupuesto →</a>
+              <a href="./reservas.html" class="package__cta" data-i18n="idx.paq.per.cta">Solicitar presupuesto →</a>
             </div>
           </article>
 
@@ -236,11 +242,11 @@
           <article class="package package--premium reveal reveal-d3">
             <div class="package__header">
               <span class="package__level">Nivel 03</span>
-              <h3 class="package__name">Premium</h3>
-              <div class="package__price">Desde <strong>250€</strong> /persona</div>
+              <h3 class="package__name" data-i18n="idx.paq.pre.name">Premium</h3>
+              <div class="package__price" data-promo-price="250">Desde <strong>250€</strong> /persona</div>
             </div>
             <div class="package__body">
-              <p class="package__desc">La experiencia definitiva de La Rioja. Solo para quienes buscan lo mejor de lo mejor: alta cocina, transporte privado y acceso exclusivo.</p>
+              <p class="package__desc" data-i18n="idx.paq.pre.desc">La experiencia definitiva de La Rioja. Solo para quienes buscan lo mejor de lo mejor: alta cocina, transporte privado y acceso exclusivo.</p>
               <ul class="package__features">
                 <li class="package__feature"><span class="package__feature-icon package__feature-icon--gold">★</span> Todo lo del paquete Estándar</li>
                 <li class="package__feature"><span class="package__feature-icon package__feature-icon--gold">★</span> Restaurante Venta Moncalvillo ⭐⭐</li>
@@ -250,7 +256,7 @@
                 <li class="package__feature"><span class="package__feature-icon package__feature-icon--gold">★</span> Alojamiento en Hotel Marqués de Riscal</li>
               </ul>
               <div style="font-size:.8rem;color:#9ca3af;margin:.5rem 0;">Día completo o fin de semana · Máxima exclusividad</div>
-              <a href="./reservas.html" class="package__cta">Reservar Premium →</a>
+              <a href="./reservas.html" class="package__cta" data-i18n="idx.paq.pre.cta">Reservar Premium →</a>
             </div>
           </article>
 
@@ -263,10 +269,10 @@
     <section class="section section--alt" aria-labelledby="destinos-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Nuestros destinos</span>
-          <h2 id="destinos-title" class="section__title">Pueblos y Bodegas que Enamoran</h2>
+          <span class="section__tag" data-i18n="idx.dest.tag">Nuestros destinos</span>
+          <h2 id="destinos-title" class="section__title" data-i18n="idx.dest.title">Pueblos y Bodegas que Enamoran</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Cada rincón de La Rioja tiene su propia historia. Descubre los destinos que hacen de esta tierra un lugar único en el mundo.</p>
+          <p class="section__subtitle" data-i18n="idx.dest.subtitle">Cada rincón de La Rioja tiene su propia historia. Descubre los destinos que hacen de esta tierra un lugar único en el mundo.</p>
         </div>
         <div class="destinos-grid">
           <article class="destino-card reveal reveal-d1">
@@ -274,7 +280,7 @@
             <a href="./destinos.html" class="destino-card__overlay" aria-label="Ver destino Haro">
               <div>
                 <div class="destino-card__name">Haro</div>
-                <div class="destino-card__tag">Capital del enoturismo · Bodegas históricas</div>
+                <div class="destino-card__tag" data-i18n="idx.dest.haro.tag">Capital del enoturismo · Bodegas históricas</div>
               </div>
               <div class="destino-card__arrow">→</div>
             </a>
@@ -284,7 +290,7 @@
             <a href="./destinos.html" class="destino-card__overlay" aria-label="Ver destino Laguardia">
               <div>
                 <div class="destino-card__name">Laguardia</div>
-                <div class="destino-card__tag">Villa medieval · Bodega Ysios</div>
+                <div class="destino-card__tag" data-i18n="idx.dest.laguardia.tag">Villa medieval · Bodega Ysios</div>
               </div>
               <div class="destino-card__arrow">→</div>
             </a>
@@ -294,7 +300,7 @@
             <a href="./destinos.html" class="destino-card__overlay" aria-label="Ver destino Briones">
               <div>
                 <div class="destino-card__name">Briones</div>
-                <div class="destino-card__tag">Museo del Vino · Valle del Ebro</div>
+                <div class="destino-card__tag" data-i18n="idx.dest.briones.tag">Museo del Vino · Valle del Ebro</div>
               </div>
               <div class="destino-card__arrow">→</div>
             </a>
@@ -304,7 +310,7 @@
             <a href="./destinos.html" class="destino-card__overlay" aria-label="Ver destino Logroño">
               <div>
                 <div class="destino-card__name">Logroño</div>
-                <div class="destino-card__tag">Capital riojana · Calle Laurel</div>
+                <div class="destino-card__tag" data-i18n="idx.dest.logrono.tag">Capital riojana · Calle Laurel</div>
               </div>
               <div class="destino-card__arrow">→</div>
             </a>
@@ -314,7 +320,7 @@
             <a href="./destinos.html" class="destino-card__overlay" aria-label="Ver destino San Millán de la Cogolla">
               <div>
                 <div class="destino-card__name">San Millán</div>
-                <div class="destino-card__tag">Patrimonio UNESCO · Cuna del castellano</div>
+                <div class="destino-card__tag" data-i18n="idx.dest.sanmillan.tag">Patrimonio UNESCO · Cuna del castellano</div>
               </div>
               <div class="destino-card__arrow">→</div>
             </a>
@@ -324,14 +330,14 @@
             <a href="./destinos.html" class="destino-card__overlay" aria-label="Ver destino Ezcaray">
               <div>
                 <div class="destino-card__name">Ezcaray</div>
-                <div class="destino-card__tag">Sierra de la Demanda · Gastronomía</div>
+                <div class="destino-card__tag" data-i18n="idx.dest.ezcaray.tag">Sierra de la Demanda · Gastronomía</div>
               </div>
               <div class="destino-card__arrow">→</div>
             </a>
           </article>
         </div>
         <div style="text-align:center;margin-top:2rem;" class="reveal">
-          <a href="./destinos.html" class="btn btn--outline-brand btn--lg">Ver todos los destinos →</a>
+          <a href="./destinos.html" class="btn btn--outline-brand btn--lg" data-i18n="idx.dest.cta">Ver todos los destinos →</a>
         </div>
       </div>
     </section>
@@ -340,10 +346,10 @@
     <section class="section" aria-labelledby="bodegas-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Nuestros partners</span>
-          <h2 id="bodegas-title" class="section__title">Bodegas con Nombre Propio</h2>
+          <span class="section__tag" data-i18n="idx.bod.tag">Nuestros partners</span>
+          <h2 id="bodegas-title" class="section__title" data-i18n="idx.bod.title">Bodegas con Nombre Propio</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Trabajamos con las bodegas más emblemáticas y reconocidas de La Rioja, garantizando una experiencia auténtica y de máxima calidad.</p>
+          <p class="section__subtitle" data-i18n="idx.bod.subtitle">Trabajamos con las bodegas más emblemáticas y reconocidas de La Rioja, garantizando una experiencia auténtica y de máxima calidad.</p>
         </div>
         <div class="bodegas-grid">
           <div class="bodega-card reveal reveal-d1">
@@ -374,16 +380,16 @@
     <section class="section" aria-labelledby="yac-hl-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Patrimonio arqueológico</span>
-          <h2 id="yac-hl-title" class="section__title">La Historia Bajo Nuestros Pies</h2>
+          <span class="section__tag" data-i18n="idx.yac.tag">Patrimonio arqueológico</span>
+          <h2 id="yac-hl-title" class="section__title" data-i18n="idx.yac.title">La Historia Bajo Nuestros Pies</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">La Rioja atesora yacimientos únicos en España: desde huellas de dinosaurios hasta ciudades celtíberas y talleres romanos de cerámica fina.</p>
+          <p class="section__subtitle" data-i18n="idx.yac.subtitle">La Rioja atesora yacimientos únicos en España: desde huellas de dinosaurios hasta ciudades celtíberas y talleres romanos de cerámica fina.</p>
         </div>
         <div class="yac-highlight">
           <article class="yac-mini reveal reveal-d1">
             <img class="yac-mini__img" src="./img/yacimientos/contrebia-leucade.jpg" alt="Restos arqueológicos de la ciudad celtíbera de Contrebia Leucade en La Rioja" loading="lazy">
             <div class="yac-mini__body">
-              <div class="yac-mini__type"><i data-lucide="landmark" style="width:13px;height:13px;vertical-align:middle;"></i> Ciudad celtíbera</div>
+              <div class="yac-mini__type"><i data-lucide="landmark" style="width:13px;height:13px;vertical-align:middle;"></i> <span data-i18n="idx.yac.contrebia.type">Ciudad celtíbera</span></div>
               <div class="yac-mini__name">Contrebia Leucade</div>
               <div class="yac-mini__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Aguilar del Río Alhama</div>
             </div>
@@ -391,7 +397,7 @@
           <article class="yac-mini reveal reveal-d2">
             <img class="yac-mini__img" src="./img/yacimientos/enciso-icnitas.jpg" alt="Icnitas de dinosaurios en Enciso, Patrimonio Mundial de huellas de dinosaurios en La Rioja" loading="lazy">
             <div class="yac-mini__body">
-              <div class="yac-mini__type"><i data-lucide="footprints" style="width:13px;height:13px;vertical-align:middle;"></i> Patrimonio Mundial</div>
+              <div class="yac-mini__type"><i data-lucide="footprints" style="width:13px;height:13px;vertical-align:middle;"></i> <span data-i18n="idx.yac.enciso.type">Patrimonio Mundial</span></div>
               <div class="yac-mini__name">Icnitas de Enciso</div>
               <div class="yac-mini__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Enciso, Rioja Media</div>
             </div>
@@ -399,14 +405,14 @@
           <article class="yac-mini reveal reveal-d3">
             <img class="yac-mini__img" src="./img/yacimientos/tritium-magallum.jpg" alt="Ánforas y cerámica romana del yacimiento de Tritium Magallum en La Rioja" loading="lazy">
             <div class="yac-mini__body">
-              <div class="yac-mini__type"><i data-lucide="archive" style="width:13px;height:13px;vertical-align:middle;"></i> Ciudad romana</div>
+              <div class="yac-mini__type"><i data-lucide="archive" style="width:13px;height:13px;vertical-align:middle;"></i> <span data-i18n="idx.yac.tritium.type">Ciudad romana</span></div>
               <div class="yac-mini__name">Tritium Magallum</div>
               <div class="yac-mini__loc"><i data-lucide="map-pin" style="width:12px;height:12px;vertical-align:middle;"></i> Tricio, Rioja Alta</div>
             </div>
           </article>
         </div>
         <div style="text-align:center;margin-top:2rem;" class="reveal">
-          <a href="./destinos.html#yacimientos" class="btn btn--outline-brand">Ver todos los yacimientos →</a>
+          <a href="./destinos.html#yacimientos" class="btn btn--outline-brand" data-i18n="idx.yac.cta">Ver todos los yacimientos →</a>
         </div>
       </div>
     </section>
@@ -434,8 +440,8 @@
     <section class="section" aria-labelledby="testimonios-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Lo que dicen nuestros clientes</span>
-          <h2 id="testimonios-title" class="section__title">Experiencias que Hablan por Sí Solas</h2>
+          <span class="section__tag" data-i18n="idx.test.tag">Lo que dicen nuestros clientes</span>
+          <h2 id="testimonios-title" class="section__title" data-i18n="idx.test.title">Experiencias que Hablan por Sí Solas</h2>
           <div class="divider"></div>
         </div>
         <div class="testimonios">

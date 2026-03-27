@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/destinos.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./translations.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
@@ -66,24 +67,29 @@
         <span class="navbar__logo-text">ViveRioja Experience</span>
       </a>
       <ul class="navbar__nav" role="list">
-        <li><a href="./index.html" class="navbar__link">Inicio</a></li>
-        <li><a href="./experiencias.html" class="navbar__link">Experiencias</a></li>
-        <li><a href="./destinos.html" class="navbar__link active">Destinos</a></li>
-        <li><a href="./nosotros.html" class="navbar__link">Nosotros</a></li>
-        <li><a href="./contacto.html" class="navbar__link">Contacto</a></li>
-        <li><a href="./reservas.html" class="navbar__link navbar__cta">Reservar</a></li>
+        <li><a href="./index.html" class="navbar__link" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link" data-i18n="nav.experiencias">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link active" data-i18n="nav.destinos">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link" data-i18n="nav.nosotros">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link" data-i18n="nav.contacto">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta" data-i18n="nav.reservar">Reservar</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="navbar__mobile" aria-label="Menú móvil">
-      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
-      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
-      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
-      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
-      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
-      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+      <a href="./index.html" class="navbar__mobile-link" data-i18n="nav.inicio">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link" data-i18n="nav.experiencias">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link" data-i18n="nav.destinos">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link" data-i18n="nav.nosotros">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link" data-i18n="nav.contacto">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;" data-i18n="nav.reservar.mobile">Reservar ahora →</a>
     </nav>
   </nav>
 
@@ -95,11 +101,11 @@
       <nav class="breadcrumb" aria-label="Ruta de navegación">
         <a href="./index.html">Inicio</a>
         <span class="breadcrumb__sep">›</span>
-        <span>Destinos</span>
+        <span data-i18n="dest.hero.bc">Destinos</span>
       </nav>
-      <span class="hero__tag">La Rioja · Tierras del Vino</span>
-      <h1 class="hero__title">Destinos que Enamoran</h1>
-      <p class="hero__subtitle">Pueblos con historia, bodegas con alma y paisajes que se graban en la memoria. Descubre los rincones más auténticos de La Rioja.</p>
+      <span class="hero__tag" data-i18n="dest.hero.tag">La Rioja · Tierras del Vino</span>
+      <h1 class="hero__title" data-i18n="dest.hero.title">Destinos que Enamoran</h1>
+      <p class="hero__subtitle" data-i18n="dest.hero.subtitle">Pueblos con historia, bodegas con alma y paisajes que se graban en la memoria. Descubre los rincones más auténticos de La Rioja.</p>
     </div>
   </header>
 
@@ -109,10 +115,10 @@
     <section class="section section--alt">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">La Rioja en cifras</span>
-          <h2 class="section__title">Una región pequeña, un mundo por descubrir</h2>
+          <span class="section__tag" data-i18n="dest.intro.tag">La Rioja en cifras</span>
+          <h2 class="section__title" data-i18n="dest.intro.title">Una región pequeña, un mundo por descubrir</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">La Rioja es la región más pequeña de España con 5.045 km², pero concentra una densidad cultural, gastronómica y enológica incomparable. Todos los destinos están a menos de 90 minutos entre sí — ideal para combinarlos en un mismo viaje.</p>
+          <p class="section__subtitle" data-i18n="dest.intro.subtitle">La Rioja es la región más pequeña de España con 5.045 km², pero concentra una densidad cultural, gastronómica y enológica incomparable. Todos los destinos están a menos de 90 minutos entre sí — ideal para combinarlos en un mismo viaje.</p>
         </div>
         <div class="value-props reveal">
           <div class="value-prop reveal-d1">
@@ -138,10 +144,10 @@
     <section class="section" id="destinos">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Nuestros destinos</span>
-          <h2 class="section__title">6 Destinos Imprescindibles</h2>
+          <span class="section__tag" data-i18n="dest.grid.tag">Nuestros destinos</span>
+          <h2 class="section__title" data-i18n="dest.grid.title">6 Destinos Imprescindibles</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Cada pueblo tiene su propia identidad, historia y encanto. Todos forman parte de nuestra propuesta de enoturismo de calidad en La Rioja.</p>
+          <p class="section__subtitle" data-i18n="dest.grid.subtitle">Cada pueblo tiene su propia identidad, historia y encanto. Todos forman parte de nuestra propuesta de enoturismo de calidad en La Rioja.</p>
         </div>
 
         <div style="display:grid;grid-template-columns:repeat(auto-fit,minmax(340px,1fr));gap:2rem;">
@@ -171,7 +177,7 @@
                 <span class="tag-pill">🎉 Batalla del Vino</span>
                 <span class="tag-pill">🍽️ Gastronomía</span>
               </div>
-              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;">Reservar experiencia en Haro →</a>
+              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;" data-i18n="dest.haro.cta">Reservar experiencia en Haro →</a>
             </div>
           </article>
 
@@ -200,7 +206,7 @@
                 <span class="tag-pill">🏛️ Bodega Ysios</span>
                 <span class="tag-pill">🌄 Vistas panorámicas</span>
               </div>
-              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;">Reservar experiencia en Laguardia →</a>
+              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;" data-i18n="dest.laguardia.cta">Reservar experiencia en Laguardia →</a>
             </div>
           </article>
 
@@ -229,7 +235,7 @@
                 <span class="tag-pill">🏯 Castillo medieval</span>
                 <span class="tag-pill">🌊 Valle del Ebro</span>
               </div>
-              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;">Reservar experiencia en Briones →</a>
+              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;" data-i18n="dest.briones.cta">Reservar experiencia en Briones →</a>
             </div>
           </article>
 
@@ -258,7 +264,7 @@
                 <span class="tag-pill">🏛️ Catedral</span>
                 <span class="tag-pill">🛒 Mercado local</span>
               </div>
-              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;">Reservar experiencia en Logroño →</a>
+              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;" data-i18n="dest.logrono.cta">Reservar experiencia en Logroño →</a>
             </div>
           </article>
 
@@ -287,7 +293,7 @@
                 <span class="tag-pill">📚 Cuna del castellano</span>
                 <span class="tag-pill">🌲 Naturaleza</span>
               </div>
-              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;">Reservar experiencia en San Millán →</a>
+              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;" data-i18n="dest.sanmillan.cta">Reservar experiencia en San Millán →</a>
             </div>
           </article>
 
@@ -316,7 +322,7 @@
                 <span class="tag-pill">🎿 Valdezcaray</span>
                 <span class="tag-pill">🏡 Turismo rural</span>
               </div>
-              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;">Reservar experiencia en Ezcaray →</a>
+              <a href="./reservas.html" class="btn btn--outline-brand" style="width:100%;justify-content:center;" data-i18n="dest.ezcaray.cta">Reservar experiencia en Ezcaray →</a>
             </div>
           </article>
 
@@ -348,10 +354,10 @@
     <section class="section" id="yacimientos" aria-labelledby="yacimientos-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Patrimonio arqueológico</span>
-          <h2 id="yacimientos-title" class="section__title">Yacimientos que Cuentan la Historia</h2>
+          <span class="section__tag" data-i18n="dest.yac.tag">Patrimonio arqueológico</span>
+          <h2 id="yacimientos-title" class="section__title" data-i18n="dest.yac.title">Yacimientos que Cuentan la Historia</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">La Rioja atesora un patrimonio arqueológico excepcional: desde huellas de dinosaurios Patrimonio Mundial hasta ciudades celtíberas y capitales romanas de la cerámica.</p>
+          <p class="section__subtitle" data-i18n="dest.yac.subtitle">La Rioja atesora un patrimonio arqueológico excepcional: desde huellas de dinosaurios Patrimonio Mundial hasta ciudades celtíberas y capitales romanas de la cerámica.</p>
         </div>
         <div class="yacimientos-grid">
 

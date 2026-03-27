@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/contacto.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./translations.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
@@ -135,24 +136,29 @@
         <span class="navbar__logo-text">ViveRioja Experience</span>
       </a>
       <ul class="navbar__nav" role="list">
-        <li><a href="./index.html" class="navbar__link">Inicio</a></li>
-        <li><a href="./experiencias.html" class="navbar__link">Experiencias</a></li>
-        <li><a href="./destinos.html" class="navbar__link">Destinos</a></li>
-        <li><a href="./nosotros.html" class="navbar__link">Nosotros</a></li>
-        <li><a href="./contacto.html" class="navbar__link active">Contacto</a></li>
-        <li><a href="./reservas.html" class="navbar__link navbar__cta">Reservar</a></li>
+        <li><a href="./index.html" class="navbar__link" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link" data-i18n="nav.experiencias">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link" data-i18n="nav.destinos">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link" data-i18n="nav.nosotros">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link active" data-i18n="nav.contacto">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta" data-i18n="nav.reservar">Reservar</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="navbar__mobile" aria-label="Menú móvil">
-      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
-      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
-      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
-      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
-      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
-      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+      <a href="./index.html" class="navbar__mobile-link" data-i18n="nav.inicio">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link" data-i18n="nav.experiencias">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link" data-i18n="nav.destinos">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link" data-i18n="nav.nosotros">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link" data-i18n="nav.contacto">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;" data-i18n="nav.reservar.mobile">Reservar ahora →</a>
     </nav>
   </nav>
 
@@ -164,11 +170,11 @@
       <nav class="breadcrumb" aria-label="Ruta de navegación">
         <a href="./index.html">Inicio</a>
         <span class="breadcrumb__sep">›</span>
-        <span>Contacto</span>
+        <span data-i18n="con.hero.bc">Contacto</span>
       </nav>
-      <span class="hero__tag">Estamos aquí para ti</span>
-      <h1 class="hero__title">Hablemos de tu próxima aventura</h1>
-      <p class="hero__subtitle">¿Tienes preguntas, ideas o quieres empezar a planificar tu experiencia en La Rioja? Escríbenos y te respondemos en menos de 24 horas.</p>
+      <span class="hero__tag" data-i18n="con.hero.tag">Estamos aquí para ti</span>
+      <h1 class="hero__title" data-i18n="con.hero.title">Hablemos de tu próxima aventura</h1>
+      <p class="hero__subtitle" data-i18n="con.hero.subtitle">¿Tienes preguntas, ideas o quieres empezar a planificar tu experiencia en La Rioja? Escríbenos y te respondemos en menos de 24 horas.</p>
     </div>
   </header>
 
@@ -181,8 +187,8 @@
 
           <!-- FORMULARIO -->
           <div class="reveal">
-            <span class="section__tag">Escríbenos</span>
-            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Formulario de contacto</h2>
+            <span class="section__tag" data-i18n="con.form.tag">Escríbenos</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;" data-i18n="con.form.title">Formulario de contacto</h2>
             <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
 
             <form data-validate action="https://formspree.io/f/example" method="POST" novalidate>
@@ -224,7 +230,7 @@
                 </label>
               </div>
 
-              <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;">
+              <button type="submit" class="btn btn--primary btn--lg" style="width:100%;justify-content:center;" data-i18n="con.form.btn">
                 Enviar mensaje →
               </button>
             </form>
@@ -232,8 +238,8 @@
 
           <!-- INFO DE CONTACTO -->
           <aside class="reveal reveal--right">
-            <span class="section__tag">Dónde encontrarnos</span>
-            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;">Información de contacto</h2>
+            <span class="section__tag" data-i18n="con.info.tag">Dónde encontrarnos</span>
+            <h2 style="font-family:'Playfair Display',serif;font-size:1.8rem;margin-bottom:.5rem;" data-i18n="con.info.title">Información de contacto</h2>
             <div class="divider divider--left" style="margin-bottom:1.5rem;"></div>
 
             <div class="contact-info">

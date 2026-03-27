@@ -604,7 +604,15 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     var expVal = exp ? exp.value : '';
     var perVal = parseInt(per ? per.value : '2', 10) || 2;
     var precio = precioMap[expVal];
-    var totalText = precio ? (precio * perVal).toLocaleString('es-ES') + ' \u20ac' : 'A consultar';
+    var promoDisc = window.VR_PROMO_ACTIVE ? window.VR_PROMO_DISCOUNT : 0;
+    var precioFinal = precio ? Math.round(precio * (1 - promoDisc) * 100) / 100 : null;
+    var totalBase  = precio ? (precio * perVal) : null;
+    var totalFinal = precioFinal ? (precioFinal * perVal) : null;
+    var totalText = totalFinal
+      ? (promoDisc > 0
+          ? totalBase.toLocaleString('es-ES') + ' \u20ac \u2192 ' + totalFinal.toLocaleString('es-ES') + ' \u20ac (-15%)'
+          : totalFinal.toLocaleString('es-ES') + ' \u20ac')
+      : 'A consultar';
     var fechaText = fec && fec.value ? new Date(fec.value).toLocaleDateString('es-ES', {day:'2-digit',month:'long',year:'numeric'}) : 'Sin especificar';
     var desText = des && des.options[des.selectedIndex] ? des.options[des.selectedIndex].text : '';
 
@@ -621,7 +629,7 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
     var totalDiv = document.getElementById('resumen-total');
     if (totalDiv) totalDiv.textContent = totalText;
     var btnTotal = document.getElementById('btn-total-precio');
-    if (btnTotal) btnTotal.textContent = precio ? '\u00b7 ' + totalText : '';
+    if (btnTotal) btnTotal.textContent = totalFinal ? '\u00b7 ' + totalFinal.toLocaleString('es-ES') + ' \u20ac' + (promoDisc > 0 ? ' (-15%)' : '') : '';
   }
 
   function mostrarConfirmacion() {
@@ -651,7 +659,164 @@ document.querySelectorAll('a[href^="#"]').forEach(function (anchor) {
 })();
 
 /* =====================================================
-   13. CARRUSELES (destinos)
+   13. SELECTOR DE IDIOMA (ES / EN)
+   ===================================================== */
+(function initLang() {
+  var STORAGE_KEY = 'vr-lang';
+  var cache = { text: {}, html: {} };
+  var ready = false;
+
+  function getLang() {
+    return localStorage.getItem(STORAGE_KEY) || 'es';
+  }
+
+  // Cache original ES content before any translation is applied
+  function buildCache() {
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n');
+      if (!cache.text[k]) cache.text[k] = el.textContent;
+    });
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-html');
+      if (!cache.html[k]) cache.html[k] = el.innerHTML;
+    });
+    // Placeholders
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-ph');
+      if (!cache.text['ph_' + k]) cache.text['ph_' + k] = el.placeholder || '';
+    });
+    ready = true;
+  }
+
+  function applyLang(lang) {
+    if (!ready) buildCache();
+    var t = window.VR_TRANSLATIONS || {};
+
+    document.querySelectorAll('[data-i18n]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n');
+      var entry = t[k];
+      if (entry) {
+        el.textContent = entry[lang] !== undefined ? entry[lang] : (lang === 'es' ? (cache.text[k] || el.textContent) : entry['en']);
+      } else if (lang === 'es' && cache.text[k]) {
+        el.textContent = cache.text[k];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-html]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-html');
+      var entry = t[k];
+      if (entry) {
+        el.innerHTML = entry[lang] !== undefined ? entry[lang] : (lang === 'es' ? (cache.html[k] || el.innerHTML) : entry['en']);
+      } else if (lang === 'es' && cache.html[k]) {
+        el.innerHTML = cache.html[k];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-ph]').forEach(function(el) {
+      var k = el.getAttribute('data-i18n-ph');
+      var entry = t[k];
+      if (entry) {
+        el.placeholder = entry[lang] !== undefined ? entry[lang] : (lang === 'es' ? (cache.text['ph_' + k] || el.placeholder) : entry['en']);
+      }
+    });
+
+    document.documentElement.lang = lang;
+  }
+
+  function updateBtns(lang) {
+    document.querySelectorAll('.lang-btn').forEach(function(btn) {
+      var active = btn.getAttribute('data-lang') === lang;
+      btn.classList.toggle('lang-btn--active', active);
+      btn.setAttribute('aria-pressed', active ? 'true' : 'false');
+    });
+  }
+
+  function setLang(lang) {
+    localStorage.setItem(STORAGE_KEY, lang);
+    applyLang(lang);
+    updateBtns(lang);
+    // Re-init lucide icons in case new HTML was injected
+    if (window.lucide) lucide.createIcons();
+  }
+
+  // Bind buttons
+  document.addEventListener('click', function(e) {
+    var btn = e.target.closest('.lang-btn');
+    if (btn) setLang(btn.getAttribute('data-lang'));
+  });
+
+  // Apply on load
+  buildCache();
+  var lang = getLang();
+  if (lang !== 'es') applyLang(lang);
+  updateBtns(lang);
+})();
+
+/* =====================================================
+   14. PROMO QR (?promo=jurado — 15% descuento)
+   ===================================================== */
+(function initPromo() {
+  var PROMO_KEY   = 'vr-promo';
+  var PROMO_CODE  = 'jurado';
+  var DISCOUNT    = 0.15; // 15%
+
+  // Detect promo param in URL or session
+  var urlParam = new URLSearchParams(window.location.search).get('promo');
+  if (urlParam && urlParam.toLowerCase() === PROMO_CODE) {
+    sessionStorage.setItem(PROMO_KEY, PROMO_CODE);
+  }
+  var active = sessionStorage.getItem(PROMO_KEY) === PROMO_CODE;
+  if (!active) return;
+
+  var lang = localStorage.getItem('vr-lang') || 'es';
+
+  // ── Mostrar banner ────────────────────────────────
+  var bannerText = lang === 'en'
+    ? '🎉 Special offer for the jury: <strong>15% off</strong> all experiences. Discount applied automatically.'
+    : '🎉 Oferta especial para el tribunal: <strong>15% de descuento</strong> en todas las experiencias. Aplicado automáticamente.';
+
+  var banner = document.createElement('div');
+  banner.className = 'promo-banner';
+  banner.setAttribute('role', 'status');
+  banner.setAttribute('aria-live', 'polite');
+  banner.innerHTML =
+    '<span class="promo-banner__text">' + bannerText + '</span>' +
+    '<button class="promo-banner__close" aria-label="Cerrar oferta">✕</button>';
+  document.body.prepend(banner);
+  document.body.classList.add('has-promo-banner');
+
+  banner.querySelector('.promo-banner__close').addEventListener('click', function() {
+    banner.remove();
+    document.body.classList.remove('has-promo-banner');
+  });
+
+  // ── Aplicar descuento a precios marcados ──────────
+  // data-promo-price="90"   → muestra precio tachado + nuevo precio
+  // data-promo-label="true" → el texto se reemplaza con label de precio
+  document.querySelectorAll('[data-promo-price]').forEach(function(el) {
+    var original = parseFloat(el.getAttribute('data-promo-price'));
+    if (isNaN(original)) return;
+    var discounted = (original * (1 - DISCOUNT)).toFixed(2)
+      .replace('.', ',').replace(',00', '');
+    var label = el.getAttribute('data-promo-label') || '';
+    var fromTxt = lang === 'en' ? 'From' : 'Desde';
+    var perTxt  = lang === 'en' ? '/person' : '/persona';
+    el.classList.add('promo-price-wrap');
+    el.innerHTML =
+      fromTxt + ' <del>' + original + '€</del> ' +
+      '<strong class="promo-price-new">' + discounted + '€</strong>' + perTxt +
+      '<span class="promo-badge-pct">-15%</span>';
+    if (label) el.innerHTML = label + ' ' + el.innerHTML;
+  });
+
+  // ── Descuento en el resumen del wizard ────────────
+  // Intercepta el cálculo de precio en el wizard de reservas
+  window.VR_PROMO_ACTIVE   = true;
+  window.VR_PROMO_DISCOUNT = DISCOUNT;
+})();
+
+/* =====================================================
+   15. CARRUSELES (destinos)
    ===================================================== */
 (function initCarousels() {
   document.querySelectorAll('[data-carousel]').forEach(function(car) {

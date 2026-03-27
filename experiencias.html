@@ -27,6 +27,7 @@
   <link rel="canonical" href="https://looperjajo.github.io/viverioja-experience/experiencias.html">
   <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🍷</text></svg>">
   <link rel="stylesheet" href="./styles.css">
+  <script src="./translations.js"></script>
   <script src="https://unpkg.com/lucide@latest/dist/umd/lucide.min.js"></script>
 
   <script type="application/ld+json">
@@ -99,24 +100,29 @@
         <span class="navbar__logo-text">ViveRioja Experience</span>
       </a>
       <ul class="navbar__nav" role="list">
-        <li><a href="./index.html" class="navbar__link">Inicio</a></li>
-        <li><a href="./experiencias.html" class="navbar__link active">Experiencias</a></li>
-        <li><a href="./destinos.html" class="navbar__link">Destinos</a></li>
-        <li><a href="./nosotros.html" class="navbar__link">Nosotros</a></li>
-        <li><a href="./contacto.html" class="navbar__link">Contacto</a></li>
-        <li><a href="./reservas.html" class="navbar__link navbar__cta">Reservar</a></li>
+        <li><a href="./index.html" class="navbar__link" data-i18n="nav.inicio">Inicio</a></li>
+        <li><a href="./experiencias.html" class="navbar__link active" data-i18n="nav.experiencias">Experiencias</a></li>
+        <li><a href="./destinos.html" class="navbar__link" data-i18n="nav.destinos">Destinos</a></li>
+        <li><a href="./nosotros.html" class="navbar__link" data-i18n="nav.nosotros">Nosotros</a></li>
+        <li><a href="./contacto.html" class="navbar__link" data-i18n="nav.contacto">Contacto</a></li>
+        <li><a href="./reservas.html" class="navbar__link navbar__cta" data-i18n="nav.reservar">Reservar</a></li>
       </ul>
+      <div class="lang-switch" role="group" aria-label="Selector de idioma">
+        <button class="lang-btn" data-lang="es" aria-label="Español" aria-pressed="true">ES</button>
+        <span class="lang-switch__sep" aria-hidden="true">|</span>
+        <button class="lang-btn" data-lang="en" aria-label="English" aria-pressed="false">EN</button>
+      </div>
       <button class="navbar__hamburger" aria-label="Abrir menú" aria-expanded="false">
         <span></span><span></span><span></span>
       </button>
     </div>
     <nav class="navbar__mobile" aria-label="Menú móvil">
-      <a href="./index.html" class="navbar__mobile-link">Inicio</a>
-      <a href="./experiencias.html" class="navbar__mobile-link">Experiencias</a>
-      <a href="./destinos.html" class="navbar__mobile-link">Destinos</a>
-      <a href="./nosotros.html" class="navbar__mobile-link">Nosotros</a>
-      <a href="./contacto.html" class="navbar__mobile-link">Contacto</a>
-      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;">Reservar ahora →</a>
+      <a href="./index.html" class="navbar__mobile-link" data-i18n="nav.inicio">Inicio</a>
+      <a href="./experiencias.html" class="navbar__mobile-link" data-i18n="nav.experiencias">Experiencias</a>
+      <a href="./destinos.html" class="navbar__mobile-link" data-i18n="nav.destinos">Destinos</a>
+      <a href="./nosotros.html" class="navbar__mobile-link" data-i18n="nav.nosotros">Nosotros</a>
+      <a href="./contacto.html" class="navbar__mobile-link" data-i18n="nav.contacto">Contacto</a>
+      <a href="./reservas.html" class="navbar__mobile-link" style="color:#9f4040;font-weight:700;" data-i18n="nav.reservar.mobile">Reservar ahora →</a>
     </nav>
   </nav>
 
@@ -128,11 +134,11 @@
       <nav class="breadcrumb" aria-label="Ruta de navegación">
         <a href="./index.html">Inicio</a>
         <span class="breadcrumb__sep">›</span>
-        <span>Experiencias</span>
+        <span data-i18n="exp.hero.bc">Experiencias</span>
       </nav>
-      <span class="hero__tag">Enoturismo de calidad</span>
-      <h1 class="hero__title">Nuestras Experiencias</h1>
-      <p class="hero__subtitle">Tres niveles de experiencia riojana, diseñados para que cada viajero encuentre exactamente lo que busca. Desde la primera cata hasta la noche más exclusiva.</p>
+      <span class="hero__tag" data-i18n="exp.hero.tag">Enoturismo de calidad</span>
+      <h1 class="hero__title" data-i18n="exp.hero.title">Nuestras Experiencias</h1>
+      <p class="hero__subtitle" data-i18n="exp.hero.subtitle">Tres niveles de experiencia riojana, diseñados para que cada viajero encuentre exactamente lo que busca. Desde la primera cata hasta la noche más exclusiva.</p>
     </div>
   </header>
 
@@ -142,10 +148,10 @@
     <section class="section" id="paquetes">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Elige tu nivel</span>
-          <h2 class="section__title">Tres formas de vivir La Rioja</h2>
+          <span class="section__tag" data-i18n="exp.paq.tag">Elige tu nivel</span>
+          <h2 class="section__title" data-i18n="exp.paq.title">Tres formas de vivir La Rioja</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">Cada paquete está diseñado para un tipo diferente de viajero. Todos comparten la misma esencia: la autenticidad de La Rioja.</p>
+          <p class="section__subtitle" data-i18n="exp.paq.subtitle">Cada paquete está diseñado para un tipo diferente de viajero. Todos comparten la misma esencia: la autenticidad de La Rioja.</p>
         </div>
 
         <div class="packages">
@@ -154,13 +160,13 @@
           <article class="package reveal reveal-d1" id="estandar">
             <div class="package__header">
               <span class="package__level">Nivel 01</span>
-              <h2 class="package__name">Estándar</h2>
-              <div class="package__price">Desde <strong>90€</strong> — hasta 150€ /persona</div>
+              <h2 class="package__name" data-i18n="exp.paq.std.name">Estándar</h2>
+              <div class="package__price" data-promo-price="90">Desde <strong>90€</strong> — hasta 150€ /persona</div>
             </div>
             <div class="package__body">
-              <p class="package__desc">La experiencia perfecta para descubrir La Rioja por primera vez. Ideal para grupos de amigos, parejas, familias y turistas individuales que quieren vivir el enoturismo riojano sin complicaciones.</p>
+              <p class="package__desc" data-i18n="exp.paq.std.desc">La experiencia perfecta para descubrir La Rioja por primera vez. Ideal para grupos de amigos, parejas, familias y turistas individuales que quieren vivir el enoturismo riojano sin complicaciones.</p>
 
-              <h4 style="margin-bottom:.7rem;color:#1a1a1a;">¿Qué incluye?</h4>
+              <h4 style="margin-bottom:.7rem;color:#1a1a1a;" data-i18n="exp.paq.std.h4">¿Qué incluye?</h4>
               <ul class="package__features">
                 <li class="package__feature"><span class="package__feature-icon">✓</span> <div><strong>Visita guiada a bodega partner</strong> — Recorrido completo por las instalaciones, viñedos y proceso de elaboración del vino con guía especializado.</div></li>
                 <li class="package__feature"><span class="package__feature-icon">✓</span> <div><strong>Cata de 4 vinos</strong> — Tempranillo, garnacha, rosado y vino blanco riojano, con explicación de notas y maridaje.</div></li>
@@ -176,22 +182,22 @@
                 <span class="include-badge"><i data-lucide="calendar" style="width:1em;height:1em;vertical-align:middle;"></i> Disponible 7 días</span>
               </div>
 
-              <a href="./reservas.html" class="package__cta">Reservar Experiencia Estándar →</a>
+              <a href="./reservas.html" class="package__cta" data-i18n="exp.paq.std.cta">Reservar Experiencia Estándar →</a>
             </div>
           </article>
 
           <!-- PERSONALIZADA -->
           <article class="package package--featured reveal reveal-d2" id="personalizada">
-            <div class="package__badge">Más solicitada</div>
+            <div class="package__badge" data-i18n="exp.paq.per.badge">Más solicitada</div>
             <div class="package__header">
               <span class="package__level">Nivel 02</span>
-              <h2 class="package__name">Personalizada</h2>
+              <h2 class="package__name" data-i18n="exp.paq.per.name">Personalizada</h2>
               <div class="package__price">Precio <strong>a medida</strong> — sin límite</div>
             </div>
             <div class="package__body">
-              <p class="package__desc">La experiencia que tú diseñas. Elige las bodegas que quieres visitar, las actividades, las fechas y la duración. Un consultor dedicado te acompañará en todo el proceso de diseño.</p>
+              <p class="package__desc" data-i18n="exp.paq.per.desc">La experiencia que tú diseñas. Elige las bodegas que quieres visitar, las actividades, las fechas y la duración. Un consultor dedicado te acompañará en todo el proceso de diseño.</p>
 
-              <h4 style="margin-bottom:.7rem;color:#1a1a1a;">¿Qué puedes incluir?</h4>
+              <h4 style="margin-bottom:.7rem;color:#1a1a1a;" data-i18n="exp.paq.per.h4">¿Qué puedes incluir?</h4>
               <ul class="package__features">
                 <li class="package__feature"><span class="package__feature-icon">✓</span> <div><strong>Actividades completamente a tu elección</strong> — Catas, talleres de elaboración, vendimia, paseos entre viñedos, maridajes...</div></li>
                 <li class="package__feature"><span class="package__feature-icon">✓</span> <div><strong>Bodegas y destinos a elegir</strong> — De nuestro catálogo de proveedores partner o solicita una bodega específica.</div></li>
@@ -207,7 +213,7 @@
                 <span class="include-badge"><i data-lucide="check-circle" style="width:1em;height:1em;vertical-align:middle;"></i> Confirmación 24h</span>
               </div>
 
-              <a href="./reservas.html" class="package__cta">Solicitar presupuesto personalizado →</a>
+              <a href="./reservas.html" class="package__cta" data-i18n="exp.paq.per.cta">Solicitar presupuesto personalizado →</a>
             </div>
           </article>
 
@@ -215,13 +221,13 @@
           <article class="package package--premium reveal reveal-d3" id="premium">
             <div class="package__header">
               <span class="package__level">Nivel 03 · Exclusivo</span>
-              <h2 class="package__name">Premium</h2>
-              <div class="package__price">Desde <strong>250€</strong> /persona</div>
+              <h2 class="package__name" data-i18n="exp.paq.pre.name">Premium</h2>
+              <div class="package__price" data-promo-price="250">Desde <strong>250€</strong> /persona</div>
             </div>
             <div class="package__body">
-              <p class="package__desc">La experiencia definitiva de La Rioja. Acceso a los mejores restaurantes, bodegas en exclusiva, transporte privado y atención personalizada de principio a fin. Solo para los que buscan lo mejor.</p>
+              <p class="package__desc" data-i18n="exp.paq.pre.desc">La experiencia definitiva de La Rioja. Acceso a los mejores restaurantes, bodegas en exclusiva, transporte privado y atención personalizada de principio a fin. Solo para los que buscan lo mejor.</p>
 
-              <h4 style="margin-bottom:.7rem;color:#1a1a1a;">Incluye todo lo Estándar, más:</h4>
+              <h4 style="margin-bottom:.7rem;color:#1a1a1a;" data-i18n="exp.paq.pre.h4">Incluye todo lo Estándar, más:</h4>
               <ul class="package__features">
                 <li class="package__feature"><span class="package__feature-icon package__feature-icon--gold">★</span> <div><strong>Restaurante Venta Moncalvillo</strong> — 2 estrellas Michelin. Alta cocina riojana con los mejores vinos de la DOCa.</div></li>
                 <li class="package__feature"><span class="package__feature-icon package__feature-icon--gold">★</span> <div><strong>Echaurren Tradición</strong> — 1 estrella Michelin. Cocina de montaña riojana en el corazón de Ezcaray.</div></li>
@@ -238,7 +244,7 @@
                 <span class="include-badge include-badge--gold"><i data-lucide="users" style="width:1em;height:1em;vertical-align:middle;"></i> Máxima exclusividad</span>
               </div>
 
-              <a href="./reservas.html" class="package__cta">Reservar Experiencia Premium →</a>
+              <a href="./reservas.html" class="package__cta" data-i18n="exp.paq.pre.cta">Reservar Experiencia Premium →</a>
             </div>
           </article>
 
@@ -250,19 +256,19 @@
     <section class="section section--alt" id="yacimientos-exp" aria-labelledby="yac-exp-title">
       <div class="container">
         <div class="section__header reveal">
-          <span class="section__tag">Patrimonio arqueológico</span>
-          <h2 id="yac-exp-title" class="section__title">Yacimientos Arqueológicos Incluidos</h2>
+          <span class="section__tag" data-i18n="exp.yac.tag">Patrimonio arqueológico</span>
+          <h2 id="yac-exp-title" class="section__title" data-i18n="exp.yac.title">Yacimientos Arqueológicos Incluidos</h2>
           <div class="divider"></div>
-          <p class="section__subtitle">La Rioja tiene más de 2.000 años de historia. Todos nuestros paquetes incluyen acceso a los yacimientos arqueológicos más importantes de la región, con distinto nivel de profundidad según el pack elegido.</p>
+          <p class="section__subtitle" data-i18n="exp.yac.subtitle">La Rioja tiene más de 2.000 años de historia. Todos nuestros paquetes incluyen acceso a los yacimientos arqueológicos más importantes de la región, con distinto nivel de profundidad según el pack elegido.</p>
         </div>
         <div class="reveal" style="overflow-x:auto;">
           <table class="yac-table" style="width:100%;border-collapse:collapse;font-size:.9rem;">
             <thead>
               <tr style="background:#9f4040;color:white;">
-                <th style="padding:.8rem 1rem;text-align:left;border-radius:8px 0 0 0;">Yacimiento</th>
-                <th style="padding:.8rem 1rem;text-align:center;">Estándar</th>
-                <th style="padding:.8rem 1rem;text-align:center;">Personalizada</th>
-                <th style="padding:.8rem 1rem;text-align:center;border-radius:0 8px 0 0;">Premium</th>
+                <th style="padding:.8rem 1rem;text-align:left;border-radius:8px 0 0 0;" data-i18n="exp.yac.th.site">Yacimiento</th>
+                <th style="padding:.8rem 1rem;text-align:center;" data-i18n="exp.yac.th.std">Estándar</th>
+                <th style="padding:.8rem 1rem;text-align:center;" data-i18n="exp.yac.th.per">Personalizada</th>
+                <th style="padding:.8rem 1rem;text-align:center;border-radius:0 8px 0 0;" data-i18n="exp.yac.th.pre">Premium</th>
               </tr>
             </thead>
             <tbody>

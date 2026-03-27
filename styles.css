@@ -2234,7 +2234,172 @@ textarea.form-control {
 }
 
 /* =====================================================
-   23. CAROUSEL (destinos)
+   23. SELECTOR DE IDIOMA
+   ===================================================== */
+.lang-switch {
+  display: flex;
+  align-items: center;
+  gap: 0.25rem;
+  margin-left: 0.75rem;
+  border-left: 1px solid rgba(255,255,255,0.15);
+  padding-left: 0.75rem;
+}
+
+.navbar.scrolled .lang-switch {
+  border-left-color: rgba(0,0,0,0.12);
+}
+
+.lang-switch__sep {
+  font-size: 0.75rem;
+  color: rgba(255,255,255,0.35);
+  user-select: none;
+}
+
+.navbar.scrolled .lang-switch__sep {
+  color: #d1d5db;
+}
+
+.lang-btn {
+  background: none;
+  border: none;
+  padding: 0.2rem 0.3rem;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: rgba(255,255,255,0.55);
+  cursor: pointer;
+  border-radius: 4px;
+  transition: color 0.2s, background 0.2s;
+  line-height: 1;
+}
+
+.navbar.scrolled .lang-btn {
+  color: #6b7280;
+}
+
+.lang-btn:hover,
+.lang-btn--active {
+  color: white;
+  background: rgba(255,255,255,0.12);
+}
+
+.navbar.scrolled .lang-btn:hover,
+.navbar.scrolled .lang-btn--active {
+  color: var(--color-brand);
+  background: var(--color-brand-pale);
+}
+
+@media (max-width: 768px) {
+  .lang-switch {
+    border-left: none;
+    padding-left: 0;
+    margin-left: 0;
+    margin-right: 0.5rem;
+  }
+  .lang-btn {
+    color: rgba(255,255,255,0.6);
+  }
+}
+
+/* =====================================================
+   24. BANNER PROMO (QR descuento)
+   ===================================================== */
+.promo-banner {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  z-index: 9999;
+  background: linear-gradient(135deg, #7a2424 0%, #9f4040 60%, #c06a20 100%);
+  color: white;
+  padding: 0.75rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1rem;
+  box-shadow: 0 4px 20px rgba(0,0,0,0.25);
+  animation: promoBannerIn 0.5s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+@keyframes promoBannerIn {
+  from { transform: translateY(-100%); opacity: 0; }
+  to   { transform: translateY(0);     opacity: 1; }
+}
+
+.promo-banner__icon {
+  font-size: 1.4rem;
+  flex-shrink: 0;
+}
+
+.promo-banner__text {
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.01em;
+  text-align: center;
+}
+
+.promo-banner__text strong {
+  font-size: 1.05rem;
+  background: rgba(255,255,255,0.22);
+  padding: 0.1rem 0.5rem;
+  border-radius: 99px;
+  margin: 0 0.2rem;
+}
+
+.promo-banner__close {
+  background: rgba(255,255,255,0.18);
+  border: none;
+  color: white;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  font-size: 0.9rem;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background 0.2s;
+  margin-left: 0.5rem;
+}
+
+.promo-banner__close:hover {
+  background: rgba(255,255,255,0.32);
+}
+
+/* Offset body when banner is visible */
+body.has-promo-banner {
+  padding-top: 52px;
+}
+
+/* Precio con descuento aplicado */
+.promo-price-wrap del {
+  opacity: 0.55;
+  font-weight: 400;
+  font-size: 0.9em;
+  margin-right: 0.25rem;
+}
+
+.promo-price-new {
+  color: #9f4040;
+  font-weight: 800;
+}
+
+.promo-badge-pct {
+  display: inline-block;
+  background: #9f4040;
+  color: white;
+  font-size: 0.68rem;
+  font-weight: 700;
+  padding: 0.15rem 0.45rem;
+  border-radius: 99px;
+  margin-left: 0.3rem;
+  vertical-align: middle;
+  letter-spacing: 0.04em;
+}
+
+/* =====================================================
+   25. CAROUSEL (destinos)
    ===================================================== */
 .carousel {
   position: relative;
